@@ -1,3 +1,5 @@
+![views](https://views.whatilearened.today/views/github/perigoso/Switch_Keyboard.svg) (just so i know what kind of traction this is getting)
+
 # KiCad Keyboard Switch Footprint Libraries
 
 This repository contains libraries for various keyboard switches, these libraries are being merged to the official KiCad libraries [here](https://github.com/KiCad/kicad-footprints/issues/2416).
@@ -12,7 +14,7 @@ In the meantime, this being a large commit that will take time to approve, I dec
 - Kailh Choc low profile switches (version 1).
 - Kailh Hotswap sockets for Cherry MX equivalent switches.
 
-If you find any footprints missing or want another family of switches supported `please` open an issue about it!
+If you find any footprints missing or want another family of switches supported ***please*** open an issue about it!
 
 ## Stabilizers
 
