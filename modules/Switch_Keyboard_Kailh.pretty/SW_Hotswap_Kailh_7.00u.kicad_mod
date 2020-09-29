@@ -1,4 +1,4 @@
-(module SW_Hotswap_Kailh_7.00u (layer F.Cu) (tedit 5F5E0791)
+(module SW_Hotswap_Kailh_7.00u (layer F.Cu) (tedit 5F73994E)
   (descr "Kailh keyswitch Hotswap Socket, ")
   (tags "Kailh Keyboard Keyswitch Switch Hotswap Socket 7.00u")
   (attr smd)
@@ -49,7 +49,7 @@
   (fp_text user %R (at 0 -4.75) (layer B.Fab)
     (effects (font (size 1 1) (thickness 0.15)) (justify mirror))
   )
-  (model ${KISYS3DMOD}/Switch_Keyboard_Kailh.3dshapes/SW_Hotswap_Kailh.wrl
+  (model ${KIPRJMOD}/Switch_Keyboard/packages3d/Switch_Keyboard_Kailh.3dshapes/SW_Hotswap_Kailh.wrl
     (at (xyz 0 0 0))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 0))

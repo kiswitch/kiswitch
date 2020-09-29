@@ -20,7 +20,33 @@ If you find any footprints missing or want another family of switches supported 
 
 Stabilizers are provided as seperate packages in order to offer more flexibility and reduce the total number of footprints.
 
-Currently there are only footprints for Cherry MX PCB mount equivalent Stabilizers in 2u 6u 6.25u and 7u.
+Currently there are only footprints for Cherry MX PCB mount equivalent Stabilizers in 2u 6u 6.25u 7u and 8u.
+
+## 3D Models
+
+The library includes 3d models for the following:
+
+- Cherry MX plate mount switches.
+- Cherry MX PCB mount switches.
+- Cherry MX Stabilizers.
+- Kailh hotswap sockets.
+- Kailh Choc V1 switches.
+
+We are looking for contributors for the missing 3d models.
+
+These are located in the [packages3d](packages3d/) directory.
+
+They are linked based on the `KIPRJMOD` enviorenment variable, this points to a location relative to the location your projet is in, the implication of this is ***you have to have this repo/library on the same folder as you have the KiCad project*** in order for the 3d models to show up. You can ofcourse change this if you want the library accessable anywhere on your system.
+
+## Scripts
+
+These footprints are generated with [kicad-footprint-generator](https://github.com/pointhi/kicad-footprint-generator) with the scripts located in [scripts](scripts/).
+
+## Using the library
+
+If you have access to git simply clone this repo to the directory where your KiCad project is located and include them manually on your footprints table `Preferences -> Manage Footprint Libraries... -> Project Specific Libraries (folder icon)`
+
+If you don't have access to git simply download the compressed (top right `Code -> Download Zip`) and extract to the directory where your KiCad project is located and include them manually on your footprints table `Preferences -> Manage Footprint Libraries... -> Project Specific Libraries (folder icon)`
 
 ## Screenshots
 
@@ -33,9 +59,6 @@ All screenshots are of the 1u keycap switch.
 ![kailh_Choc](https://user-images.githubusercontent.com/39195157/93150222-72649600-f6f0-11ea-8a22-b62f093f4c2d.png)
 ![kailh_hotswap](https://user-images.githubusercontent.com/39195157/93150276-8f996480-f6f0-11ea-9919-c952159f183f.png)
 
-## Generators
-
-These footprints are generated with [scripts](https://github.com/perigoso/kicad-footprint-generator/tree/keyboard_switch_scripts/scripts/Keyboard_Switches).
 
 ## Contribuitors and Acknowledgements
 

@@ -1,0 +1,3 @@
+[submodule "scripts/kicad-footprint-generator"]
+	path = scripts/kicad-footprint-generator
+	url = https://github.com/pointhi/kicad-footprint-generator
