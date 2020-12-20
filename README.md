@@ -1,5 +1,3 @@
-![views](https://views.whatilearened.today/views/github/perigoso/Switch_Keyboard.svg) (just so i know what kind of traction this is getting)
-
 # KiCad Keyboard Switch Footprint Libraries
 
 This repository contains libraries for various keyboard switches, these libraries are being merged to the official KiCad libraries [here](https://github.com/KiCad/kicad-footprints/issues/2416).
@@ -64,3 +62,5 @@ All screenshots are of the 1u keycap switch.
 
 - [perigoso](https://github.com/perigoso) - All footprints included here and corresponding scripts
 - [ai03](https://github.com/ai03-2725) - Baseline for all footprints included here
+
+![views](https://views.whatilearened.today/views/github/perigoso/Switch_Keyboard.svg) (just so i know what kind of traction this is getting)
