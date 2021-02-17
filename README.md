@@ -57,6 +57,11 @@ All screenshots are of the 1u keycap switch.
 ![kailh_Choc](https://user-images.githubusercontent.com/39195157/93150222-72649600-f6f0-11ea-8a22-b62f093f4c2d.png)
 ![kailh_hotswap](https://user-images.githubusercontent.com/39195157/93150276-8f996480-f6f0-11ea-9919-c952159f183f.png)
 
+## Source
+
+If you're reading this from outside GitHub, you can find the source for this library [here](https://github.com/perigoso/keyswitch-kicad-library):
+
+`https://github.com/perigoso/keyswitch-kicad-library`
 
 ## Contribuitors and Acknowledgements
 
