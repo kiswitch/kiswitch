@@ -1,4 +1,4 @@
-(module SW_Kailh_Choc_V1 (layer F.Cu) (tedit 602D5BEA)
+(module SW_Kailh_Choc_V1 (layer F.Cu) (tedit 602D6D24)
   (descr "Kailh Choc V1 keyswitch, http://www.kailh.com/en/Products/Ks/CS/")
   (tags "Kailh Choc V1 Keyswitch Switch")
   (fp_text reference REF** (at 0 -8) (layer F.SilkS)

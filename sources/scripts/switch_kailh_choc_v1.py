@@ -21,7 +21,8 @@ base_description = "Kailh Choc V1 keyswitch, http://www.kailh.com/en/Products/Ks
 # location_3d = "${KISYS3DMOD}/Switch_Keyboard_Kailh.3dshapes/" + base_name + ".wrl"
 location_3d = "${KEYSWITCH_LIB_3D}/Switch_Keyboard_Kailh.3dshapes/" + base_name + ".wrl"
 
-unit_value = 19.05
+unit_value_x = 18
+unit_value_y = 17
 
 kailh_choc_w = 14
 kailh_choc_h = 14
@@ -82,37 +83,37 @@ def generate_isoenter_key_footprint(orientation):
 	kicad_mod = generate_switch(footprint_name, footprint_description, footprint_tags)
 
 	if orientation == 0: # normal orientation
-		polygone_line = [[(unit_value*1.25)/2, unit_value],
-					 	 [(unit_value*1.25)/2, -unit_value],
-					 	 [-(unit_value*1.75)/2, -unit_value],
-					 	 [-(unit_value*1.75)/2, 0],
-					 	 [-(unit_value*1.25)/2, 0],
-						 [-(unit_value*1.25)/2, unit_value],
-						 [(unit_value*1.25)/2, unit_value]]
+		polygone_line = [[(unit_value_x*1.25)/2, unit_value_y],
+					 	 [(unit_value_x*1.25)/2, -unit_value_y],
+					 	 [-(unit_value_x*1.75)/2, -unit_value_y],
+					 	 [-(unit_value_x*1.75)/2, 0],
+					 	 [-(unit_value_x*1.25)/2, 0],
+						 [-(unit_value_x*1.25)/2, unit_value_y],
+						 [(unit_value_x*1.25)/2, unit_value_y]]
 	elif orientation == 1: # rotated 90 deg
-		polygone_line = [[unit_value, -(unit_value*1.25)/2],
-					 	 [-unit_value, -(unit_value*1.25)/2],
-					 	 [-unit_value, (unit_value*1.75)/2],
-					 	 [0, (unit_value*1.75)/2],
-					 	 [0, (unit_value*1.25)/2],
-						 [unit_value, (unit_value*1.25)/2],
-						 [unit_value, -(unit_value*1.25)/2]]
+		polygone_line = [[unit_value_y, -(unit_value_x*1.25)/2],
+					 	 [-unit_value_y, -(unit_value_x*1.25)/2],
+					 	 [-unit_value_y, (unit_value_x*1.75)/2],
+					 	 [0, (unit_value_x*1.75)/2],
+					 	 [0, (unit_value_x*1.25)/2],
+						 [unit_value_y, (unit_value_x*1.25)/2],
+						 [unit_value_y, -(unit_value_x*1.25)/2]]
 	elif orientation == 2: # rotated 180 deg
-		polygone_line = [[-(unit_value*1.25)/2, -unit_value],
-					 	 [-(unit_value*1.25)/2, unit_value],
-					 	 [(unit_value*1.75)/2, unit_value],
-					 	 [(unit_value*1.75)/2, 0],
-					 	 [(unit_value*1.25)/2, 0],
-						 [(unit_value*1.25)/2, -unit_value],
-						 [-(unit_value*1.25)/2, -unit_value]]
+		polygone_line = [[-(unit_value_x*1.25)/2, -unit_value_y],
+					 	 [-(unit_value_x*1.25)/2, unit_value_y],
+					 	 [(unit_value_x*1.75)/2, unit_value_y],
+					 	 [(unit_value_x*1.75)/2, 0],
+					 	 [(unit_value_x*1.25)/2, 0],
+						 [(unit_value_x*1.25)/2, -unit_value_y],
+						 [-(unit_value_x*1.25)/2, -unit_value_y]]
 	elif orientation == 3: # rotated 270 deg
-		polygone_line = [[-unit_value, (unit_value*1.25)/2],
-					 	 [unit_value, (unit_value*1.25)/2],
-					 	 [unit_value, -(unit_value*1.75)/2],
-					 	 [0, -(unit_value*1.75)/2],
-					 	 [0, -(unit_value*1.25)/2],
-						 [-unit_value, -(unit_value*1.25)/2],
-						 [-unit_value, (unit_value*1.25)/2]]
+		polygone_line = [[-unit_value_y, (unit_value_x*1.25)/2],
+					 	 [unit_value_y, (unit_value_x*1.25)/2],
+					 	 [unit_value_y, -(unit_value_x*1.75)/2],
+					 	 [0, -(unit_value_x*1.75)/2],
+					 	 [0, -(unit_value_x*1.25)/2],
+						 [-unit_value_y, -(unit_value_x*1.25)/2],
+						 [-unit_value_y, (unit_value_x*1.25)/2]]
 
 	# Generate user layout guides
 	kicad_mod.append(PolygoneLine(polygone=polygone_line, layer='Dwgs.User', width=0.1))
@@ -142,9 +143,9 @@ def generate_standard_key_footprint(unit_size, rotated, offset):
 
 	# Generate user layout guides
 	if rotated:
-		kicad_mod.append(RectLine(start=[-unit_value / 2, (-(unit_size * unit_value) / 2) + offset], end=[unit_value / 2, ((unit_size * unit_value) / 2) + offset], layer='Dwgs.User', width=0.1))
+		kicad_mod.append(RectLine(start=[-unit_value_y / 2, (-(unit_size * unit_value_x) / 2) + offset], end=[unit_value_y / 2, ((unit_size * unit_value_x) / 2) + offset], layer='Dwgs.User', width=0.1))
 	else:
-		kicad_mod.append(RectLine(start=[(-(unit_size * unit_value) / 2) + offset, -unit_value / 2], end=[((unit_size * unit_value) / 2) + offset, unit_value / 2], layer='Dwgs.User', width=0.1))
+		kicad_mod.append(RectLine(start=[(-(unit_size * unit_value_x) / 2) + offset, -unit_value_y / 2], end=[((unit_size * unit_value_x) / 2) + offset, unit_value_y / 2], layer='Dwgs.User', width=0.1))
 
 	file_handler = KicadFileHandler(kicad_mod)
 	file_handler.writeFile("{}.kicad_mod".format(footprint_name))
