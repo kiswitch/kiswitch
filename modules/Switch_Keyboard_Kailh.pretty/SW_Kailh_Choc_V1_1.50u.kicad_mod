@@ -1,4 +1,4 @@
-(module SW_Kailh_Choc_V1_1.50u (layer F.Cu) (tedit 5F73993E)
+(module SW_Kailh_Choc_V1_1.50u (layer F.Cu) (tedit 602D5BEA)
   (descr "Kailh Choc V1 keyswitch, http://www.kailh.com/en/Products/Ks/CS/")
   (tags "Kailh Choc V1 Keyswitch Switch 1.50u")
   (fp_text reference REF** (at 0 -8) (layer F.SilkS)
@@ -32,7 +32,7 @@
   (fp_text user %R (at 0 0) (layer F.Fab)
     (effects (font (size 1 1) (thickness 0.15)))
   )
-  (model ${KIPRJMOD}/Switch_Keyboard/packages3d/Switch_Keyboard_Kailh.3dshapes/SW_Kailh_Choc_V1.wrl
+  (model ${KEYSWITCH_LIB_3D}/Switch_Keyboard_Kailh.3dshapes/SW_Kailh_Choc_V1.wrl
     (at (xyz 0 0 0))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 0))

@@ -19,7 +19,7 @@ base_tags = "Kailh Choc V1 Keyswitch Switch"
 base_description = "Kailh Choc V1 keyswitch, http://www.kailh.com/en/Products/Ks/CS/"
 
 # location_3d = "${KISYS3DMOD}/Switch_Keyboard_Kailh.3dshapes/" + base_name + ".wrl"
-location_3d = "${KIPRJMOD}/Switch_Keyboard/packages3d/Switch_Keyboard_Kailh.3dshapes/" + base_name + ".wrl"
+location_3d = "${KEYSWITCH_LIB_3D}/Switch_Keyboard_Kailh.3dshapes/" + base_name + ".wrl"
 
 unit_value = 19.05
 
@@ -82,14 +82,6 @@ def generate_isoenter_key_footprint(orientation):
 	kicad_mod = generate_switch(footprint_name, footprint_description, footprint_tags)
 
 	if orientation == 0: # normal orientation
-		polygone_line = [[-unit_value, (unit_value*1.25)/2],
-					 	 [unit_value, (unit_value*1.25)/2],
-					 	 [unit_value, -(unit_value*1.75)/2],
-					 	 [0, -(unit_value*1.75)/2],
-					 	 [0, -(unit_value*1.25)/2],
-						 [-unit_value, -(unit_value*1.25)/2],
-						 [-unit_value, (unit_value*1.25)/2]]
-	elif orientation == 1: # rotated 90 deg
 		polygone_line = [[(unit_value*1.25)/2, unit_value],
 					 	 [(unit_value*1.25)/2, -unit_value],
 					 	 [-(unit_value*1.75)/2, -unit_value],
@@ -97,7 +89,7 @@ def generate_isoenter_key_footprint(orientation):
 					 	 [-(unit_value*1.25)/2, 0],
 						 [-(unit_value*1.25)/2, unit_value],
 						 [(unit_value*1.25)/2, unit_value]]
-	elif orientation == 2: # rotated 180 deg
+	elif orientation == 1: # rotated 90 deg
 		polygone_line = [[unit_value, -(unit_value*1.25)/2],
 					 	 [-unit_value, -(unit_value*1.25)/2],
 					 	 [-unit_value, (unit_value*1.75)/2],
@@ -105,7 +97,7 @@ def generate_isoenter_key_footprint(orientation):
 					 	 [0, (unit_value*1.25)/2],
 						 [unit_value, (unit_value*1.25)/2],
 						 [unit_value, -(unit_value*1.25)/2]]
-	elif orientation == 3: # rotated 270 deg
+	elif orientation == 2: # rotated 180 deg
 		polygone_line = [[-(unit_value*1.25)/2, -unit_value],
 					 	 [-(unit_value*1.25)/2, unit_value],
 					 	 [(unit_value*1.75)/2, unit_value],
@@ -113,6 +105,14 @@ def generate_isoenter_key_footprint(orientation):
 					 	 [(unit_value*1.25)/2, 0],
 						 [(unit_value*1.25)/2, -unit_value],
 						 [-(unit_value*1.25)/2, -unit_value]]
+	elif orientation == 3: # rotated 270 deg
+		polygone_line = [[-unit_value, (unit_value*1.25)/2],
+					 	 [unit_value, (unit_value*1.25)/2],
+					 	 [unit_value, -(unit_value*1.75)/2],
+					 	 [0, -(unit_value*1.75)/2],
+					 	 [0, -(unit_value*1.25)/2],
+						 [-unit_value, -(unit_value*1.25)/2],
+						 [-unit_value, (unit_value*1.25)/2]]
 
 	# Generate user layout guides
 	kicad_mod.append(PolygoneLine(polygone=polygone_line, layer='Dwgs.User', width=0.1))

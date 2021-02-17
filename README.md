@@ -34,17 +34,17 @@ We are looking for contributors for the missing 3d models.
 
 These are located in the [packages3d](modules/packages3d/) directory.
 
-They are linked based on the `KIPRJMOD` enviorenment variable, this points to a location relative to the location your projet is in, the implication of this is ***you have to have this repo/library on the same folder as you have the KiCad project*** in order for the 3d models to show up. You can ofcourse change this if you want the library accessable anywhere on your system.
+They are linked based on the `KEYSWITCH_LIB_3D` enviorenment variable, this needs to be set by the user and should point to the `packages3d` directory of the library, this variable can be set by going to `Preferences -> Configure Path` and clicking od the plus sign button, name it `KEYSWITCH_LIB_3D` and navigate to the directory the 3d files are at (`packages3d`).
 
 ## Scripts
 
-These footprints are generated with [kicad-footprint-generator](https://github.com/pointhi/kicad-footprint-generator) with the scripts located in [scripts](scripts/).
+These footprints are generated with [kicad-footprint-generator](https://gitlab.com/kicad/libraries/kicad-footprint-generator.git) with the scripts located in [scripts](scripts/).
 
 ## Using the library
 
-If you have access to git simply clone this repo to the directory where your KiCad project is located and include them manually on your footprints table `Preferences -> Manage Footprint Libraries... -> Project Specific Libraries (folder icon)`
+If you have access to git simply clone this repo to the directory where you want your library stored and include them manually on your footprints table `Preferences -> Manage Footprint Libraries... -> Project Specific Libraries (folder icon)` 
 
-If you don't have access to git simply download the compressed (top right `Code -> Download Zip`) and extract to the directory where your KiCad project is located and include them manually on your footprints table `Preferences -> Manage Footprint Libraries... -> Project Specific Libraries (folder icon)`
+If you don't have access to git simply download the release (right `Releases`) and extract to the directory where you want your library stored and include them manually on your footprints table `Preferences -> Manage Footprint Libraries... -> Project Specific Libraries (folder icon)`
 
 ## Screenshots
 
@@ -61,6 +61,6 @@ All screenshots are of the 1u keycap switch.
 ## Contribuitors and Acknowledgements
 
 - [perigoso](https://github.com/perigoso) - All footprints included here and corresponding scripts
-- [ai03](https://github.com/ai03-2725) - Baseline for all footprints included here
+- [ai03](https://github.com/ai03-2725) - Rough baseline for some footprints
 
-![views](https://views.whatilearened.today/views/github/perigoso/Switch_Keyboard.svg) (just so i know what kind of traction this is getting)
+![views](https://views.whatilearened.today/views/github/perigoso/Switch_Keyboard.svg)
