@@ -93,9 +93,9 @@ def generate_switch(footprint_name, footprint_description, footprint_tags):
 	kicad_mod.append(PolygoneLine(polygone=polygone_line, layer='F.CrtYd', width=0.05))
 
 	# create pads
-	kicad_mod.append(Pad(number=1, type=Pad.TYPE_THT, shape=Pad.SHAPE_OVAL, at=[2.52,-4.79], size=[3.081378,2.5], drill=[2.08137,1.5], rotation=86, layers=['*.Cu', 'B.Mask']))
-	kicad_mod.append(Pad(number=2, type=Pad.TYPE_THT, shape=Pad.SHAPE_CIRCLE, at=[-2.5,-4], size=[2.5,2.5], drill=1.5, layers=['*.Cu', 'B.Mask']))
-	kicad_mod.append(Pad(number=2, type=Pad.TYPE_THT, shape=Pad.SHAPE_OVAL, at=[-3.81,-2.54], size=[4.46156,2.5],  rotation=48, offset=[0.980778,0], drill=1.5, layers=['*.Cu', 'B.Mask']))
+	kicad_mod.append(Pad(number=1, type=Pad.TYPE_THT, shape=Pad.SHAPE_CIRCLE, at=[-2.5,-4], size=[2.5,2.5], drill=1.5, layers=['*.Cu', 'B.Mask']))
+	kicad_mod.append(Pad(number=1, type=Pad.TYPE_THT, shape=Pad.SHAPE_OVAL, at=[-3.81,-2.54], size=[4.46156,2.5],  rotation=48, offset=[0.980778,0], drill=1.5, layers=['*.Cu', 'B.Mask']))
+	kicad_mod.append(Pad(number=2, type=Pad.TYPE_THT, shape=Pad.SHAPE_OVAL, at=[2.52,-4.79], size=[3.081378,2.5], drill=[2.08137,1.5], rotation=86, layers=['*.Cu', 'B.Mask']))
 	kicad_mod.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_CIRCLE, at=[0,0], size=[4,4], drill=4, layers=['*.Cu', '*.Mask']))
 	kicad_mod.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_CIRCLE, at=[-5.08,0], size=[1.75,1.75], drill=1.75, layers=['*.Cu', '*.Mask']))
 	kicad_mod.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_CIRCLE, at=[5.08,0], size=[1.75,1.75], drill=1.75, layers=['*.Cu', '*.Mask']))

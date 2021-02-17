@@ -44,8 +44,8 @@ def generate_switch(footprint_name, footprint_description, footprint_tags):
 	kicad_mod.append(RectLine(start=[-7.75,-6.4], end=[7.75,6.4], layer='F.CrtYd', width=0.05, offset=0.25))
 
 	# create pads
-	kicad_mod.append(Pad(number=1, type=Pad.TYPE_THT, shape=Pad.SHAPE_CIRCLE, at=[2.5,-4.5], size=[2.5,2.5], drill=1.5, layers=['*.Cu', 'B.Mask']))
-	kicad_mod.append(Pad(number=2, type=Pad.TYPE_THT, shape=Pad.SHAPE_CIRCLE, at=[-2.5,-4], size=[2.5,2.5], drill=1.5, layers=['*.Cu', 'B.Mask']))
+	kicad_mod.append(Pad(number=1, type=Pad.TYPE_THT, shape=Pad.SHAPE_CIRCLE, at=[-2.5,-4], size=[2.5,2.5], drill=1.5, layers=['*.Cu', 'B.Mask']))
+	kicad_mod.append(Pad(number=2, type=Pad.TYPE_THT, shape=Pad.SHAPE_CIRCLE, at=[2.5,-4.5], size=[2.5,2.5], drill=1.5, layers=['*.Cu', 'B.Mask']))
 
 	# add model
 	kicad_mod.append(Model(filename=location_3d ,at=[0,0,0] ,scale=[1,1,1] ,rotate=[0,0,0]))
