@@ -12,7 +12,7 @@ In the meantime, this being a large commit that will take time to approve, I dec
 - Kailh Choc low profile switches (version 1).
 - Kailh Hotswap sockets for Cherry MX equivalent switches.
 
-If you find any footprints missing or want another family of switches supported ***please*** open an issue about it!
+If you find any issues, missing footprints or want another family of switches supported please [open an issue](https://github.com/perigoso/keyswitch-kicad-library/issues/new) about it!
 
 ## Stabilizers
 
@@ -32,7 +32,7 @@ The library includes 3d models for the following:
 
 We are looking for contributors for the missing 3d models.
 
-These are located in the [packages3d](packages3d/) directory.
+These are located in the [packages3d](modules/packages3d/) directory.
 
 They are linked based on the `KIPRJMOD` enviorenment variable, this points to a location relative to the location your projet is in, the implication of this is ***you have to have this repo/library on the same folder as you have the KiCad project*** in order for the 3d models to show up. You can ofcourse change this if you want the library accessable anywhere on your system.
 
