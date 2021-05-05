@@ -16,7 +16,7 @@ If you find any issues, missing footprints or want another family of switches su
 
 ## Stabilizers
 
-Stabilizers are provided as seperate packages in order to offer more flexibility and reduce the total number of footprints.
+Stabilizers are provided as seperate footprints in order to offer more flexibility and reduce the total number of switch footprints.
 
 Currently there are only footprints for Cherry MX PCB mount equivalent Stabilizers in 2u 6u 6.25u 7u and 8u.
 
