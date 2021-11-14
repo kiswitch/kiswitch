@@ -18,8 +18,8 @@ base_name = "SW_Alps_Matias"
 base_tags = "Alps Matias Keyboard Keyswitch Switch Plate"
 base_description = "Alps/Matias keyswitch (Matias is Alps Compatible), https://github.com/keyboardio/keyswitch_documentation/blob/master/datasheets/ALPS/SKCL.pdf"
 
-# location_3d = "${KISYS3DMOD}/Switch_Keyboard_Alps_Matias.3dshapes/" + base_name + ".wrl"
-location_3d = "${KEYSWITCH_LIB_3D}/Switch_Keyboard_Alps_Matias.3dshapes/" + base_name + ".wrl"
+location_3d = "${KISYS3DMOD}/Switch_Keyboard_Alps_Matias.3dshapes/" + base_name + ".wrl"
+# location_3d = "${KEYSWITCH_LIB_3D}/Switch_Keyboard_Alps_Matias.3dshapes/" + base_name + ".wrl"
 
 unit_value = 19.05
 

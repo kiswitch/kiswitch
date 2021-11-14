@@ -18,10 +18,10 @@ base_name = "SW_Hybrid_Cherry_MX_Alps"
 base_tags = "Cherry MX Alps Matias Hybrid Keyboard Keyswitch Switch PCB"
 base_description = "Cherry MX / Alps keyswitch hybrid, https://www.cherrymx.de/en/dev.html, https://github.com/keyboardio/keyswitch_documentation/blob/master/datasheets/ALPS/SKCL.pdf"
 
-# location_3d = "${KISYS3DMOD}/Switch_Keyboard_Cherry_MX.3dshapes/SW_Cherry_MX_PCB.wrl"
-# location_3d_2 = "${KISYS3DMOD}/Switch_Keyboard_Alps_Matias.3dshapes/SW_Alps_Matias.wrl"
-location_3d = "${KEYSWITCH_LIB_3D}/Switch_Keyboard_Cherry_MX.3dshapes/SW_Cherry_MX_PCB.wrl"
-location_3d_2 = "${KEYSWITCH_LIB_3D}/Switch_Keyboard_Alps_Matias.3dshapes/SW_Alps_Matias.wrl"
+location_3d = "${KISYS3DMOD}/Switch_Keyboard_Cherry_MX.3dshapes/SW_Cherry_MX_PCB.wrl"
+location_3d_2 = "${KISYS3DMOD}/Switch_Keyboard_Alps_Matias.3dshapes/SW_Alps_Matias.wrl"
+# location_3d = "${KEYSWITCH_LIB_3D}/Switch_Keyboard_Cherry_MX.3dshapes/SW_Cherry_MX_PCB.wrl"
+# location_3d_2 = "${KEYSWITCH_LIB_3D}/Switch_Keyboard_Alps_Matias.3dshapes/SW_Alps_Matias.wrl"
 
 unit_value = 19.05
 
