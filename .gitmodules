@@ -1,3 +1,0 @@
-[submodule "sources/scripts/kicad-footprint-generator"]
-	path = sources/scripts/kicad-footprint-generator
-	url = https://gitlab.com/kicad/libraries/kicad-footprint-generator.git
