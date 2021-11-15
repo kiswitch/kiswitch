@@ -18,8 +18,9 @@ base_name = "SW_Hotswap_Kailh"
 base_tags = "Kailh Keyboard Keyswitch Switch Hotswap Socket"
 base_description = "Kailh keyswitch Hotswap Socket, "
 
-location_3d = "${KISYS3DMOD}/Switch_Keyboard_Kailh.3dshapes/" + base_name + ".wrl"
+# location_3d = "${KISYS3DMOD}/Switch_Keyboard_Kailh.3dshapes/" + base_name + ".wrl"
 # location_3d = "${KEYSWITCH_LIB_3D}/Switch_Keyboard_Kailh.3dshapes/" + base_name + ".wrl"
+location_3d = "${KICAD6_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/" + base_name + ".wrl"
 
 unit_value = 19.05
 

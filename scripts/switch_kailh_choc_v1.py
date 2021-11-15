@@ -18,8 +18,9 @@ base_name = "SW_Kailh_Choc_V1"
 base_tags = "Kailh Choc V1 Keyswitch Switch"
 base_description = "Kailh Choc V1 keyswitch, http://www.kailh.com/en/Products/Ks/CS/"
 
-location_3d = "${KISYS3DMOD}/Switch_Keyboard_Kailh.3dshapes/" + base_name + ".wrl"
+# location_3d = "${KISYS3DMOD}/Switch_Keyboard_Kailh.3dshapes/" + base_name + ".wrl"
 # location_3d = "${KEYSWITCH_LIB_3D}/Switch_Keyboard_Kailh.3dshapes/" + base_name + ".wrl"
+location_3d = "${KICAD6_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/" + base_name + ".wrl"
 
 unit_value_x = 18
 unit_value_y = 17

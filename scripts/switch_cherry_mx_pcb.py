@@ -18,8 +18,9 @@ base_name = "SW_Cherry_MX_PCB"
 base_tags = "Cherry MX Keyboard Keyswitch Switch PCB"
 base_description = "Cherry MX keyswitch, https://www.cherrymx.de/en/dev.html"
 
-location_3d = "${KISYS3DMOD}/Switch_Keyboard_Cherry_MX.3dshapes/" + base_name + ".wrl"
+# location_3d = "${KISYS3DMOD}/Switch_Keyboard_Cherry_MX.3dshapes/" + base_name + ".wrl"
 # location_3d = "${KEYSWITCH_LIB_3D}/Switch_Keyboard_Cherry_MX.3dshapes/" + base_name + ".wrl"
+location_3d = "${KICAD6_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/" + base_name + ".wrl"
 
 unit_value = 19.05
 
