@@ -17,7 +17,7 @@
   (pad ~ np_thru_hole circle (at 47.625 -6.985) (size 3.048 3.048) (drill 3.048) (layers *.Cu *.Mask))
   (pad ~ np_thru_hole circle (at -47.625 -6.985) (size 3.048 3.048) (drill 3.048) (layers *.Cu *.Mask))
   (pad ~ np_thru_hole circle (at 47.625 8.255) (size 3.9878 3.9878) (drill 3.9878) (layers *.Cu *.Mask))
-  (model ${KISYS3DMOD}/Mounting_Keyboard_Stabilizer.3dshapes/Stabilizer_Cherry_MX_6u.wrl
+  (model ${KICAD6_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/Stabilizer_Cherry_MX_6u.wrl
     (at (xyz 0 0 0))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 0))
