@@ -1,4 +1,6 @@
-# KiCad Keyboard Switch Footprint Libraries
+# KiCad Keyboard Switch Footprint Libraries <img src="assets/icon.svg" alt="" width="20%" align="left"> 
+
+
 
 This repository contains libraries for various keyboard switches, these libraries are being merged to the official KiCad libraries [here](https://github.com/KiCad/kicad-footprints/issues/2416).
 
