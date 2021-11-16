@@ -34,19 +34,27 @@ The library includes 3d models for the following:
 
 We are looking for contributors for the missing 3d models.
 
-These are located in the [packages3d](modules/packages3d/) directory.
-
-They are linked based on the `KEYSWITCH_LIB_3D` enviorenment variable, this needs to be set by the user and should point to the `packages3d` directory of the library, this variable can be set by going to `Preferences -> Configure Path` and clicking od the plus sign button, name it `KEYSWITCH_LIB_3D` and navigate to the directory the 3d files are at (`packages3d`).
-
 ## Scripts
 
 These footprints are generated with [kicad-footprint-generator](https://gitlab.com/kicad/libraries/kicad-footprint-generator.git) with the scripts located in [scripts](scripts/).
 
 ## Using the library
 
-If you have access to git simply clone this repo to the directory where you want your library stored and include them manually on your footprints table `Preferences -> Manage Footprint Libraries... -> Project Specific Libraries (folder icon)` 
+As of v2.0  the library is meant to be installed via kicads `Plugin and Content Manager`, this is only available in the nightly builds of kicad (aka Kicad v6), if you are using kicad v5, please head to the [old version of this library (v1.0.0)](https://github.com/perigoso/keyswitch-kicad-library/tree/e56f74e93c850e60e04023563835b5fe031fd638)
 
-If you don't have access to git simply download the release (right `Releases`) and extract to the directory where you want your library stored and include them manually on your footprints table `Preferences -> Manage Footprint Libraries... -> Project Specific Libraries (folder icon)`
+If you want to use git simply clone this repo to the directory where you want your library stored and include them manually on your footprints table `Preferences -> Manage Footprint Libraries...` (Note: with this method the 3d models will not be linked automatically/correctly)
+
+If you want to use the RECOMMENDED method, open the content manager, where you will find this library in the libraries tab (you can also download the arquive from the releases and `install from file...`) Note that you need to add the libraries to the library table manually.
+
+The following entries needs to be added:
+
+Name | Location
+---|---
+Mounting_Keyboard_Stabilizer | ${KICAD6_3RD_PARTY}/footprints/com_github_perigoso_keyswitch-kicad-library/Mounting_Keyboard_Stabilizer.pretty
+Switch_Keyboard_Alps_Matias | ${KICAD6_3RD_PARTY}/footprints/com_github_perigoso_keyswitch-kicad-library/Switch_Keyboard_Alps_Matias.pretty
+Switch_Keyboard_Cherry_MX | ${KICAD6_3RD_PARTY}/footprints/com_github_perigoso_keyswitch-kicad-library/Switch_Keyboard_Cherry_MX.pretty
+Switch_Keyboard_Hybrid | ${KICAD6_3RD_PARTY}/footprints/com_github_perigoso_keyswitch-kicad-library/Switch_Keyboard_Hybrid.pretty
+Switch_Keyboard_Kailh | ${KICAD6_3RD_PARTY}/footprints/com_github_perigoso_keyswitch-kicad-library/Switch_Keyboard_Kailh.pretty
 
 ## Screenshots
 
