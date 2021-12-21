@@ -4,16 +4,15 @@
 
 import sys
 import os
+import pathlib
 
 # sys.path.append(os.path.join(sys.path[0], "..", ".."))  # load parent path of KicadModTree
 sys.path.append(os.path.join(sys.path[0], "kicad-footprint-generator"))  # load parent path of KicadModTree
 
-import argparse
-import yaml
-import math
-
 from KicadModTree import *
 
+group_name = "Switch_Keyboard_Cherry_MX"
+assetPath = os.path.join(pathlib.Path(sys.path[0]).parent, "library", "footprints", "{}.pretty/".format(group_name))
 base_name = "SW_Cherry_MX_PCB"
 base_tags = "Cherry MX Keyboard Keyswitch Switch PCB"
 base_description = "Cherry MX keyswitch, https://www.cherrymx.de/en/dev.html"
@@ -46,6 +45,14 @@ def generate_switch(footprint_name, footprint_description, footprint_tags):
 
 	# create courtyard
 	kicad_mod.append(RectLine(start=[-cherry_w/2,-cherry_h/2], end=[cherry_w/2,cherry_h/2], layer='F.CrtYd', width=0.05, offset=0.25))
+
+	# create cutout
+	kicad_mod.append(PolygoneLine(
+		polygone=[[7, -7],[7, -6],[7.8, -6],[7.8, -2.9],[7, -2.9],[7, 2.9],[7.8, 2.9],[7.8, 6],[7, 6],[7, 7],[-7, 7],
+				  [-7, 6],[-7.8, 6],[-7.8, 2.9],[-7, 2.9],[-7, -2.9],[-7.8, -2.9],[-7.8, -6],[-7, -6],[-7, -7],[7, -7]], 
+		layer='Eco1.User', 
+		width=0.1
+	))
 
 	# create pads
 	kicad_mod.append(Pad(number=1, type=Pad.TYPE_THT, shape=Pad.SHAPE_CIRCLE, at=[-3.81,-2.54], size=[2.5,2.5], drill=1.5, layers=['*.Cu', 'B.Mask']))
@@ -147,7 +154,7 @@ def generate_standard_key_footprint(unit_size, rotated, offset):
 		kicad_mod.append(RectLine(start=[(-(unit_size * unit_value) / 2) + offset, -unit_value / 2], end=[((unit_size * unit_value) / 2) + offset, unit_value / 2], layer='Dwgs.User', width=0.1))
 
 	file_handler = KicadFileHandler(kicad_mod)
-	file_handler.writeFile("{}.kicad_mod".format(footprint_name))
+	file_handler.writeFile(assetPath + "{}.kicad_mod".format(footprint_name))
 
 
 if __name__ == "__main__":
