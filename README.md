@@ -1,36 +1,47 @@
-# KiCad Keyboard Switch Footprint Libraries <img src="assets/icon.svg" alt="" width="20%" align="left"> 
+# Keyswitch Kicad Library <img src="assets/icon.svg" alt="" width="20%" align="left"> 
 
+Footprints for popular keyboard switches
 
+&nbsp;
 
-This repository contains libraries for various keyboard switches, these libraries are being merged to the official KiCad libraries [here](https://github.com/KiCad/kicad-footprints/issues/2416).
+&nbsp;
 
-In the meantime, this being a large commit that will take time to approve, I decided to provide them as an independent library in order for the community to use, test, and give feedback.
+&nbsp;
 
 ## Supported footprints
 
-- Cherry MX or equivalent, Plate and PCB mount.
-- Alps/Matias or equivalent.
-- Hybrid footprints for Cherry MX and Alps/Matias (accepts both).
-- Kailh Choc low profile switches (version 1).
-- Kailh Hotswap sockets for Cherry MX equivalent switches.
+|                                                                 |
+|-----------------------------------------------------------------|
+| Cherry MX and equivalent, Plate and PCB mount.                  |
+| Alps/Matias or equivalent.                                      |
+| Hybrid footprints for Cherry MX and Alps/Matias (accepts both). |
+| Kailh Choc low profile switches (version 1).                    |
+| Kailh Hotswap sockets for Cherry MX equivalent switches.        |
+| Kailh Hotswap sockets for Choc low profile switches (version 1) |
+| Kailh KH CPG1280                                                |
+| Kailh CPG1425                                                   |
+| Kailh Choc Mini CPG1232                                         |
 
 If you find any issues, missing footprints or want another family of switches supported please [open an issue](https://github.com/perigoso/keyswitch-kicad-library/issues/new) about it!
 
 ## Stabilizers
 
-Stabilizers are provided as seperate footprints in order to offer more flexibility and reduce the total number of switch footprints.
+Stabilizers are provided as seperate footprints in order to offer more flexibility and reduce the total number of switch footprint variants.
 
-Currently there are only footprints for Cherry MX PCB mount equivalent Stabilizers in 2u 6u 6.25u 7u and 8u.
+Currently there are footprints for Cherry MX PCB mount equivalent stabilizers in 2u 6u 6.25u 7u and 8u.
 
 ## 3D Models
 
-The library includes 3d models for the following:
+The library includes the following 3d models:
 
-- Cherry MX plate mount switches.
-- Cherry MX PCB mount switches.
-- Cherry MX Stabilizers.
-- Kailh hotswap sockets.
-- Kailh Choc V1 switches.
+|                          |
+|--------------------------|
+| SW_Cherry_MX_PCB         |
+| SW_Cherry_MX_Plate       |
+| Stabilizer_Cherry_MX     |
+| SW_Hotswap_Kailh         |
+| SW_Hotswap_Kailh_Choc_v1 |
+| SW_Kailh_Choc_V1         |
 
 We are looking for contributors for the missing 3d models.
 
@@ -75,7 +86,9 @@ If you're reading this from outside GitHub, you can find the source for this lib
 
 ## Contribuitors and Acknowledgements
 
-- [perigoso](https://github.com/perigoso) - All footprints included here and corresponding scripts
-- [ai03](https://github.com/ai03-2725) - Rough baseline for some footprints
+- [Rafael Silva (perigoso)](https://github.com/perigoso) - Author and maintainer
+- [Jesse Vincent (obra)](https://github.com/obra) - Production tested footprints and others from [keyboardio](https://github.com/keyboardio)
+- [Lotier](https://github.com/Lotier) - Wrote the script for automating the generation of stabilizers
+- [ai03](https://github.com/ai03-2725) - Original library that served as motivation and baseline
 
 ![views](https://views.whatilearened.today/views/github/perigoso/Switch_Keyboard.svg)
