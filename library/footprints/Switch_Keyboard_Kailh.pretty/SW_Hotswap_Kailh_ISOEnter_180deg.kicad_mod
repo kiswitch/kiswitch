@@ -1,4 +1,4 @@
-(module SW_Hotswap_Kailh_ISOEnter_180deg (layer F.Cu) (tedit 61C58895)
+(module SW_Hotswap_Kailh_ISOEnter_180deg (layer F.Cu) (tedit 0)
   (descr "Kailh keyswitch Hotswap Socket with ISOEnter 180deg keycap")
   (tags "Kailh Keyboard Keyswitch Switch Hotswap Socket Cutout ISOEnter 180deg")
   (attr smd)

@@ -1,4 +1,4 @@
-(module SW_Hotswap_Kailh_3.00u_90deg (layer F.Cu) (tedit 61C58895)
+(module SW_Hotswap_Kailh_3.00u_90deg (layer F.Cu) (tedit 0)
   (descr "Kailh keyswitch Hotswap Socket with 3.00u 90deg keycap")
   (tags "Kailh Keyboard Keyswitch Switch Hotswap Socket Cutout 3.00u 90deg")
   (attr smd)

@@ -1,4 +1,4 @@
-(module SW_Cherry_MX_PCB_3.00u (layer F.Cu) (tedit 61C58895)
+(module SW_Cherry_MX_PCB_3.00u (layer F.Cu) (tedit 0)
   (descr "Cherry MX keyswitch PCB Mount with 3.00u keycap")
   (tags "Cherry MX Keyboard Keyswitch Switch PCB Cutout 3.00u")
   (fp_text reference REF** (at 0 -8) (layer F.SilkS)
