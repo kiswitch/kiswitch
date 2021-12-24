@@ -11,13 +11,15 @@ import util
 class Switch(Footprint):
     def __init__(self, name: str, description: str, tags: str,
                  cutout: bool = False, keycap: Keycap = None,
-                 path3d: str = None, model3d: str = None):
+                 path3d: str = None, model3d: str = None,
+                 text_offset: float = 8):
 
         Footprint.__init__(self, None)
 
         self.name = name
         self.description = description
         self.tags = tags
+        self.text_offset = text_offset
         self.path3d = None
 
         if model3d is not None:
@@ -40,9 +42,9 @@ class Switch(Footprint):
     def _init_generic_nodes(self):
         # add general values
         self.append(Text(type='reference', text='REF**',
-                         at=[0, -8], layer='F.SilkS'))
+                         at=[0, -self.text_offset], layer='F.SilkS'))
         self.append(Text(type='value', text=self.name,
-                         at=[0, 8], layer='F.Fab'))
+                         at=[0, self.text_offset], layer='F.Fab'))
         self.append(Text(type='user', text='%R',
                          at=[0, 0], layer='F.Fab'))
 
@@ -87,7 +89,8 @@ class StabilizerCherryMX(Switch):
                         cutout=cutout,
                         path3d=path3d,
                         model3d=model3d if model3d is not None
-                        else f'{_name}.wrl')
+                        else f'{_name}.wrl',
+                        text_offset=2)
 
         self._init_base()
 
@@ -441,8 +444,8 @@ class SwitchKailhChocV1(Switch):
 
     def __init__(self,
                  name: str = 'SW_Kailh_Choc_V1',
-                 description: str = 'Kailh Choc V1 (CPG135001) keyswitch',
-                 tags: str = 'Kailh Choc V1 CPG135001 Keyswitch Switch',
+                 description: str = 'Kailh Choc V1 (CPG1350) keyswitch',
+                 tags: str = 'Kailh Choc V1 CPG1350 Keyswitch Switch',
                  cutout: bool = True, keycap: Keycap = None,
                  path3d: str = None, model3d: str = 'SW_Kailh_Choc_V1.wrl'):
 
@@ -721,7 +724,8 @@ class SwitchHotswapKailhChocV1(Switch):
                         tags=_tags,
                         keycap=keycap,
                         path3d=path3d,
-                        model3d=model3d)
+                        model3d=model3d,
+                        text_offset=9)
 
         self._init_switch()
 
