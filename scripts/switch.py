@@ -439,8 +439,8 @@ class SwitchHybridCherryMxAlps(Switch):
 # http://www.kailh.com/en/Products/Ks/CS/
 class SwitchKailhChocV1(Switch):
 
-    choc_w = 14
-    choc_h = 14
+    choc_w = 15
+    choc_h = 15
 
     def __init__(self,
                  name: str = 'SW_Kailh_Choc_V1',
@@ -456,7 +456,8 @@ class SwitchKailhChocV1(Switch):
                         cutout=cutout,
                         keycap=keycap,
                         path3d=path3d,
-                        model3d=model3d)
+                        model3d=model3d,
+                        text_offset=9)
 
         self._init_switch()
 
