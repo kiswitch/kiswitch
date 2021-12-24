@@ -1,3 +1,4 @@
 *.zip
 *_info.txt
 release/
+__pycache__/
