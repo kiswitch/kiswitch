@@ -260,7 +260,7 @@ class SwitchCherryMX(Switch):
                              end=[self.cherry_w/2, self.cherry_h/2],
                              layer='F.Fab', width=0.1))
 
-        # create silscreen
+        # create silkscreen
         self.append(RectLine(start=[-self.cherry_w/2, -self.cherry_h/2],
                              end=[self.cherry_w/2, self.cherry_h/2],
                              layer='F.SilkS', width=0.12, offset=0.1))
@@ -442,7 +442,7 @@ class SwitchKailhChocV1(Switch):
     def __init__(self,
                  name: str = 'SW_Kailh_Choc_V1',
                  description: str = 'Kailh Choc V1 (CPG135001) keyswitch',
-                 tags: str = 'Kailh Choc V1 (CPG135001) Keyswitch Switch',
+                 tags: str = 'Kailh Choc V1 CPG135001 Keyswitch Switch',
                  cutout: bool = True, keycap: Keycap = None,
                  path3d: str = None, model3d: str = 'SW_Kailh_Choc_V1.wrl'):
 
@@ -467,7 +467,7 @@ class SwitchKailhChocV1(Switch):
                              end=[self.choc_w/2, self.choc_h/2],
                              layer='F.Fab', width=0.1))
 
-        # create silscreen
+        # create silkscreen
         self.append(RectLine(start=[-self.choc_w/2, -self.choc_h/2],
                              end=[self.choc_w/2, self.choc_h/2],
                              layer='F.SilkS', width=0.12, offset=0.1))
@@ -505,11 +505,11 @@ class SwitchHotswapKailh(Switch):
 
     def __init__(self,
                  plated_th: bool = False,
-                 name: str = 'SW_Hotswap_Kailh',
+                 name: str = 'SW_Hotswap_Kailh_MX',
                  description: str = 'Kailh keyswitch Hotswap Socket',
                  tags: str = 'Kailh Keyboard Keyswitch Switch Hotswap Socket',
                  cutout: str = 'relief', keycap: Keycap = None,
-                 path3d: str = None, model3d: str = 'SW_Cherry_MX_PCB.wrl'):
+                 path3d: str = None, model3d: str = 'SW_Hotswap_Kailh_MX.wrl'):
 
         if cutout not in ['simple', 'relief', None]:
             raise ValueError(f'Cutout type {cutout} not supported.')
@@ -572,12 +572,12 @@ class SwitchHotswapKailh(Switch):
         self.append(Arc(center=[-0.3, -0.8], start=[-0.3, -2.8],
                     angle=-90, layer='B.Fab', width=0.12))
 
-        # create silscreen (keyswitch)
+        # create silkscreen (keyswitch)
         self.append(RectLine(start=[-self.kailh_hs_w/2, -self.kailh_hs_h/2],
                              end=[self.kailh_hs_w/2, self.kailh_hs_h/2],
                              layer='F.SilkS', width=0.12, offset=0.1))
 
-        # create silscreen (socket)
+        # create silkscreen (socket)
         self.append(Line(start=[-4.1, -6.9], end=[1, -6.9],
                          layer='B.SilkS', width=0.12))
         self.append(Line(start=[-0.2, -2.7], end=[4.9, -2.7],
