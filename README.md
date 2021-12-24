@@ -15,9 +15,9 @@ Footprints for popular keyboard switches
 | Cherry MX and equivalent, Plate and PCB mount.                  |
 | Alps/Matias or equivalent.                                      |
 | Hybrid footprints for Cherry MX and Alps/Matias (accepts both). |
-| Kailh Choc low profile switches (version 1).                    |
+| Kailh Choc low profile switches V1 (CPG135001).                 |
 | Kailh Hotswap sockets for Cherry MX equivalent switches.        |
-| Kailh Hotswap sockets for Choc low profile switches (version 1) |
+| Kailh Hotswap sockets for Choc low profile switches V1          |
 | Kailh KH CPG1280                                                |
 | Kailh CPG1425                                                   |
 | Kailh Choc Mini CPG1232                                         |
