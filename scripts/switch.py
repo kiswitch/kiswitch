@@ -442,23 +442,30 @@ class SwitchKailhChocV1(Switch):
     choc_w = 15
     choc_h = 15
 
+    choc_cut_w = 14.5
+    choc_cut_h = 14.5
+
     def __init__(self,
                  name: str = 'SW_Kailh_Choc_V1',
                  description: str = 'Kailh Choc V1 (CPG1350) keyswitch',
                  tags: str = 'Kailh Choc V1 CPG1350 Keyswitch Switch',
-                 keycap: Keycap = None,
+                 cutout: bool = True, keycap: Keycap = None,
                  path3d: str = None, model3d: str = 'SW_Kailh_Choc_V1.wrl'):
 
         Switch.__init__(self,
                         name=name,
                         description=description,
                         tags=tags,
+                        cutout=cutout,
                         keycap=keycap,
                         path3d=path3d,
                         model3d=model3d,
                         text_offset=9)
 
         self._init_switch()
+
+        if cutout is True:
+            self._init_cutout()
 
         if keycap is not None:
             self.append(keycap)
@@ -499,6 +506,13 @@ class SwitchKailhChocV1(Switch):
         self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_CIRCLE,
                         at=[-5.22, 4.2], size=[1.2, 1.2], drill=1.2,
                         layers=['*.Cu', '*.Mask']))
+
+    def _init_cutout(self):
+
+        # create cutout
+        self.append(RectLine(start=[-self.choc_cut_w/2, -self.choc_cut_h/2],
+                             end=[self.choc_cut_w/2, self.choc_cut_h/2],
+                             layer='Eco1.User', width=0.1))
 
 
 # https://www.kailhswitch.com/mechanical-keyboard-switches/mini-keyboard-push-button-switches.html
@@ -923,15 +937,18 @@ class SwitchHotswapKailh(Switch):
 
 class SwitchHotswapKailhChocV1(Switch):
 
-    choc_w = 14
-    choc_h = 14
+    choc_w = 15
+    choc_h = 15
+
+    choc_cut_w = 14.5
+    choc_cut_h = 14.5
 
     def __init__(self,
                  plated_th: bool = True,
                  name: str = 'SW_Hotswap_Kailh_Choc_V1',
                  description: str = 'Kailh keyswitch Hotswap Socket',
                  tags: str = 'Kailh Keyboard Choc V1 keyswitch Keyswitch Switch Hotswap Socket',
-                 keycap: Keycap = None,
+                 cutout: bool = True, keycap: Keycap = None,
                  path3d: str = None, model3d: str = 'SW_Hotswap_Kailh_Choc_v1.stp'):
 
         self.plated_th = plated_th
@@ -949,12 +966,16 @@ class SwitchHotswapKailhChocV1(Switch):
                         name=_name,
                         description=_description,
                         tags=_tags,
+                        cutout=cutout,
                         keycap=keycap,
                         path3d=path3d,
                         model3d=model3d,
                         text_offset=9)
 
         self._init_switch()
+
+        if cutout is True:
+            self._init_cutout()
 
         if keycap is not None:
             self.append(keycap)
@@ -1068,3 +1089,10 @@ class SwitchHotswapKailhChocV1(Switch):
         self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_CIRCLE,
                         at=[-5.22, 4.2], size=[1.3, 1.3], drill=1.3,
                         layers=['*.Cu', '*.Mask']))
+
+    def _init_cutout(self):
+
+        # create cutout
+        self.append(RectLine(start=[-self.choc_cut_w/2, -self.choc_cut_h/2],
+                             end=[self.choc_cut_w/2, self.choc_cut_h/2],
+                             layer='Eco1.User', width=0.1))
