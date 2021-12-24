@@ -1,4 +1,4 @@
-(module SW_Cherry_MX_Plate_2.25u (layer F.Cu) (tedit 61C58895)
+(module SW_Cherry_MX_Plate_2.25u (layer F.Cu) (tedit 0)
   (descr "Cherry MX keyswitch Plate Mount with 2.25u keycap")
   (tags "Cherry MX Keyboard Keyswitch Switch Plate Cutout 2.25u")
   (fp_text reference REF** (at 0 -8) (layer F.SilkS)

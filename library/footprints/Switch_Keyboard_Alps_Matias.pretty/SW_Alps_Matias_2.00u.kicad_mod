@@ -1,4 +1,4 @@
-(module SW_Alps_Matias_2.00u (layer F.Cu) (tedit 61C58894)
+(module SW_Alps_Matias_2.00u (layer F.Cu) (tedit 0)
   (descr "Alps/Matias keyswitch with 2.00u keycap")
   (tags "Alps Matias Keyboard Keyswitch Switch Plate Cutout 2.00u")
   (fp_text reference REF** (at 0 -8) (layer F.SilkS)

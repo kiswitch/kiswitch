@@ -1,4 +1,4 @@
-(module Stabilizer_Cherry_MX_6.25u (layer F.Cu) (tedit 61C58894)
+(module Stabilizer_Cherry_MX_6.25u (layer F.Cu) (tedit 0)
   (descr "Cherry MX PCB Stabilizer 6.25u")
   (tags "Cherry MX Keyboard Stabilizer 6.25u Cutout")
   (attr virtual)
