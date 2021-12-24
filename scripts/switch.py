@@ -500,6 +500,80 @@ class SwitchKailhChocV1(Switch):
                         at=[-5.22, 4.2], size=[1.2, 1.2], drill=1.2,
                         layers=['*.Cu', '*.Mask']))
 
+# http://www.kailh.com/en/Products/Ks/KHS
+class SwitchKailhKH(Switch):
+
+    kailh_kh_w = 13
+    kailh_kh_h = 13
+
+    kailh_kh_cut_w = 12.2
+    kailh_kh_cut_h = 12.2
+
+    def __init__(self,
+                 name: str = 'SW_Kailh_KH',
+                 description: str = 'Kailh KH CPG1280 keyswitch',
+                 tags: str = 'Kailh KH CPG1280 Keyboard Keyswitch Switch Plate ',
+                 cutout: bool = True, keycap: Keycap = None,
+                 path3d: str = None, model3d: str = 'SW_Kailh_KH.wrl'):
+
+        Switch.__init__(self,
+                        name=name,
+                        description=description,
+                        tags=tags,
+                        cutout=cutout,
+                        keycap=keycap,
+                        path3d=path3d,
+                        model3d=model3d)
+
+        self._init_switch()
+
+        if cutout is True:
+            self._init_cutout()
+
+        if keycap is not None:
+            self.append(keycap)
+
+    def _init_switch(self):
+        # create fab outline
+        self.append(RectLine(start=[-self.kailh_kh_w/2, -self.kailh_kh_h/2],
+                             end=[self.kailh_kh_w/2, self.kailh_kh_h/2],
+                             layer='F.Fab', width=0.1))
+
+        # create silkscreen
+        self.append(RectLine(start=[-self.kailh_kh_w/2, -self.kailh_kh_h/2],
+                             end=[self.kailh_kh_w/2, self.kailh_kh_h/2],
+                             layer='F.SilkS', width=0.12, offset=0.1))
+
+        # create courtyard
+        self.append(RectLine(start=[-self.kailh_kh_w/2, -self.kailh_kh_h/2],
+                             end=[self.kailh_kh_w/2, self.kailh_kh_h/2],
+                             layer='F.CrtYd', width=0.05, offset=0.25))
+
+        # create pads
+        self.append(Pad(number=1, type=Pad.TYPE_THT, shape=Pad.SHAPE_CIRCLE,
+                        at=[-3.8, -2.55], size=[2.5, 2.5], drill=1.5,
+                        layers=['*.Cu', 'B.Mask']))
+        self.append(Pad(number=2, type=Pad.TYPE_THT, shape=Pad.SHAPE_CIRCLE,
+                        at=[3, -5.12], size=[2.5, 2.5], drill=1.5,
+                        layers=['*.Cu', 'B.Mask']))
+
+        self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_CIRCLE,
+                        at=[0, 0], size=[4, 4], drill=4,
+                        layers=['*.Cu', '*.Mask']))
+        self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_CIRCLE,
+                        at=[-4.5, 0], size=[1.5, 1.5], drill=1.5,
+                        layers=['*.Cu', '*.Mask']))
+        self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_CIRCLE,
+                        at=[4.5, 0], size=[1.5, 1.5], drill=1.5,
+                        layers=['*.Cu', '*.Mask']))
+
+    def _init_cutout(self):
+
+        # create cutout
+        self.append(RectLine(start=[-self.kailh_kh_cut_w/2, -self.kailh_kh_cut_h/2],
+                             end=[self.kailh_kh_cut_w/2, self.kailh_kh_cut_h/2],
+                             layer='Eco1.User', width=0.1))
+
 
 class SwitchHotswapKailh(Switch):
 
@@ -841,78 +915,3 @@ class SwitchHotswapKailhChocV1(Switch):
         self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_CIRCLE,
                         at=[-5.22, 4.2], size=[1.3, 1.3], drill=1.3,
                         layers=['*.Cu', '*.Mask']))
-
-
-# http://www.kailh.com/en/Products/Ks/KHS
-class SwitchKailhKH(Switch):
-
-    kailh_kh_w = 13
-    kailh_kh_h = 13
-
-    kailh_kh_cut_w = 12.2
-    kailh_kh_cut_h = 12.2
-
-    def __init__(self,
-                 name: str = 'SW_Kailh_KH',
-                 description: str = 'Kailh KH CPG1280 keyswitch',
-                 tags: str = 'Kailh KH CPG1280 Keyboard Keyswitch Switch Plate ',
-                 cutout: bool = True, keycap: Keycap = None,
-                 path3d: str = None, model3d: str = 'SW_Kailh_KH.wrl'):
-
-        Switch.__init__(self,
-                        name=name,
-                        description=description,
-                        tags=tags,
-                        cutout=cutout,
-                        keycap=keycap,
-                        path3d=path3d,
-                        model3d=model3d)
-
-        self._init_switch()
-
-        if cutout is True:
-            self._init_cutout()
-
-        if keycap is not None:
-            self.append(keycap)
-
-    def _init_switch(self):
-        # create fab outline
-        self.append(RectLine(start=[-self.kailh_kh_w/2, -self.kailh_kh_h/2],
-                             end=[self.kailh_kh_w/2, self.kailh_kh_h/2],
-                             layer='F.Fab', width=0.1))
-
-        # create silkscreen
-        self.append(RectLine(start=[-self.kailh_kh_w/2, -self.kailh_kh_h/2],
-                             end=[self.kailh_kh_w/2, self.kailh_kh_h/2],
-                             layer='F.SilkS', width=0.12, offset=0.1))
-
-        # create courtyard
-        self.append(RectLine(start=[-self.kailh_kh_w/2, -self.kailh_kh_h/2],
-                             end=[self.kailh_kh_w/2, self.kailh_kh_h/2],
-                             layer='F.CrtYd', width=0.05, offset=0.25))
-
-        # create pads
-        self.append(Pad(number=1, type=Pad.TYPE_THT, shape=Pad.SHAPE_CIRCLE,
-                        at=[-3.8, -2.55], size=[2.5, 2.5], drill=1.5,
-                        layers=['*.Cu', 'B.Mask']))
-        self.append(Pad(number=2, type=Pad.TYPE_THT, shape=Pad.SHAPE_CIRCLE,
-                        at=[3, -5.12], size=[2.5, 2.5], drill=1.5,
-                        layers=['*.Cu', 'B.Mask']))
-
-        self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_CIRCLE,
-                        at=[0, 0], size=[4, 4], drill=4,
-                        layers=['*.Cu', '*.Mask']))
-        self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_CIRCLE,
-                        at=[-4.5, 0], size=[1.5, 1.5], drill=1.5,
-                        layers=['*.Cu', '*.Mask']))
-        self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_CIRCLE,
-                        at=[4.5, 0], size=[1.5, 1.5], drill=1.5,
-                        layers=['*.Cu', '*.Mask']))
-
-    def _init_cutout(self):
-
-        # create cutout
-        self.append(RectLine(start=[-self.kailh_kh_cut_w/2, -self.kailh_kh_cut_h/2],
-                             end=[self.kailh_kh_cut_w/2, self.kailh_kh_cut_h/2],
-                             layer='Eco1.User', width=0.1))
