@@ -446,14 +446,13 @@ class SwitchKailhChocV1(Switch):
                  name: str = 'SW_Kailh_Choc_V1',
                  description: str = 'Kailh Choc V1 (CPG1350) keyswitch',
                  tags: str = 'Kailh Choc V1 CPG1350 Keyswitch Switch',
-                 cutout: bool = True, keycap: Keycap = None,
+                 keycap: Keycap = None,
                  path3d: str = None, model3d: str = 'SW_Kailh_Choc_V1.wrl'):
 
         Switch.__init__(self,
                         name=name,
                         description=description,
                         tags=tags,
-                        cutout=cutout,
                         keycap=keycap,
                         path3d=path3d,
                         model3d=model3d,
@@ -500,6 +499,94 @@ class SwitchKailhChocV1(Switch):
         self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_CIRCLE,
                         at=[-5.22, 4.2], size=[1.2, 1.2], drill=1.2,
                         layers=['*.Cu', '*.Mask']))
+
+
+# http://www.kailh.com/en/Products/Ks/NotebookS/
+class SwitchKailhChocMini(Switch):
+
+    choc_mini_w = 14.5
+    choc_mini_h = 13.5
+
+    choc_mini_cut_w = 13.7
+    choc_mini_cut_h = 12.7
+
+    def __init__(self,
+                 name: str = 'SW_Kailh_Choc_Mini',
+                 description: str = 'Kailh Choc Mini CPG1232 low profile keyswitch',
+                 tags: str = 'Kailh Choc Mini CPG1232 Keyboard Low Profile Keyswitch Switch',
+                 cutout: bool = True, keycap: Keycap = None,
+                 path3d: str = None, model3d: str = 'SW_Kailh_Choc_Mini.wrl'):
+
+        Switch.__init__(self,
+                        name=name,
+                        description=description,
+                        tags=tags,
+                        cutout=cutout,
+                        keycap=keycap,
+                        path3d=path3d,
+                        model3d=model3d,
+                        text_offset=8.5)
+
+        self._init_switch()
+
+        if cutout is True:
+            self._init_cutout()
+
+        if keycap is not None:
+            self.append(keycap)
+
+    def _init_switch(self):
+        # create fab outline
+        self.append(RectLine(start=[-self.choc_mini_w/2, -self.choc_mini_h/2],
+                             end=[self.choc_mini_w/2, self.choc_mini_h/2],
+                             layer='F.Fab', width=0.1))
+
+        # create silkscreen
+        self.append(RectLine(start=[-self.choc_mini_w/2, -self.choc_mini_h/2],
+                             end=[self.choc_mini_w/2, self.choc_mini_h/2],
+                             layer='F.SilkS', width=0.12, offset=0.1))
+
+        # create courtyard
+        self.append(RectLine(start=[-self.choc_mini_w/2, -self.choc_mini_h/2],
+                             end=[self.choc_mini_w/2, self.choc_mini_h/2],
+                             layer='F.CrtYd', width=0.05, offset=0.25))
+
+        # center hole
+        polyline=[
+            [5.95, -2.9],
+            [-5.9, -2.9],
+            [-5.9, 3],
+            [-2.5, 3],
+            [-2.5, 4.05],
+            [2.05, 4.05],
+            [2.05, 3],
+            [5.95, 3],
+            [5.95, -2.9]
+        ]
+        self.append(PolygoneLine(polygone=polyline,
+                                 layer='Edge.Cuts', width=0.05))
+
+        # create pads
+        self.append(Pad(number=1, type=Pad.TYPE_THT, shape=Pad.SHAPE_CIRCLE,
+                        at=[2, 5.4], size=[1.5, 1.5], drill=1.2,
+                        layers=['*.Cu', 'B.Mask']))
+        self.append(Pad(number=2, type=Pad.TYPE_THT, shape=Pad.SHAPE_CIRCLE,
+                        at=[-4.58, 5.1], size=[1.5, 1.5], drill=1.2,
+                        layers=['*.Cu', 'B.Mask']))
+
+        self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_OVAL,
+                        at=[-5.29, -4.75], size=[1.2, 1.6], drill=[0.8, 1.2],
+                        layers=['*.Cu', '*.Mask']))
+        self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_OVAL,
+                        at=[5.29, -4.75], size=[1.2, 1.6], drill=[0.8, 1.2],
+                        layers=['*.Cu', '*.Mask']))
+
+    def _init_cutout(self):
+
+        # create cutout
+        self.append(RectLine(start=[-self.choc_mini_cut_w/2, -self.choc_mini_cut_h/2],
+                             end=[self.choc_mini_cut_w/2, self.choc_mini_cut_h/2],
+                             layer='Eco1.User', width=0.1))
 
 
 # http://www.kailh.com/en/Products/Ks/KHS
@@ -588,7 +675,7 @@ class SwitchKailhNB(Switch):
                  description: str = 'Kailh KH CPG1425 low profile notebook keyswitch',
                  tags: str = 'Kailh KH CPG1425 Keyboard Low Profile Notebook Keyswitch Switch',
                  cutout: bool = True, keycap: Keycap = None,
-                 path3d: str = None, model3d: str = 'SW_Kailh_KH.wrl'):
+                 path3d: str = None, model3d: str = 'SW_Kailh_NB.wrl'):
 
         Switch.__init__(self,
                         name=name,
