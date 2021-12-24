@@ -55,7 +55,7 @@ def generate_stabilizer_cherry_mx(output_path):
     for size in sizes:
         stab = StabilizerCherryMX(size=size, path3d=path3d)
         file_handler = KicadFileHandler(stab)
-        file_handler.writeFile(os.path.join(out_path, f'{stab.name}.kicad_mod'))
+        file_handler.writeFile(os.path.join(out_path, f'{stab.name}.kicad_mod'), timestamp=0)
 
 
 def generate_switch_alps_matias(output_path):
@@ -79,7 +79,7 @@ def generate_switch_alps_matias(output_path):
 
     for switch in switches:
         file_handler = KicadFileHandler(switch)
-        file_handler.writeFile(os.path.join(out_path, f'{switch.name}.kicad_mod'))
+        file_handler.writeFile(os.path.join(out_path, f'{switch.name}.kicad_mod'), timestamp=0)
 
 
 def generate_switch_cherry_mx(output_path):
@@ -107,7 +107,7 @@ def generate_switch_cherry_mx(output_path):
 
     for switch in switches:
         file_handler = KicadFileHandler(switch)
-        file_handler.writeFile(os.path.join(out_path, f'{switch.name}.kicad_mod'))
+        file_handler.writeFile(os.path.join(out_path, f'{switch.name}.kicad_mod'), timestamp=0)
 
 
 def generate_switch_hybrid_cherry_mx_alps(output_path):
@@ -132,7 +132,7 @@ def generate_switch_hybrid_cherry_mx_alps(output_path):
 
     for switch in switches:
         file_handler = KicadFileHandler(switch)
-        file_handler.writeFile(os.path.join(out_path, f'{switch.name}.kicad_mod'))
+        file_handler.writeFile(os.path.join(out_path, f'{switch.name}.kicad_mod'), timestamp=0)
 
 
 def generate_switch_kailh_choc_v1(output_path):
@@ -160,7 +160,7 @@ def generate_switch_kailh_choc_v1(output_path):
 
     for switch in switches:
         file_handler = KicadFileHandler(switch)
-        file_handler.writeFile(os.path.join(out_path, f'{switch.name}.kicad_mod'))
+        file_handler.writeFile(os.path.join(out_path, f'{switch.name}.kicad_mod'), timestamp=0)
 
 
 def generate_switch_hotswap_kailh(output_path):
@@ -186,7 +186,7 @@ def generate_switch_hotswap_kailh(output_path):
 
     for switch in switches:
         file_handler = KicadFileHandler(switch)
-        file_handler.writeFile(os.path.join(out_path, f'{switch.name}.kicad_mod'))
+        file_handler.writeFile(os.path.join(out_path, f'{switch.name}.kicad_mod'), timestamp=0)
 
 
 if __name__ == '__main__':

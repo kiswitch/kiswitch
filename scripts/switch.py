@@ -441,8 +441,8 @@ class SwitchKailhChocV1(Switch):
 
     def __init__(self,
                  name: str = 'SW_Kailh_Choc_V1',
-                 description: str = 'Kailh Choc V1 keyswitch',
-                 tags: str = 'Kailh Choc V1 Keyswitch Switch',
+                 description: str = 'Kailh Choc V1 (CPG135001) keyswitch',
+                 tags: str = 'Kailh Choc V1 (CPG135001) Keyswitch Switch',
                  cutout: bool = True, keycap: Keycap = None,
                  path3d: str = None, model3d: str = 'SW_Kailh_Choc_V1.wrl'):
 
