@@ -501,7 +501,7 @@ class SwitchKailhChocV1(Switch):
                         layers=['*.Cu', '*.Mask']))
 
 
-# http://www.kailh.com/en/Products/Ks/NotebookS/
+# https://www.kailhswitch.com/mechanical-keyboard-switches/mini-keyboard-push-button-switches.html
 class SwitchKailhChocMini(Switch):
 
     choc_mini_w = 14.5
