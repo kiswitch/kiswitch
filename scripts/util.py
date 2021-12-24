@@ -1,4 +1,4 @@
-def sign(a: float) -> float:
+def sign(a: float) -> int:
     return (a > 0) - (a < 0)
 
 
