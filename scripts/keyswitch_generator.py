@@ -7,7 +7,7 @@ from keycap import Keycap
 
 from switch import StabilizerCherryMX, SwitchAlpsMatias, SwitchCherryMX, \
                    SwitchHybridCherryMxAlps, SwitchKailhChocV1, \
-                   SwitchHotswapKailh
+                   SwitchHotswapKailh, SwitchHotswapKailhChocV1
 
 path3d = '${KICAD6_3RD_PARTY}/3dmodels/' \
          'com_github_perigoso_keyswitch-kicad-library/' \
@@ -192,6 +192,37 @@ def generate_switch_hotswap_kailh(output_path):
         file_handler.writeFile(os.path.join(out_path, f'{switch.name}.kicad_mod'), timestamp=0)
 
 
+def generate_switch_hotswap_kailh_choc_v1(output_path):
+    x_spacing = 18
+    y_spacing = 17
+    group = 'Switch_Keyboard_Kailh'
+    out_path = os.path.join(output_path, f'{group}.pretty')
+    if not os.path.isdir(out_path):
+        os.mkdir(out_path)
+    keys = ['1u', '1.25u', '1.25u90', '1.5u', '1.5u90', '1.75u', '1.75u90',
+            '2u', '2u90', '2.25u', '2.25u90', '2.5u', '2.5u90', '2.75u',
+            '2.75u90', '3u', '3u90', '4u', '4.5u', '5.5u', '6u', '6uOffset',
+            '6.25u', '6.5u', '7u', 'ISOEnter', 'ISOEnter90', 'ISOEnter180',
+            'ISOEnter270']
+
+    switches = []
+
+    for plated in [False, True]:
+
+        switches.append(SwitchHotswapKailhChocV1(path3d=path3d, plated_th=plated))
+
+        for key in keys:
+            switches.append(SwitchHotswapKailhChocV1(path3d=path3d,
+                                                     plated_th=plated,
+                                                     keycap=Keycap(x_spacing=x_spacing,
+                                                                   y_spacing=y_spacing,
+                                                                   **keycaps[key])))
+
+        for switch in switches:
+            file_handler = KicadFileHandler(switch)
+            file_handler.writeFile(os.path.join(out_path, f'{switch.name}.kicad_mod'), timestamp=0)
+
+
 if __name__ == '__main__':
     # --------------------- Parser ---------------------
     parser = argparse.ArgumentParser(
@@ -214,3 +245,4 @@ if __name__ == '__main__':
     generate_switch_hybrid_cherry_mx_alps(args.output)
     generate_switch_kailh_choc_v1(args.output)
     generate_switch_hotswap_kailh(args.output)
+    generate_switch_hotswap_kailh_choc_v1(args.output)
