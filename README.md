@@ -64,6 +64,7 @@ Name | Location
 Mounting_Keyboard_Stabilizer | ${KICAD6_3RD_PARTY}/footprints/com_github_perigoso_keyswitch-kicad-library/Mounting_Keyboard_Stabilizer.pretty
 Switch_Keyboard_Alps_Matias | ${KICAD6_3RD_PARTY}/footprints/com_github_perigoso_keyswitch-kicad-library/Switch_Keyboard_Alps_Matias.pretty
 Switch_Keyboard_Cherry_MX | ${KICAD6_3RD_PARTY}/footprints/com_github_perigoso_keyswitch-kicad-library/Switch_Keyboard_Cherry_MX.pretty
+Switch_Keyboard_Hotswap_Kailh | ${KICAD6_3RD_PARTY}/footprints/com_github_perigoso_keyswitch-kicad-library/Switch_Keyboard_Hotswap_Kailh.pretty
 Switch_Keyboard_Hybrid | ${KICAD6_3RD_PARTY}/footprints/com_github_perigoso_keyswitch-kicad-library/Switch_Keyboard_Hybrid.pretty
 Switch_Keyboard_Kailh | ${KICAD6_3RD_PARTY}/footprints/com_github_perigoso_keyswitch-kicad-library/Switch_Keyboard_Kailh.pretty
 
@@ -71,6 +72,7 @@ Switch_Keyboard_Kailh | ${KICAD6_3RD_PARTY}/footprints/com_github_perigoso_keysw
 
 All screenshots are of the 1u keycap switch.
 
+´Warning: some footprints are missing or may have changed, this is out of date´
 ![cherrymx_plate](https://user-images.githubusercontent.com/39195157/93152763-7811aa00-f6f7-11ea-83d1-0b2d516927cc.png)
 ![cherrymx_pcb](https://user-images.githubusercontent.com/39195157/93150026-f66a4e00-f6ef-11ea-809f-2e3a8dbe188a.png)
 ![alps_matias](https://user-images.githubusercontent.com/39195157/93150084-1c8fee00-f6f0-11ea-97b3-24e5e425479f.png)
