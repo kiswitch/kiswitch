@@ -23,10 +23,9 @@
     ],
     "versions": [
         {
-            "version": "2.0",
+            "version": "2.1",
             "status": "stable",
-            "kicad_version": "5.1",
-            "download_url": "https://github.com/perigoso/keyswitch-kicad-library/releases/download/v2.0/keyswitch-kicad-library.zip"
+            "kicad_version": "5.1"
         }
     ]
 }
