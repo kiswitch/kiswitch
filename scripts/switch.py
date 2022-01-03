@@ -856,10 +856,10 @@ class SwitchHotswapKailh(Switch):
         # create pads
         if self.plated_th is True:
             self.append(Pad(number=1, type=Pad.TYPE_THT, shape=Pad.SHAPE_CIRCLE,
-                            at=[-3.81, -2.54], size=[3.6, 3.6], drill=3,
+                            at=[-3.81, -2.54], size=[3.6, 3.6], drill=3.05,
                             layers=['*.Cu', 'B.Mask']))
             self.append(Pad(number=2, type=Pad.TYPE_THT, shape=Pad.SHAPE_CIRCLE,
-                            at=[2.54, -5.08], size=[3.6, 3.6], drill=3,
+                            at=[2.54, -5.08], size=[3.6, 3.6], drill=3.05,
                             layers=['*.Cu', 'B.Mask']))
 
             self.append(Pad(number=1, type=Pad.TYPE_SMT, shape=Pad.SHAPE_ROUNDRECT,
@@ -877,10 +877,10 @@ class SwitchHotswapKailh(Switch):
                             round_radius_exact=0.25, layers=['B.Mask', 'B.Paste']))
         else:
             self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_CIRCLE,
-                            at=[-3.81, -2.54], size=[3, 3], drill=3,
+                            at=[-3.81, -2.54], size=[3.05, 3.05], drill=3.05,
                             layers=['*.Cu', '*.Mask']))
             self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_CIRCLE,
-                            at=[2.54, -5.08], size=[3, 3], drill=3,
+                            at=[2.54, -5.08], size=[3.05, 3.05], drill=3.05,
                             layers=['*.Cu', '*.Mask']))
 
             self.append(Pad(number=1, type=Pad.TYPE_SMT, shape=Pad.SHAPE_ROUNDRECT,
@@ -1043,10 +1043,10 @@ class SwitchHotswapKailhChocV1(Switch):
         # create pads
         if self.plated_th is True:
             self.append(Pad(number=1, type=Pad.TYPE_THT, shape=Pad.SHAPE_CIRCLE,
-                            at=[0, -5.9], size=[3.6, 3.6], drill=3,
+                            at=[0, -5.9], size=[3.6, 3.6], drill=3.05,
                             layers=['*.Cu', 'B.Mask']))
             self.append(Pad(number=2, type=Pad.TYPE_THT, shape=Pad.SHAPE_CIRCLE,
-                            at=[5, -3.8], size=[3.6, 3.6], drill=3,
+                            at=[5, -3.8], size=[3.6, 3.6], drill=3.05,
                             layers=['*.Cu', 'B.Mask']))
 
             self.append(Pad(number=1, type=Pad.TYPE_SMT, shape=Pad.SHAPE_ROUNDRECT,
@@ -1064,10 +1064,10 @@ class SwitchHotswapKailhChocV1(Switch):
                             round_radius_exact=0.25, layers=['B.Mask', 'B.Paste']))
         else:
             self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_CIRCLE,
-                            at=[0, -5.9], size=[3, 3], drill=3,
+                            at=[0, -5.9], size=[3.05, 3.05], drill=3.05,
                             layers=['*.Cu', '*.Mask']))
             self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_CIRCLE,
-                            at=[5, -3.8], size=[3, 3], drill=3,
+                            at=[5, -3.8], size=[3.05, 3.05], drill=3.05,
                             layers=['*.Cu', '*.Mask']))
 
             self.append(Pad(number=1, type=Pad.TYPE_SMT, shape=Pad.SHAPE_ROUNDRECT,
