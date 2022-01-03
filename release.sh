@@ -1,6 +1,6 @@
 #!/bin/bash
 
-name="openinput-kicad-library"
+name="keyswitch-kicad-library"
 output_dir="release"
 lib_files="library/footprints library/3dmodels"
 
