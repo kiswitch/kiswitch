@@ -1,6 +1,6 @@
 (module Stabilizer_Cherry_MX_8.00u (layer F.Cu) (tedit 0)
-  (descr "Cherry MX PCB Stabilizer 8u 9u 10u")
-  (tags "Cherry MX Keyboard Stabilizer 8u 9u 10u Cutout")
+  (descr "Cherry MX PCB Stabilizer 8.00u 9.00u 10.00u")
+  (tags "Cherry MX Keyboard Stabilizer 8.00u 9.00u 10.00u Cutout")
   (attr virtual)
   (fp_text reference REF** (at 0 -2) (layer F.SilkS)
     (effects (font (size 1 1) (thickness 0.15)))
