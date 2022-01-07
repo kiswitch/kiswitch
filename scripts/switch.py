@@ -57,12 +57,12 @@ class Switch(Footprint):
 class StabilizerCherryMX(Switch):
 
     lu_table = {
-        2: {'desc': '2u 2.25u 2.5u 2.75u', 'offset': 11.938},
-        3: {'desc': '3u', 'offset': 19.05},
-        6: {'desc': '6u', 'offset': 47.625},
+        2: {'desc': '2.00u 2.25u 2.50u 2.75u', 'offset': 11.938},
+        3: {'desc': '3.00u', 'offset': 19.05},
+        6: {'desc': '6.00u', 'offset': 47.625},
         6.25: {'desc': '6.25u', 'offset': 50},
-        7: {'desc': '7u', 'offset': 57.15},
-        8: {'desc': '8u 9u 10u', 'offset': 66.675},
+        7: {'desc': '7.00u', 'offset': 57.15},
+        8: {'desc': '8.00u 9.00u 10.00u', 'offset': 66.675},
     }
 
     def __init__(self,
@@ -78,7 +78,7 @@ class StabilizerCherryMX(Switch):
 
         self.size = size
 
-        _name = name + '_' + f'{size:1.2f}u'
+        _name = name + f'_{size:1.2f}u'
         _description = description + ' ' + self.lu_table[size]['desc']
         _tags = tags + ' ' + self.lu_table[size]['desc']
 
