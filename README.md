@@ -1,12 +1,13 @@
-# Keyswitch Kicad Library <img src="assets/icon.svg" alt="" width="20%" align="left"> 
+# Keyswitch Kicad Library
 
-Footprints for popular keyboard switches
+![views](https://views.whatilearened.today/views/github/perigoso/Switch_Keyboard.svg)
 
-&nbsp;
+This is a footprint library for [KiCad](https://www.kicad.org), a Cross Platform and Open Source EDA.
 
-&nbsp;
+It has footprints for most popular keyboard switches.
 
-&nbsp;
+![Banner](assets/banner.png)
+
 
 ## Supported footprints
 
@@ -93,5 +94,3 @@ If you're reading this from outside GitHub, you can find the source for this lib
 - [Jesse Vincent (obra)](https://github.com/obra) - Production tested footprints and others from [keyboardio](https://github.com/keyboardio)
 - [Lotier](https://github.com/Lotier) - Wrote the script for automating the generation of stabilizers
 - [ai03](https://github.com/ai03-2725) - Original library that served as motivation and baseline
-
-![views](https://views.whatilearened.today/views/github/perigoso/Switch_Keyboard.svg)
