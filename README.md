@@ -94,3 +94,7 @@ If you're reading this from outside GitHub, you can find the source for this lib
 - [Jesse Vincent (obra)](https://github.com/obra) - Production tested footprints and others from [keyboardio](https://github.com/keyboardio)
 - [Lotier](https://github.com/Lotier) - Wrote the script for automating the generation of stabilizers
 - [ai03](https://github.com/ai03-2725) - Original library that served as motivation and baseline
+
+## License
+
+The library is dual licensed under [MIT](LICENSE-MIT) and [CC-BY-4.0](LICENSE-CC-BY).
