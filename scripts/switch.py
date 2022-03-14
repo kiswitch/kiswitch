@@ -437,7 +437,7 @@ class SwitchHybridCherryMxAlps(Switch):
 
 
 # http://www.kailh.com/en/Products/Ks/CS/
-class SwitchKailhChocV1(Switch):
+class SwitchKailhChoc(Switch):
 
     choc_w = 15
     choc_h = 15
@@ -446,20 +446,74 @@ class SwitchKailhChocV1(Switch):
     choc_cut_h = 14.5
 
     def __init__(self,
-                 name: str = 'SW_Kailh_Choc_V1',
-                 description: str = 'Kailh Choc V1 (CPG1350) keyswitch',
-                 tags: str = 'Kailh Choc V1 CPG1350 Keyswitch Switch',
+                 switch_type: str = 'V1V2',
+                 hotswap: bool = False, hotswap_plated: bool = False,
+                 name: str = None,
+                 description: str = 'Kailh Choc keyswitch',
+                 tags: str = 'Kailh Choc Keyswitch Switch',
                  cutout: bool = True, keycap: Keycap = None,
-                 path3d: str = None, model3d: str = 'SW_Kailh_Choc_V1.wrl'):
+                 path3d: str = None, model3d: str = None):
+
+        if switch_type not in ['V1', 'V2', 'V1V2']:
+            raise ValueError(f'Switch type {switch_type} not supported.')
+
+        if hotswap_plated is True and hotswap is False:
+            raise ValueError('Hotswap plated switch must be hotswap.')
+
+        self.hotswap = hotswap
+        self.hotswap_plated = hotswap_plated
+
+        self.switch_type = switch_type
+
+        if model3d is None:
+            if hotswap is True:
+                _model3d = 'SW_Hotswap_Kailh_Choc_v1.wrl'
+            else:
+                _model3d = 'SW_Kailh_Choc_V1.wrl'
+        else:
+            _model3d = model3d
+
+        if name is None:
+            if hotswap is True:
+                _name = 'SW_Hotswap_Kailh_Choc'
+            else:
+                _name = 'SW_Kailh_Choc'
+
+            _name += '_' + switch_type
+
+            if hotswap_plated is True:
+                _name += '_Plated'
+
+        else:
+            _name = name
+
+        _description = description
+        _tags = tags
+
+        if switch_type in ['V1', 'V1V2']:
+            _description += ' CPG1350 V1'
+            _tags += ' CPG1350 V1'
+
+        if switch_type in ['V2', 'V1V2']:
+            _description += ' CPG1353 V2'
+            _tags += ' CPG1353 V2'
+
+        if hotswap is True:
+            _description += ' Hotswap'
+            _tags += ' Hotswap'
+
+        if hotswap_plated is True:
+            _description += ' Plated'
+            _tags += ' Plated'
 
         Switch.__init__(self,
-                        name=name,
-                        description=description,
-                        tags=tags,
+                        name=_name,
+                        description=_description,
+                        tags=_tags,
                         cutout=cutout,
                         keycap=keycap,
                         path3d=path3d,
-                        model3d=model3d,
+                        model3d=_model3d,
                         text_offset=9)
 
         self._init_switch()
@@ -471,6 +525,10 @@ class SwitchKailhChocV1(Switch):
             self.append(keycap)
 
     def _init_switch(self):
+
+        # set attributes
+        if self.hotswap is True:
+            self.setAttribute('smd')
 
         # create fab outline
         self.append(RectLine(start=[-self.choc_w/2, -self.choc_h/2],
@@ -487,25 +545,139 @@ class SwitchKailhChocV1(Switch):
                              end=[self.choc_w/2, self.choc_h/2],
                              layer='F.CrtYd', width=0.05, offset=0.25))
 
+        if self.hotswap is True:
+            # socket outline
+            # TODO: this outline is incorrect
+            polyline_base = [
+                [6.75, -2.25],
+                [6.25, -1.75],
+                [3.5, -1.75],
+                [1.25, -4],
+                [-1.25, -4],
+                [-1.75, -4.5],
+            ]
+
+            polyline_base2 = [
+                [-1.75, -7.5],
+                [-1.25, -8],
+                [1.25, -8],
+                [3.5, -5.75],
+                [6.25, -5.75],
+                [6.75, -5.25],
+            ]
+
+            # create fab outline (socket)
+            self.append(PolygoneLine(polygone=polyline_base,
+                                     layer='B.Fab', width=0.1))
+            self.append(PolygoneLine(polygone=polyline_base2,
+                                     layer='B.Fab', width=0.1))
+
+            # create silkscreen (socket)
+            # TODO: offset 0.1
+            self.append(PolygoneLine(polygone=polyline_base,
+                                     layer='B.SilkS', width=0.12))
+            self.append(PolygoneLine(polygone=polyline_base2,
+                                     layer='B.SilkS', width=0.12))
+
+            # create courtyard (socket)
+            # TODO: offset 0.25
+            polyline = polyline_base + polyline_base2
+            polyline.append(polyline_base[0])
+            self.append(PolygoneLine(polygone=polyline,
+                                     layer='B.CrtYd', width=0.05))
+
         # create pads
-        self.append(Pad(number=1, type=Pad.TYPE_THT, shape=Pad.SHAPE_CIRCLE,
-                        at=[0, -5.9], size=[2.2, 2.2], drill=1.2,
-                        layers=['*.Cu', 'B.Mask']))
-        self.append(Pad(number=2, type=Pad.TYPE_THT, shape=Pad.SHAPE_CIRCLE,
-                        at=[5, -3.8], size=[2.2, 2.2], drill=1.2,
-                        layers=['*.Cu', 'B.Mask']))
-        self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_CIRCLE,
-                        at=[0, 0], size=[5.05, 5.05], drill=5.05,
-                        layers=['*.Cu', '*.Mask']))
-        self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_CIRCLE,
-                        at=[-5.5, 0], size=[1.9, 1.9], drill=1.9,
-                        layers=['*.Cu', '*.Mask']))
-        self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_CIRCLE,
-                        at=[5.5, 0], size=[1.9, 1.9], drill=1.9,
-                        layers=['*.Cu', '*.Mask']))
-        self.append(Pad(type=Pad.TYPE_THT, shape=Pad.SHAPE_CIRCLE,
-                        at=[-5, 5.15], size=[2.6, 2.6], drill=1.6,
-                        layers=['*.Cu', 'B.Mask']))
+        if self.hotswap is True:
+            if self.hotswap_plated is True:
+                self.append(Pad(number=1, type=Pad.TYPE_THT,
+                                shape=Pad.SHAPE_CIRCLE,
+                                at=[0, -5.9], size=[3.6, 3.6], drill=3.05,
+                                layers=['*.Cu', 'B.Mask']))
+                self.append(Pad(number=2, type=Pad.TYPE_THT,
+                                shape=Pad.SHAPE_CIRCLE,
+                                at=[5, -3.8], size=[3.6, 3.6], drill=3.05,
+                                layers=['*.Cu', 'B.Mask']))
+
+                self.append(Pad(number=1, type=Pad.TYPE_SMT,
+                                shape=Pad.SHAPE_ROUNDRECT,
+                                at=[-2.85, -6], size=[3.85, 2.5],
+                                round_radius_exact=0.25, layers=['B.Cu']))
+                self.append(Pad(number=2, type=Pad.TYPE_SMT,
+                                shape=Pad.SHAPE_ROUNDRECT,
+                                at=[7.85, -3.8], size=[3.85, 2.5],
+                                round_radius_exact=0.25, layers=['B.Cu']))
+
+                self.append(Pad(type=Pad.TYPE_SMT, shape=Pad.SHAPE_ROUNDRECT,
+                                at=[-3.5, -6], size=[2.55, 2.5],
+                                round_radius_exact=0.25,
+                                layers=['B.Mask', 'B.Paste']))
+                self.append(Pad(type=Pad.TYPE_SMT, shape=Pad.SHAPE_ROUNDRECT,
+                                at=[8.5, -3.8], size=[2.55, 2.5],
+                                round_radius_exact=0.25,
+                                layers=['B.Mask', 'B.Paste']))
+
+                self.append(Pad(type=Pad.TYPE_THT, shape=Pad.SHAPE_CIRCLE,
+                                at=[-5, 5.15], size=[2.6, 2.6],
+                                drill=1.6, layers=['*.Cu', 'B.Mask']))
+
+            else:
+                self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_CIRCLE,
+                                at=[0, -5.9], size=[3.05, 3.05], drill=3.05,
+                                layers=['*.Cu', '*.Mask']))
+                self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_CIRCLE,
+                                at=[5, -3.8], size=[3.05, 3.05], drill=3.05,
+                                layers=['*.Cu', '*.Mask']))
+
+                self.append(Pad(number=1, type=Pad.TYPE_SMT,
+                                shape=Pad.SHAPE_ROUNDRECT,
+                                at=[-3.5, -6], size=[2.55, 2.5],
+                                round_radius_exact=0.25,
+                                layers=['B.Cu', 'B.Mask', 'B.Paste']))
+                self.append(Pad(number=2, type=Pad.TYPE_SMT,
+                                shape=Pad.SHAPE_ROUNDRECT,
+                                at=[8.5, -3.8], size=[2.55, 2.5],
+                                round_radius_exact=0.25,
+                                layers=['B.Cu', 'B.Mask', 'B.Paste']))
+
+                self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_CIRCLE,
+                                at=[-5, 5.15], size=[1.6, 1.6],
+                                drill=1.6, layers=['*.Cu', '*.Mask']))
+        else:
+            self.append(Pad(number=1, type=Pad.TYPE_THT,
+                            shape=Pad.SHAPE_CIRCLE,
+                            at=[0, -5.9], size=[2.2, 2.2], drill=1.2,
+                            layers=['*.Cu', 'B.Mask']))
+            self.append(Pad(number=2, type=Pad.TYPE_THT,
+                            shape=Pad.SHAPE_CIRCLE,
+                            at=[5, -3.8], size=[2.2, 2.2], drill=1.2,
+                            layers=['*.Cu', 'B.Mask']))
+
+        if self.switch_type == 'V1':
+            self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_CIRCLE,
+                            at=[0, 0], size=[3.45, 3.45], drill=3.45,
+                            layers=['*.Cu', '*.Mask']))
+        else:  # V2 or V1V2
+            self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_CIRCLE,
+                            at=[0, 0], size=[5.05, 5.05], drill=5.05,
+                            layers=['*.Cu', '*.Mask']))
+
+        if self.switch_type in ['V1', 'V1V2']:
+            self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_CIRCLE,
+                            at=[-5.5, 0], size=[1.9, 1.9], drill=1.9,
+                            layers=['*.Cu', '*.Mask']))
+            self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_CIRCLE,
+                            at=[5.5, 0], size=[1.9, 1.9], drill=1.9,
+                            layers=['*.Cu', '*.Mask']))
+
+        if self.switch_type in ['V2', 'V1V2']:
+            if self.hotswap is False or self.hotswap_plated is True:
+                self.append(Pad(type=Pad.TYPE_THT, shape=Pad.SHAPE_CIRCLE,
+                                at=[-5, 5.15], size=[2.6, 2.6], drill=1.6,
+                                layers=['*.Cu', 'B.Mask']))
+            else:
+                self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_CIRCLE,
+                                at=[-5, 5.15], size=[1.6, 1.6], drill=1.6,
+                                layers=['*.Cu', '*.Mask']))
 
     def _init_cutout(self):
 
@@ -933,172 +1105,3 @@ class SwitchHotswapKailh(Switch):
 
         self.append(PolygoneLine(polygone=polyline,
                                  layer='Eco1.User', width=0.1))
-
-
-class SwitchHotswapKailhChocV1(Switch):
-
-    choc_w = 15
-    choc_h = 15
-
-    choc_cut_w = 14.5
-    choc_cut_h = 14.5
-
-    def __init__(self,
-                 plated_th: bool = True,
-                 name: str = 'SW_Hotswap_Kailh_Choc_V1',
-                 description: str = 'Kailh keyswitch Hotswap Socket',
-                 tags: str = 'Kailh Keyboard Choc V1 keyswitch Keyswitch Switch Hotswap Socket',
-                 cutout: bool = True, keycap: Keycap = None,
-                 path3d: str = None, model3d: str = 'SW_Hotswap_Kailh_Choc_v1.stp'):
-
-        self.plated_th = plated_th
-
-        _name=name
-        _tags=tags
-        _description=description
-
-        if self.plated_th is True:
-            _name += '_plated'
-            _tags += ' plated'
-            _description += ' plated holes'
-
-        Switch.__init__(self,
-                        name=_name,
-                        description=_description,
-                        tags=_tags,
-                        cutout=cutout,
-                        keycap=keycap,
-                        path3d=path3d,
-                        model3d=model3d,
-                        text_offset=9)
-
-        self._init_switch()
-
-        if cutout is True:
-            self._init_cutout()
-
-        if keycap is not None:
-            self.append(keycap)
-
-    def _init_switch(self):
-
-        # set attributes
-        self.setAttribute('smd')
-
-        # socket outline
-        # TODO: this outline is incorrect
-        polyline_base = [
-            [6.75, -2.25],
-            [6.25, -1.75],
-            [3.5, -1.75],
-            [1.25, -4],
-            [-1.25, -4],
-            [-1.75, -4.5],
-        ]
-
-        polyline_base2 = [
-            [-1.75, -7.5],
-            [-1.25, -8],
-            [1.25, -8],
-            [3.5, -5.75],
-            [6.25, -5.75],
-            [6.75, -5.25],
-        ]
-
-        # create fab outline (keyswitch)
-        self.append(RectLine(start=[-self.choc_w/2, -self.choc_h/2],
-                             end=[self.choc_w/2, self.choc_h/2],
-                             layer='F.Fab', width=0.1))
-
-        # create fab outline (socket)
-        self.append(PolygoneLine(polygone=polyline_base,
-                                 layer='B.Fab', width=0.1))
-        self.append(PolygoneLine(polygone=polyline_base2,
-                                 layer='B.Fab', width=0.1))
-
-        # create silkscreen (keyswitch)
-        self.append(RectLine(start=[-self.choc_w/2, -self.choc_h/2],
-                             end=[self.choc_w/2, self.choc_h/2],
-                             layer='F.SilkS', width=0.12, offset=0.1))
-
-        # create silkscreen (socket)
-        # TODO: offset 0.1
-        self.append(PolygoneLine(polygone=polyline_base,
-                                 layer='B.SilkS', width=0.12))
-        self.append(PolygoneLine(polygone=polyline_base2,
-                                 layer='B.SilkS', width=0.12))
-
-        # create courtyard (keyswitch)
-        self.append(RectLine(start=[-self.choc_w/2, -self.choc_h/2],
-                             end=[self.choc_w/2, self.choc_h/2],
-                             layer='F.CrtYd', width=0.05, offset=0.25))
-
-        # create courtyard (socket)
-        # TODO: offset 0.25
-        polyline = polyline_base + polyline_base2
-        polyline.append(polyline_base[0])
-        self.append(PolygoneLine(polygone=polyline,
-                                 layer='B.CrtYd', width=0.05))
-
-        # create pads
-        if self.plated_th is True:
-            self.append(Pad(number=1, type=Pad.TYPE_THT, shape=Pad.SHAPE_CIRCLE,
-                            at=[0, -5.9], size=[3.6, 3.6], drill=3.05,
-                            layers=['*.Cu', 'B.Mask']))
-            self.append(Pad(number=2, type=Pad.TYPE_THT, shape=Pad.SHAPE_CIRCLE,
-                            at=[5, -3.8], size=[3.6, 3.6], drill=3.05,
-                            layers=['*.Cu', 'B.Mask']))
-
-            self.append(Pad(number=1, type=Pad.TYPE_SMT, shape=Pad.SHAPE_ROUNDRECT,
-                            at=[-2.85, -6], size=[3.85, 2.5],
-                            round_radius_exact=0.25, layers=['B.Cu']))
-            self.append(Pad(number=2, type=Pad.TYPE_SMT, shape=Pad.SHAPE_ROUNDRECT,
-                            at=[7.85, -3.8], size=[3.85, 2.5],
-                            round_radius_exact=0.25, layers=['B.Cu']))
-
-            self.append(Pad(type=Pad.TYPE_SMT, shape=Pad.SHAPE_ROUNDRECT,
-                            at=[-3.5, -6], size=[2.55, 2.5],
-                            round_radius_exact=0.25, layers=['B.Mask', 'B.Paste']))
-            self.append(Pad(type=Pad.TYPE_SMT, shape=Pad.SHAPE_ROUNDRECT,
-                            at=[8.5, -3.8], size=[2.55, 2.5],
-                            round_radius_exact=0.25, layers=['B.Mask', 'B.Paste']))
-
-            self.append(Pad(type=Pad.TYPE_THT, shape=Pad.SHAPE_CIRCLE,
-                            at=[-5, 5.15], size=[2.6, 2.6],
-                            drill=1.6, layers=['*.Cu', 'B.Mask']))
-
-        else:
-            self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_CIRCLE,
-                            at=[0, -5.9], size=[3.05, 3.05], drill=3.05,
-                            layers=['*.Cu', '*.Mask']))
-            self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_CIRCLE,
-                            at=[5, -3.8], size=[3.05, 3.05], drill=3.05,
-                            layers=['*.Cu', '*.Mask']))
-
-            self.append(Pad(number=1, type=Pad.TYPE_SMT, shape=Pad.SHAPE_ROUNDRECT,
-                            at=[-3.5, -6], size=[2.55, 2.5],
-                            round_radius_exact=0.25, layers=['B.Cu', 'B.Mask', 'B.Paste']))
-            self.append(Pad(number=2, type=Pad.TYPE_SMT, shape=Pad.SHAPE_ROUNDRECT,
-                            at=[8.5, -3.8], size=[2.55, 2.5],
-                            round_radius_exact=0.25, layers=['B.Cu', 'B.Mask', 'B.Paste']))
-
-            self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_CIRCLE,
-                            at=[-5, 5.15], size=[1.6, 1.6],
-                            drill=1.6, layers=['*.Cu', '*.Mask']))
-
-        self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_CIRCLE,
-                        at=[0, 0], size=[5.05, 5.05], drill=5.05,
-                        layers=['*.Cu', '*.Mask']))
-        self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_CIRCLE,
-                        at=[-5.5, 0], size=[1.9, 1.9], drill=1.9,
-                        layers=['*.Cu', '*.Mask']))
-        self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_CIRCLE,
-                        at=[5.5, 0], size=[1.9, 1.9], drill=1.9,
-                        layers=['*.Cu', '*.Mask']))
-
-    def _init_cutout(self):
-
-        # create cutout
-        self.append(RectLine(start=[-self.choc_cut_w/2, -self.choc_cut_h/2],
-                             end=[self.choc_cut_w/2, self.choc_cut_h/2],
-                             layer='Eco1.User', width=0.1))
