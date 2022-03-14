@@ -8,6 +8,11 @@ It has footprints for most popular keyboard switches.
 
 ![Banner](assets/banner.png)
 
+```
+Warning!
+
+Versions prior to v2.1.1 have incorrect dimensions for Kailh choc V1 switches (as well as wrong name as it's actually V1 and V2 compatible), so please use the latest version if you want to use these. see issue #26.
+```
 
 ## Supported footprints
 
