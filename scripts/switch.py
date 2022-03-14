@@ -495,17 +495,17 @@ class SwitchKailhChocV1(Switch):
                         at=[5, -3.8], size=[2.2, 2.2], drill=1.2,
                         layers=['*.Cu', 'B.Mask']))
         self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_CIRCLE,
-                        at=[0, 0], size=[3.2, 3.2], drill=3.2,
+                        at=[0, 0], size=[5.05, 5.05], drill=5.05,
                         layers=['*.Cu', '*.Mask']))
         self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_CIRCLE,
-                        at=[-5.5, 0], size=[1.8, 1.8], drill=1.8,
+                        at=[-5.5, 0], size=[1.9, 1.9], drill=1.9,
                         layers=['*.Cu', '*.Mask']))
         self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_CIRCLE,
-                        at=[5.5, 0], size=[1.8, 1.8], drill=1.8,
+                        at=[5.5, 0], size=[1.9, 1.9], drill=1.9,
                         layers=['*.Cu', '*.Mask']))
-        self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_CIRCLE,
-                        at=[-5.22, 4.2], size=[1.2, 1.2], drill=1.2,
-                        layers=['*.Cu', '*.Mask']))
+        self.append(Pad(type=Pad.TYPE_THT, shape=Pad.SHAPE_CIRCLE,
+                        at=[-5.15, 5], size=[2.6, 2.6], drill=1.6,
+                        layers=['*.Cu', 'B.Mask']))
 
     def _init_cutout(self):
 
