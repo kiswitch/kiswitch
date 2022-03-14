@@ -504,7 +504,7 @@ class SwitchKailhChocV1(Switch):
                         at=[5.5, 0], size=[1.9, 1.9], drill=1.9,
                         layers=['*.Cu', '*.Mask']))
         self.append(Pad(type=Pad.TYPE_THT, shape=Pad.SHAPE_CIRCLE,
-                        at=[-5.15, 5], size=[2.6, 2.6], drill=1.6,
+                        at=[-5, 5.15], size=[2.6, 2.6], drill=1.6,
                         layers=['*.Cu', 'B.Mask']))
 
     def _init_cutout(self):
@@ -1062,6 +1062,11 @@ class SwitchHotswapKailhChocV1(Switch):
             self.append(Pad(type=Pad.TYPE_SMT, shape=Pad.SHAPE_ROUNDRECT,
                             at=[8.5, -3.8], size=[2.55, 2.5],
                             round_radius_exact=0.25, layers=['B.Mask', 'B.Paste']))
+
+            self.append(Pad(type=Pad.TYPE_THT, shape=Pad.SHAPE_CIRCLE,
+                            at=[-5, 5.15], size=[2.6, 2.6],
+                            drill=1.6, layers=['*.Cu', 'B.Mask']))
+
         else:
             self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_CIRCLE,
                             at=[0, -5.9], size=[3.05, 3.05], drill=3.05,
@@ -1077,17 +1082,18 @@ class SwitchHotswapKailhChocV1(Switch):
                             at=[8.5, -3.8], size=[2.55, 2.5],
                             round_radius_exact=0.25, layers=['B.Cu', 'B.Mask', 'B.Paste']))
 
+            self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_CIRCLE,
+                            at=[-5, 5.15], size=[1.6, 1.6],
+                            drill=1.6, layers=['*.Cu', '*.Mask']))
+
         self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_CIRCLE,
-                        at=[0, 0], size=[3.4, 3.4], drill=3.4,
+                        at=[0, 0], size=[5.05, 5.05], drill=5.05,
                         layers=['*.Cu', '*.Mask']))
         self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_CIRCLE,
                         at=[-5.5, 0], size=[1.9, 1.9], drill=1.9,
                         layers=['*.Cu', '*.Mask']))
         self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_CIRCLE,
                         at=[5.5, 0], size=[1.9, 1.9], drill=1.9,
-                        layers=['*.Cu', '*.Mask']))
-        self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_CIRCLE,
-                        at=[-5.22, 4.2], size=[1.3, 1.3], drill=1.3,
                         layers=['*.Cu', '*.Mask']))
 
     def _init_cutout(self):
