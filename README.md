@@ -40,14 +40,18 @@ Currently there are footprints for Cherry MX PCB mount equivalent stabilizers in
 
 The library includes the following 3d models:
 
-|                          |
-|--------------------------|
-| SW_Cherry_MX_PCB         |
-| SW_Cherry_MX_Plate       |
-| Stabilizer_Cherry_MX     |
-| SW_Hotswap_Kailh         |
-| SW_Hotswap_Kailh_Choc_v1 |
-| SW_Kailh_Choc_V1         |
+|                            |
+|----------------------------|
+| SW_Cherry_MX_PCB           |
+| SW_Cherry_MX_Plate         |
+| Stabilizer_Cherry_MX       |
+| SW_Hotswap_Kailh (MX)      |
+| SW_Hotswap_Kailh_Choc_v1V2 |
+| SW_Kailh_Choc_V1           |
+| SW_Kailh_Choc_V2           |
+| SW_Kailh_Choc_Mini         |
+| SW_Kailh_Notebook          |
+| SW_Kailh_KH                |
 
 We are looking for contributors for the missing 3d models.
 
@@ -86,6 +90,10 @@ All screenshots are of the 1u keycap switch.
 ![hybrids](https://user-images.githubusercontent.com/39195157/93150167-55c85e00-f6f0-11ea-9cce-6adc237570d0.png)
 ![kailh_Choc](https://user-images.githubusercontent.com/39195157/93150222-72649600-f6f0-11ea-8a22-b62f093f4c2d.png)
 ![kailh_hotswap](https://user-images.githubusercontent.com/39195157/93150276-8f996480-f6f0-11ea-9919-c952159f183f.png)
+
+Demo board for real life testing
+
+![demo](https://user-images.githubusercontent.com/39195157/158739962-f45acbd3-4a3d-4613-8eca-4cfa36f55d0c.png)
 
 ## Source
 
