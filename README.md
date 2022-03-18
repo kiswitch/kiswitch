@@ -21,9 +21,10 @@ Versions prior to v2.1.2 have incorrect dimensions for Kailh choc V1 switches (a
 | Cherry MX and equivalent, Plate and PCB mount.                  |
 | Alps/Matias or equivalent.                                      |
 | Hybrid footprints for Cherry MX and Alps/Matias (accepts both). |
-| Kailh Choc low profile switches V1 (CPG135001).                 |
+| Kailh Choc low profile switches V1 (CPG1350).                   |
+| Kailh Choc low profile switches V2 (CPG1353).                   |
 | Kailh Hotswap sockets for Cherry MX equivalent switches.        |
-| Kailh Hotswap sockets for Choc low profile switches V1          |
+| Kailh Hotswap sockets for Choc low profile switches             |
 | Kailh KH CPG1280                                                |
 | Kailh CPG1425                                                   |
 | Kailh Choc Mini CPG1232                                         |
@@ -40,18 +41,14 @@ Currently there are footprints for Cherry MX PCB mount equivalent stabilizers in
 
 The library includes the following 3d models:
 
-|                            |
-|----------------------------|
-| SW_Cherry_MX_PCB           |
-| SW_Cherry_MX_Plate         |
-| Stabilizer_Cherry_MX       |
-| SW_Hotswap_Kailh (MX)      |
-| SW_Hotswap_Kailh_Choc_v1V2 |
-| SW_Kailh_Choc_V1           |
-| SW_Kailh_Choc_V2           |
-| SW_Kailh_Choc_Mini         |
-| SW_Kailh_Notebook          |
-| SW_Kailh_KH                |
+|                          |
+|--------------------------|
+| SW_Cherry_MX_PCB         |
+| SW_Cherry_MX_Plate       |
+| Stabilizer_Cherry_MX     |
+| SW_Hotswap_Kailh (MX)    |
+| SW_Hotswap_Kailh_Choc_v1 |
+| SW_Kailh_Choc_V1         |
 
 We are looking for contributors for the missing 3d models.
 
