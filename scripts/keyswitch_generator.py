@@ -8,7 +8,8 @@ from keycap import Keycap
 from switch import StabilizerCherryMX, SwitchAlpsMatias, SwitchCherryMX, \
                    SwitchHybridCherryMxAlps, SwitchKailhChoc, \
                    SwitchHotswapKailh, SwitchKailhKH, \
-                   SwitchKailhNB, SwitchKailhChocMini
+                   SwitchKailhNB, SwitchKailhChocMini, \
+                   LEDTHTCherryMX
 
 path3d = '${KICAD6_3RD_PARTY}/3dmodels/' \
          'com_github_perigoso_keyswitch-kicad-library/' \
@@ -109,6 +110,34 @@ def generate_switch_cherry_mx(output_path):
     for switch in switches:
         file_handler = KicadFileHandler(switch)
         file_handler.writeFile(os.path.join(out_path, f'{switch.name}.kicad_mod'), timestamp=0)
+
+
+def generate_led_tht_cherry_mx(output_path):
+    spacing = 19.05
+    group = 'LED_THT_Keyboard_Cherry_MX'
+
+    out_path = os.path.join(output_path, f'{group}.pretty')
+    if not os.path.isdir(out_path):
+        os.mkdir(out_path)
+    keys = ['1u', '1.25u', '1.25u90', '1.5u', '1.5u90', '1.75u', '1.75u90',
+            '2u', '2u90', '2.25u', '2.25u90', '2.5u', '2.5u90', '2.75u',
+            '2.75u90', '3u', '3u90', '4u', '4.5u', '5.5u', '6u', '6uOffset',
+            '6.25u', '6.5u', '7u', 'ISOEnter', 'ISOEnter90', 'ISOEnter180',
+            'ISOEnter270']
+
+    leds = []
+
+    leds.append(LEDTHTCherryMX(path3d=path3d))
+
+    for key in keys:
+        leds.append(LEDTHTCherryMX(path3d=path3d,
+                                   keycap=Keycap(spacing=spacing,
+                                                 **keycaps[key])))
+
+    for led in leds:
+        file_handler = KicadFileHandler(led)
+        file_handler.writeFile(os.path.join(out_path, f'{led.name}.kicad_mod'), timestamp=0)
+
 
 
 def generate_switch_hybrid_cherry_mx_alps(output_path):
@@ -325,6 +354,7 @@ if __name__ == '__main__':
     generate_stabilizer_cherry_mx(args.output)
     generate_switch_alps_matias(args.output)
     generate_switch_cherry_mx(args.output)
+    generate_led_tht_cherry_mx(args.output)
     generate_switch_hybrid_cherry_mx_alps(args.output)
     generate_switch_kailh_choc(args.output)
     generate_switch_hotswap_kailh_choc(args.output)
