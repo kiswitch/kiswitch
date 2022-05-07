@@ -107,4 +107,4 @@ If you're reading this from outside GitHub, you can find the source for this lib
 
 ## License
 
-The library is dual licensed under [MIT](LICENSE-MIT) and [CC-BY-4.0](LICENSE-CC-BY).
+The library is dual licensed under [MIT](LICENSE-MIT) and [CC-BY-SA 4.0](LICENSE-CC-BY-SA).
