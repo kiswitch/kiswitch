@@ -102,7 +102,7 @@ If you're reading this from outside GitHub, you can find the source for this lib
 
 - [Rafael Silva (perigoso)](https://github.com/perigoso) - Author and maintainer
 - [Jesse Vincent (obra)](https://github.com/obra) - Production tested footprints and others from [keyboardio](https://github.com/keyboardio)
-- [Ryan Rotter (rroter)](https://github.com/rrotter) - Improved the Kailh Choc silkscreen outline
+- [Ryan Rotter (rrotter)](https://github.com/rrotter) - Improved the Kailh Choc silkscreen outline
 - [Lotier](https://github.com/Lotier) - Wrote the script for automating the generation of stabilizers
 - [ai03](https://github.com/ai03-2725) - Original library that served as motivation and baseline
 
