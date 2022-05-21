@@ -120,7 +120,6 @@
   (pad "" np_thru_hole circle (at 5 -3.8) (size 3.05 3.05) (drill 3.05) (layers *.Cu *.Mask))
   (pad 1 smd roundrect (at -3.5 -6) (size 2.55 2.5) (layers B.Cu B.Mask B.Paste) (roundrect_rratio 0.1))
   (pad 2 smd roundrect (at 8.5 -3.8) (size 2.55 2.5) (layers B.Cu B.Mask B.Paste) (roundrect_rratio 0.1))
-  (pad "" np_thru_hole circle (at -5 5.15) (size 1.6 1.6) (drill 1.6) (layers *.Cu *.Mask))
   (pad "" np_thru_hole circle (at 0 0) (size 5.05 5.05) (drill 5.05) (layers *.Cu *.Mask))
   (pad "" np_thru_hole circle (at -5.5 0) (size 1.9 1.9) (drill 1.9) (layers *.Cu *.Mask))
   (pad "" np_thru_hole circle (at 5.5 0) (size 1.9 1.9) (drill 1.9) (layers *.Cu *.Mask))
