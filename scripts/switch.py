@@ -633,10 +633,6 @@ class SwitchKailhChoc(Switch):
                                 round_radius_exact=0.25,
                                 layers=['B.Mask', 'B.Paste']))
 
-                self.append(Pad(type=Pad.TYPE_THT, shape=Pad.SHAPE_CIRCLE,
-                                at=[-5, 5.15], size=[2.6, 2.6],
-                                drill=1.6, layers=['*.Cu', 'B.Mask']))
-
             else:
                 self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_CIRCLE,
                                 at=[0, -5.9], size=[3.05, 3.05], drill=3.05,
@@ -656,9 +652,6 @@ class SwitchKailhChoc(Switch):
                                 round_radius_exact=0.25,
                                 layers=['B.Cu', 'B.Mask', 'B.Paste']))
 
-                self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_CIRCLE,
-                                at=[-5, 5.15], size=[1.6, 1.6],
-                                drill=1.6, layers=['*.Cu', '*.Mask']))
         else:
             self.append(Pad(number=1, type=Pad.TYPE_THT,
                             shape=Pad.SHAPE_CIRCLE,
