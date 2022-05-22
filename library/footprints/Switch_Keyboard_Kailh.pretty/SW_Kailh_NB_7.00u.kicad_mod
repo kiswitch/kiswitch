@@ -1,6 +1,6 @@
 (module SW_Kailh_NB_7.00u (layer F.Cu) (tedit 0)
   (descr "Kailh KH CPG1425 low profile notebook keyswitch with 7.00u keycap")
-  (tags "Kailh KH CPG1425 Keyboard Low Profile Notebook Keyswitch Switch Cutout 7.00u")
+  (tags "Kailh KH CPG1425 Keyboard Low Profile Notebook Keyswitch Switch 7.00u")
   (fp_text reference REF** (at 0 -8.5) (layer F.SilkS)
     (effects (font (size 1 1) (thickness 0.15)))
   )

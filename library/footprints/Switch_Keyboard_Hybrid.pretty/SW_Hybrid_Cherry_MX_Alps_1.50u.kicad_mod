@@ -1,6 +1,6 @@
 (module SW_Hybrid_Cherry_MX_Alps_1.50u (layer F.Cu) (tedit 0)
   (descr "Cherry MX / Alps keyswitch hybrid with 1.50u keycap")
-  (tags "Cherry MX Alps Matias Hybrid Keyboard KeyswitchSwitch PCB 1.50u")
+  (tags "Cherry MX Alps Matias Hybrid Keyboard Keyswitch Switch PCB 1.50u")
   (fp_text reference REF** (at 0 -8) (layer F.SilkS)
     (effects (font (size 1 1) (thickness 0.15)))
   )

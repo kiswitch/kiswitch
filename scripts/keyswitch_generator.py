@@ -261,11 +261,11 @@ def generate_switch_hotswap_kailh(output_path):
 
     for plated in [False, True]:
 
-        switches.append(SwitchHotswapKailh(path3d=path3d, plated_th=plated))
+        switches.append(SwitchHotswapKailh(path3d=path3d, hotswap_plated=plated))
 
         for key in keys:
             switches.append(SwitchHotswapKailh(path3d=path3d,
-                                               plated_th=plated,
+                                               hotswap_plated=plated,
                                                keycap=Keycap(spacing=spacing,
                                                              **keycaps[key])))
 
