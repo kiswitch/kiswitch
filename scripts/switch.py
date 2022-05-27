@@ -7,7 +7,7 @@ from KicadModTree.nodes.specialized import RectLine, PolygoneLine
 from KicadModTree.Vector import Vector2D as vector
 
 from keycap import Keycap
-from util import offset_polyline, SwitchPad
+from util import offset_polyline, SwitchPad, SwitchMountHole
 
 
 class Switch(Footprint):
@@ -93,17 +93,11 @@ class Switch(Footprint):
         origin = vector(0, 0)
         offset = self.pcb_mount_hole_spacing
 
-        self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_CIRCLE,
-                        at=origin-offset, size=d, drill=d,
-                        layers=Pad.LAYERS_NPTH))
-        self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_CIRCLE,
-                        at=origin+offset, size=d, drill=d,
-                        layers=Pad.LAYERS_NPTH))
+        self.append(SwitchMountHole(at=origin-offset, drill=d))
+        self.append(SwitchMountHole(at=origin+offset, drill=d))
 
     def _init_center_hole(self):
-        self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_CIRCLE,
-                        at=[0, 0], size=self.center_hole_dia, drill=self.center_hole_dia,
-                        layers=Pad.LAYERS_NPTH))
+        self.append(SwitchMountHole(at=[0, 0], drill=self.center_hole_dia))
 
     def _init_pads(self):
         self.append(SwitchPad(number=1,
@@ -186,25 +180,12 @@ class StabilizerCherryMX(Switch):
         top_offset = -6.985
         bottom_offset = 8.225
         offset = self.lu_table[self.size]['offset']
-        layers = ['*.Cu', '*.Mask']
 
         # create pads
-        self.append(Pad(number="~", type=Pad.TYPE_NPTH,
-                        shape=Pad.SHAPE_CIRCLE, at=[-offset, top_offset],
-                        size=small_hole_size,
-                        drill=small_hole_size, layers=layers))
-        self.append(Pad(number="~", type=Pad.TYPE_NPTH,
-                        shape=Pad.SHAPE_CIRCLE, at=[offset, top_offset],
-                        size=small_hole_size,
-                        drill=small_hole_size, layers=layers))
-        self.append(Pad(number="~", type=Pad.TYPE_NPTH,
-                        shape=Pad.SHAPE_CIRCLE, at=[-offset, bottom_offset],
-                        size=large_hole_size,
-                        drill=large_hole_size, layers=layers))
-        self.append(Pad(number="~", type=Pad.TYPE_NPTH,
-                        shape=Pad.SHAPE_CIRCLE, at=[offset, bottom_offset],
-                        size=large_hole_size,
-                        drill=large_hole_size, layers=layers))
+        self.append(SwitchMountHole(at=[-offset, top_offset], drill=small_hole_size))
+        self.append(SwitchMountHole(at=[offset, top_offset], drill=small_hole_size))
+        self.append(SwitchMountHole(at=[-offset, bottom_offset], drill=large_hole_size))
+        self.append(SwitchMountHole(at=[offset, bottom_offset], drill=large_hole_size))
 
         # create reference center point
         self.append(Line(start=[0, 2], end=[0, -2],
@@ -433,12 +414,8 @@ class HotswapBase:
                                   at=pin_2_pos, size=self.hotswap_plated_dia, drill=self.hotswap_dia))
         else:
             # unplated th
-            self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_CIRCLE,
-                            at=pin_1_pos, size=self.hotswap_dia, drill=self.hotswap_dia,
-                            layers=Pad.LAYERS_NPTH))
-            self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_CIRCLE,
-                            at=pin_2_pos, size=self.hotswap_dia, drill=self.hotswap_dia,
-                            layers=Pad.LAYERS_NPTH))
+            self.append(SwitchMountHole(at=pin_1_pos, drill=self.hotswap_dia))
+            self.append(SwitchMountHole(at=pin_2_pos, drill=self.hotswap_dia))
 
     def _init_hotswap_smt(self):
         pad_1_pos = self.pin_1_pos - self.hotswap_pad_offset_1
@@ -661,9 +638,7 @@ class SwitchKailhChoc(Switch, HotswapBase):
                 self.append(SwitchPad(shape=Pad.SHAPE_CIRCLE,
                                       at=self.v2_mount_pos, size=self.v2_mount_dia+self.annular_ring, drill=self.v2_mount_dia))
             else:
-                self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_CIRCLE,
-                                at=self.v2_mount_pos, size=self.v2_mount_dia, drill=self.v2_mount_dia,
-                                layers=Pad.LAYERS_NPTH))
+                self.append(SwitchMountHole(at=self.v2_mount_pos, drill=self.v2_mount_dia))
 
 
 # https://www.kailhswitch.com/mechanical-keyboard-switches/mini-keyboard-push-button-switches.html
@@ -715,12 +690,8 @@ class SwitchKailhChocMini(Switch):
                                  layer='Edge.Cuts', width=0.05))
 
     def _init_pcb_mount_holes(self):
-        self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_OVAL,
-                        at=[-5.29, -4.75], size=[1.2, 1.6], drill=[0.8, 1.2],
-                        layers=Pad.LAYERS_NPTH))
-        self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_OVAL,
-                        at=[5.29, -4.75], size=[1.2, 1.6], drill=[0.8, 1.2],
-                        layers=Pad.LAYERS_NPTH))
+        self.append(SwitchMountHole(shape=Pad.SHAPE_OVAL, at=[-5.29, -4.75], size=[1.2, 1.6], drill=[0.8, 1.2]))
+        self.append(SwitchMountHole(shape=Pad.SHAPE_OVAL, at=[5.29, -4.75], size=[1.2, 1.6], drill=[0.8, 1.2]))
 
 
 # http://www.kailh.com/en/Products/Ks/KHS

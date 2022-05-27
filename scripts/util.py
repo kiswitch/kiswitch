@@ -18,6 +18,21 @@ def offset_polyline(polyline, offset: float):
     return new_polyline
 
 
+class SwitchMountHole(Node):
+    def __init__(self, **kwargs):
+        Node.__init__(self)
+        kwargs.__setitem__('type', Pad.TYPE_NPTH)
+        kwargs.__setitem__('shape', kwargs.get('shape', Pad.SHAPE_CIRCLE))
+        kwargs.__setitem__('layers', Pad.LAYERS_NPTH)
+        if kwargs.get('size', None) is None:
+            drill = kwargs.get('drill')
+            kwargs.__setitem__('size', vector(drill, drill) if type(drill) in [int, float] else vector(drill))
+        self.virtual_childs = [Pad(**kwargs)]
+
+    def getVirtualChilds(self):
+        return self.virtual_childs
+
+
 class SwitchPad(Node):
 
     TYPE_REGULAR = 'regular'
