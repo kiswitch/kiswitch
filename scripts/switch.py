@@ -7,7 +7,8 @@ from KicadModTree.nodes.specialized import RectLine, PolygoneLine
 from KicadModTree.Vector import Vector2D as vector
 
 from keycap import Keycap
-import util
+from util import offset_polyline
+
 
 class Switch(Footprint):
 
@@ -34,7 +35,7 @@ class Switch(Footprint):
                 self.path3d = model3d
             if path3d is not None:
                 self.path3d = list(
-                    map(lambda f : path.join(path3d, f), self.path3d)
+                    map(lambda f: path.join(path3d, f), self.path3d)
                 )
 
         self.cutout = cutout
@@ -66,7 +67,7 @@ class Switch(Footprint):
                 self.append(Model(filename=p,
                             at=[0, 0, 0], scale=[1, 1, 1], rotate=[0, 0, 0]))
 
-    def append_center_rect(self,layer,x=None,y=None,width=None,offset=0):
+    def append_center_rect(self, layer, x=None, y=None, width=None, offset=0):
         x = x or self.switch_w
         y = y or self.switch_h
 
@@ -75,7 +76,8 @@ class Switch(Footprint):
                              layer=layer, width=width, offset=offset))
 
     def _init_cutout(self):
-        self.append_center_rect(x=self.switch_cut_w, y=self.switch_cut_h, layer='Eco1.User', width=0.1)
+        self.append_center_rect(
+            x=self.switch_cut_w, y=self.switch_cut_h, layer='Eco1.User', width=0.1)
 
     def _init_fab_outline(self):
         self.append_center_rect(layer='F.Fab')
@@ -88,7 +90,7 @@ class Switch(Footprint):
 
     def _init_pcb_mount_holes(self):
         d = self.pcb_mount_hole_dia
-        origin = vector(0,0)
+        origin = vector(0, 0)
         offset = self.pcb_mount_hole_spacing
 
         self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_CIRCLE,
@@ -245,18 +247,19 @@ class SwitchAlpsMatias(Switch):
                  **kwargs):
 
         super().__init__(
-                        name=name,
-                        description=description,
-                        tags=tags,
-                        cutout=cutout,
-                        model3d=model3d,
-                        **kwargs)
+            name=name,
+            description=description,
+            tags=tags,
+            cutout=cutout,
+            model3d=model3d,
+            **kwargs)
 
         self._init_switch()
 
     # disable default Switch features we don't use
     def _init_center_hole(self):
         pass
+
     def _init_pcb_mount_holes(self):
         pass
 
@@ -265,7 +268,7 @@ class CherryMXBase:
     switch_cut_w = switch_w = 14
     switch_cut_h = switch_h = 14
     pcb_mount_hole_dia = 1.75
-    pcb_mount_hole_spacing = vector(5.08,0)
+    pcb_mount_hole_spacing = vector(5.08, 0)
 
     pin_1_pos = vector(-3.81, -2.54)
     pin_2_pos = vector(2.54, -5.08)
@@ -282,27 +285,27 @@ class CherryMXBase:
     hotswap_bridge_size = vector(3.55, 2.5)
 
     mx_relief_cutout_polyline = [
-                    [7, -7],
-                    [7, -6],
-                    [7.8, -6],
-                    [7.8, -2.9],
-                    [7, -2.9],
-                    [7, 2.9],
-                    [7.8, 2.9],
-                    [7.8, 6],
-                    [7, 6],
-                    [7, 7],
-                    [-7, 7],
-                    [-7, 6],
-                    [-7.8, 6],
-                    [-7.8, 2.9],
-                    [-7, 2.9],
-                    [-7, -2.9],
-                    [-7.8, -2.9],
-                    [-7.8, -6],
-                    [-7, -6],
-                    [-7, -7],
-                    [7, -7]]
+        [7, -7],
+        [7, -6],
+        [7.8, -6],
+        [7.8, -2.9],
+        [7, -2.9],
+        [7, 2.9],
+        [7.8, 2.9],
+        [7.8, 6],
+        [7, 6],
+        [7, 7],
+        [-7, 7],
+        [-7, 6],
+        [-7.8, 6],
+        [-7.8, 2.9],
+        [-7, 2.9],
+        [-7, -2.9],
+        [-7.8, -2.9],
+        [-7.8, -6],
+        [-7, -6],
+        [-7, -7],
+        [7, -7]]
 
     def _init_cutout(self):
         if self.mx_cutout == 'simple':
@@ -313,7 +316,7 @@ class CherryMXBase:
 
 
 # https://www.cherrymx.de/en/dev.html
-class SwitchCherryMX(CherryMXBase,Switch):
+class SwitchCherryMX(CherryMXBase, Switch):
 
     def __init__(self,
                  switch_type: str = 'PCB',
@@ -336,12 +339,12 @@ class SwitchCherryMX(CherryMXBase,Switch):
         _name = f'SW_Cherry_MX_{switch_type}'
 
         super().__init__(
-                        name=name if name else _name,
-                        description=description if description else f'Cherry MX keyswitch {switch_type} Mount',
-                        tags=tags if tags else f'Cherry MX Keyboard Keyswitch Switch {switch_type}',
-                        cutout=True if cutout is not None else False,
-                        model3d=model3d if model3d else f'{_name}.wrl',
-                        **kwargs)
+            name=name if name else _name,
+            description=description if description else f'Cherry MX keyswitch {switch_type} Mount',
+            tags=tags if tags else f'Cherry MX Keyboard Keyswitch Switch {switch_type}',
+            cutout=True if cutout is not None else False,
+            model3d=model3d if model3d else f'{_name}.wrl',
+            **kwargs)
 
         self._init_switch()
 
@@ -378,15 +381,16 @@ class SwitchHybridCherryMxAlps(Switch, CherryMXBase):
                  name: str = 'SW_Hybrid_Cherry_MX_Alps',
                  description: str = 'Cherry MX / Alps keyswitch hybrid',
                  tags: str = 'Cherry MX Alps Matias Hybrid Keyboard Keyswitch Switch PCB',
-                 model3d: Union[str, list[str]] = ['SW_Cherry_MX_PCB.wrl','SW_Alps_Matias.wrl'],
+                 model3d: Union[str, list[str]] = [
+                     'SW_Cherry_MX_PCB.wrl', 'SW_Alps_Matias.wrl'],
                  **kwargs):
 
         super().__init__(
-                        name=name,
-                        description=description,
-                        tags=tags,
-                        model3d=model3d,
-                        **kwargs)
+            name=name,
+            description=description,
+            tags=tags,
+            model3d=model3d,
+            **kwargs)
 
         self._init_switch()
 
@@ -394,11 +398,11 @@ class SwitchHybridCherryMxAlps(Switch, CherryMXBase):
         self.append(PolygoneLine(polygone=self.base_polyline, layer='F.Fab'))
 
     def _init_silkscreen(self):
-        polyline = util.offset_polyline(self.base_polyline, offset=0.1)
+        polyline = offset_polyline(self.base_polyline, offset=0.1)
         self.append(PolygoneLine(polygone=polyline, layer='F.SilkS'))
 
     def _init_courtyard(self):
-        polyline = util.offset_polyline(self.base_polyline, offset=0.25)
+        polyline = offset_polyline(self.base_polyline, offset=0.25)
         self.append(PolygoneLine(polygone=polyline, layer='F.CrtYd'))
 
     def _init_pads(self):
@@ -420,7 +424,7 @@ class SwitchHybridCherryMxAlps(Switch, CherryMXBase):
 class HotswapBase:
     hotswap_dia = 3.05
     hotswap_plated_dia = 3.6
-    hotswap_th_offset = vector(0,0)
+    hotswap_th_offset = vector(0, 0)
 
     def _init_hotswap_th(self):
         pin_1_pos = self.pin_1_pos - self.hotswap_th_offset
@@ -466,7 +470,7 @@ class HotswapBase:
             self.append(Pad(number=2, type=Pad.TYPE_SMT, shape=Pad.SHAPE_ROUNDRECT,
                             at=self.hotswap_bridge_pos_2, size=self.hotswap_bridge_size,
                             round_radius_exact=0.25, layers=['B.Cu']))
-        else: # non-plated hotswap
+        else:  # non-plated hotswap
             self.append(Pad(number=1, type=Pad.TYPE_SMT, shape=Pad.SHAPE_ROUNDRECT,
                             at=pad_1_pos, size=self.hotswap_pad_size,
                             round_radius_exact=0.25, layers=['B.Cu', 'B.Mask', 'B.Paste']))
@@ -480,7 +484,7 @@ class HotswapBase:
 
 
 # http://www.kailh.com/en/Products/Ks/CS/
-class SwitchKailhChoc(Switch,HotswapBase):
+class SwitchKailhChoc(Switch, HotswapBase):
 
     switch_w = 15
     switch_h = 15
@@ -489,7 +493,7 @@ class SwitchKailhChoc(Switch,HotswapBase):
     switch_cut_h = 14.5
 
     pcb_mount_hole_dia = 1.9
-    pcb_mount_hole_spacing = vector(5.5,0)
+    pcb_mount_hole_spacing = vector(5.5, 0)
 
     pin_1_pos = vector(0, -5.9)
     pin_2_pos = vector(5, -3.8)
@@ -501,9 +505,9 @@ class SwitchKailhChoc(Switch,HotswapBase):
 
     # TODO: Choc Hotswap pad size and locations do not match datasheet
     hotswap_pad_size = vector(2.55, 2.5)
-    hotswap_th_offset = vector(0,0)
-    hotswap_pad_offset_1 = vector(3.5,0.1)
-    hotswap_pad_offset_2 = vector(3.5,0)
+    hotswap_th_offset = vector(0, 0)
+    hotswap_pad_offset_1 = vector(3.5, 0.1)
+    hotswap_pad_offset_2 = vector(3.5, 0)
 
     hotswap_bridge_pos_1 = vector(-2.85, -6)
     hotswap_bridge_pos_2 = vector(7.85, -3.8)
@@ -604,13 +608,13 @@ class SwitchKailhChoc(Switch,HotswapBase):
             _name += '_Plated'
 
         super().__init__(
-                        name=name if name else _name,
-                        description=description if description else _description,
-                        tags=tags if tags else _tags,
-                        cutout=cutout,
-                        model3d=model3d if model3d else _model3d,
-                        text_offset=9,
-                        **kwargs)
+            name=name if name else _name,
+            description=description if description else _description,
+            tags=tags if tags else _tags,
+            cutout=cutout,
+            model3d=model3d if model3d else _model3d,
+            text_offset=9,
+            **kwargs)
 
         if self.hotswap is True:
             self.setAttribute('smd')
@@ -625,16 +629,20 @@ class SwitchKailhChoc(Switch,HotswapBase):
         super()._init_fab_outline()
         if self.hotswap:
             # create fab outline (socket)
-            self.append(PolygoneLine(polygone=self.polyline_base, layer='B.Fab'))
-            self.append(PolygoneLine(polygone=self.polyline_base2, layer='B.Fab'))
+            self.append(PolygoneLine(
+                polygone=self.polyline_base, layer='B.Fab'))
+            self.append(PolygoneLine(
+                polygone=self.polyline_base2, layer='B.Fab'))
 
     def _init_silkscreen(self):
         super()._init_silkscreen()
         if self.hotswap:
             # create silkscreen (socket)
             # TODO: offset 0.1
-            self.append(PolygoneLine(polygone=self.polyline_base, layer='B.SilkS'))
-            self.append(PolygoneLine(polygone=self.polyline_base2, layer='B.SilkS'))
+            self.append(PolygoneLine(
+                polygone=self.polyline_base, layer='B.SilkS'))
+            self.append(PolygoneLine(
+                polygone=self.polyline_base2, layer='B.SilkS'))
 
     def _init_courtyard(self):
         super()._init_courtyard()
@@ -689,18 +697,18 @@ class SwitchKailhChocMini(Switch):
                  **kwargs):
 
         super().__init__(
-                        name=name,
-                        description=description,
-                        tags=tags,
-                        cutout=cutout,
-                        model3d=model3d,
-                        text_offset=8.5,
-                        **kwargs)
+            name=name,
+            description=description,
+            tags=tags,
+            cutout=cutout,
+            model3d=model3d,
+            text_offset=8.5,
+            **kwargs)
 
         self._init_switch()
 
     def _init_center_hole(self):
-        polyline=[
+        polyline = [
             [5.95, -2.9],
             [-5.9, -2.9],
             [-5.9, 3],
@@ -738,7 +746,7 @@ class SwitchKailhKH(Switch):
     center_hole_dia = 4
 
     pcb_mount_hole_dia = 1.5
-    pcb_mount_hole_spacing = vector(4.5,0)
+    pcb_mount_hole_spacing = vector(4.5, 0)
 
     def __init__(self,
                  name: str = 'SW_Kailh_KH',
@@ -749,12 +757,12 @@ class SwitchKailhKH(Switch):
                  **kwargs):
 
         super().__init__(
-                        name=name,
-                        description=description,
-                        tags=tags,
-                        cutout=cutout,
-                        model3d=model3d,
-                        **kwargs)
+            name=name,
+            description=description,
+            tags=tags,
+            cutout=cutout,
+            model3d=model3d,
+            **kwargs)
 
         self._init_switch()
 
@@ -771,7 +779,7 @@ class SwitchKailhNB(Switch):
     annular_ring = 0.3
 
     pcb_mount_hole_dia = 1.3
-    pcb_mount_hole_spacing = vector(-5.5,5.5) 
+    pcb_mount_hole_spacing = vector(-5.5, 5.5)
 
     def __init__(self,
                  name: str = 'SW_Kailh_NB',
@@ -780,14 +788,13 @@ class SwitchKailhNB(Switch):
                  model3d: Union[str, list[str]] = 'SW_Kailh_NB.wrl',
                  **kwargs):
 
-
         super().__init__(
-                        name=name,
-                        description=description,
-                        tags=tags,
-                        model3d=model3d,
-                        text_offset=8.5,
-                        **kwargs)
+            name=name,
+            description=description,
+            tags=tags,
+            model3d=model3d,
+            text_offset=8.5,
+            **kwargs)
 
         self._init_switch()
 
@@ -796,7 +803,7 @@ class SwitchKailhNB(Switch):
                              layer='Edge.Cuts', width=0.05))
 
 
-class SwitchHotswapKailh(HotswapBase,CherryMXBase,Switch):
+class SwitchHotswapKailh(HotswapBase, CherryMXBase, Switch):
 
     def __init__(self,
                  hotswap_plated: bool = False,
@@ -813,9 +820,9 @@ class SwitchHotswapKailh(HotswapBase,CherryMXBase,Switch):
         self.mx_cutout = cutout
         self.hotswap_plated = hotswap_plated
 
-        _name='SW_Hotswap_Kailh_MX'
-        _tags='Kailh Keyboard Keyswitch Switch Hotswap Socket'
-        _description='Kailh keyswitch Hotswap Socket'
+        _name = 'SW_Hotswap_Kailh_MX'
+        _tags = 'Kailh Keyboard Keyswitch Switch Hotswap Socket'
+        _description = 'Kailh keyswitch Hotswap Socket'
 
         if self.hotswap_plated is True:
             _name += '_plated'
@@ -823,12 +830,12 @@ class SwitchHotswapKailh(HotswapBase,CherryMXBase,Switch):
             _description += ' plated holes'
 
         super().__init__(
-                        name=name if name else _name,
-                        description=description if description else _description,
-                        tags=tags if tags else _tags,
-                        cutout=True if cutout is not None else False,
-                        model3d=model3d,
-                        **kwargs)
+            name=name if name else _name,
+            description=description if description else _description,
+            tags=tags if tags else _tags,
+            cutout=True if cutout is not None else False,
+            model3d=model3d,
+            **kwargs)
 
         self.setAttribute('smd')
         self._init_switch()
