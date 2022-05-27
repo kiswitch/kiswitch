@@ -7,7 +7,7 @@ from KicadModTree.nodes.specialized import RectLine, PolygoneLine
 from KicadModTree.Vector import Vector2D as vector
 
 from keycap import Keycap
-from util import offset_polyline
+from util import offset_polyline, SwitchPad
 
 
 class Switch(Footprint):
@@ -95,25 +95,23 @@ class Switch(Footprint):
 
         self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_CIRCLE,
                         at=origin-offset, size=d, drill=d,
-                        layers=['*.Cu', '*.Mask']))
+                        layers=Pad.LAYERS_NPTH))
         self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_CIRCLE,
                         at=origin+offset, size=d, drill=d,
-                        layers=['*.Cu', '*.Mask']))
+                        layers=Pad.LAYERS_NPTH))
 
     def _init_center_hole(self):
         self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_CIRCLE,
                         at=[0, 0], size=self.center_hole_dia, drill=self.center_hole_dia,
-                        layers=['*.Cu', '*.Mask']))
+                        layers=Pad.LAYERS_NPTH))
 
     def _init_pads(self):
-        self.append(Pad(number=1, type=Pad.TYPE_THT,
-                        shape=Pad.SHAPE_CIRCLE,
-                        at=self.pin_1_pos, size=self.pin_dia+self.annular_ring, drill=self.pin_dia,
-                        layers=['*.Cu', 'B.Mask']))
-        self.append(Pad(number=2, type=Pad.TYPE_THT,
-                        shape=Pad.SHAPE_CIRCLE,
-                        at=self.pin_2_pos, size=self.pin_dia+self.annular_ring, drill=self.pin_dia,
-                        layers=['*.Cu', 'B.Mask']))
+        self.append(SwitchPad(number=1,
+                              shape=Pad.SHAPE_CIRCLE,
+                              at=self.pin_1_pos, size=self.pin_dia+self.annular_ring, drill=self.pin_dia))
+        self.append(SwitchPad(number=2,
+                              shape=Pad.SHAPE_CIRCLE,
+                              at=self.pin_2_pos, size=self.pin_dia+self.annular_ring, drill=self.pin_dia))
 
     def _init_switch(self):
         # Default switch init which should work for nearly any keyswitch. The
@@ -406,19 +404,16 @@ class SwitchHybridCherryMxAlps(Switch, CherryMXBase):
         self.append(PolygoneLine(polygone=polyline, layer='F.CrtYd'))
 
     def _init_pads(self):
-        self.append(Pad(number=1, type=Pad.TYPE_THT, shape=Pad.SHAPE_CIRCLE,
-                        at=SwitchAlpsMatias.pin_1_pos,
-                        size=SwitchAlpsMatias.pin_dia+SwitchAlpsMatias.annular_ring,
-                        drill=SwitchAlpsMatias.pin_dia,
-                        layers=['*.Cu', 'B.Mask']))
-        self.append(Pad(number=1, type=Pad.TYPE_THT, shape=Pad.SHAPE_OVAL,
-                        at=CherryMXBase.pin_1_pos, size=[4.46156, 2.5],
-                        rotation=48, offset=[0.980778, 0], drill=1.5,
-                        layers=['*.Cu', 'B.Mask']))
-        self.append(Pad(number=2, type=Pad.TYPE_THT, shape=Pad.SHAPE_OVAL,
+        self.append(SwitchPad(number=1, shape=Pad.SHAPE_CIRCLE,
+                              at=SwitchAlpsMatias.pin_1_pos,
+                              size=SwitchAlpsMatias.pin_dia+SwitchAlpsMatias.annular_ring,
+                              drill=SwitchAlpsMatias.pin_dia))
+        self.append(SwitchPad(number=1, shape=Pad.SHAPE_OVAL,
+                              at=CherryMXBase.pin_1_pos, size=[4.46156, 2.5],
+                              rotation=48, offset=[0.980778, 0], drill=1.5))
+        self.append(SwitchPad(number=2, shape=Pad.SHAPE_OVAL,
                     at=[2.52, -4.79], size=[3.081378, 2.5],
-                    drill=[2.08137, 1.5], rotation=86,
-                    layers=['*.Cu', 'B.Mask']))
+                    drill=[2.08137, 1.5], rotation=86))
 
 
 class HotswapBase:
@@ -432,20 +427,18 @@ class HotswapBase:
 
         if self.hotswap_plated:
             # plated th
-            self.append(Pad(number=1, type=Pad.TYPE_THT, shape=Pad.SHAPE_CIRCLE,
-                            at=pin_1_pos, size=self.hotswap_plated_dia, drill=self.hotswap_dia,
-                            layers=['*.Cu', 'B.Mask']))
-            self.append(Pad(number=2, type=Pad.TYPE_THT, shape=Pad.SHAPE_CIRCLE,
-                            at=pin_2_pos, size=self.hotswap_plated_dia, drill=self.hotswap_dia,
-                            layers=['*.Cu', 'B.Mask']))
+            self.append(SwitchPad(number=1, shape=Pad.SHAPE_CIRCLE,
+                                  at=pin_1_pos, size=self.hotswap_plated_dia, drill=self.hotswap_dia))
+            self.append(SwitchPad(number=2, shape=Pad.SHAPE_CIRCLE,
+                                  at=pin_2_pos, size=self.hotswap_plated_dia, drill=self.hotswap_dia))
         else:
             # unplated th
             self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_CIRCLE,
                             at=pin_1_pos, size=self.hotswap_dia, drill=self.hotswap_dia,
-                            layers=['*.Cu', '*.Mask']))
+                            layers=Pad.LAYERS_NPTH))
             self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_CIRCLE,
                             at=pin_2_pos, size=self.hotswap_dia, drill=self.hotswap_dia,
-                            layers=['*.Cu', '*.Mask']))
+                            layers=Pad.LAYERS_NPTH))
 
     def _init_hotswap_smt(self):
         pad_1_pos = self.pin_1_pos - self.hotswap_pad_offset_1
@@ -665,13 +658,12 @@ class SwitchKailhChoc(Switch, HotswapBase):
         # V2 mount hole
         if self.support_v2:
             if self.hotswap is False or self.hotswap_plated is True:
-                self.append(Pad(type=Pad.TYPE_THT, shape=Pad.SHAPE_CIRCLE,
-                                at=self.v2_mount_pos, size=self.v2_mount_dia+self.annular_ring, drill=self.v2_mount_dia,
-                                layers=['*.Cu', 'B.Mask']))
+                self.append(SwitchPad(shape=Pad.SHAPE_CIRCLE,
+                                      at=self.v2_mount_pos, size=self.v2_mount_dia+self.annular_ring, drill=self.v2_mount_dia))
             else:
                 self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_CIRCLE,
                                 at=self.v2_mount_pos, size=self.v2_mount_dia, drill=self.v2_mount_dia,
-                                layers=['*.Cu', '*.Mask']))
+                                layers=Pad.LAYERS_NPTH))
 
 
 # https://www.kailhswitch.com/mechanical-keyboard-switches/mini-keyboard-push-button-switches.html
@@ -725,10 +717,10 @@ class SwitchKailhChocMini(Switch):
     def _init_pcb_mount_holes(self):
         self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_OVAL,
                         at=[-5.29, -4.75], size=[1.2, 1.6], drill=[0.8, 1.2],
-                        layers=['*.Cu', '*.Mask']))
+                        layers=Pad.LAYERS_NPTH))
         self.append(Pad(type=Pad.TYPE_NPTH, shape=Pad.SHAPE_OVAL,
                         at=[5.29, -4.75], size=[1.2, 1.6], drill=[0.8, 1.2],
-                        layers=['*.Cu', '*.Mask']))
+                        layers=Pad.LAYERS_NPTH))
 
 
 # http://www.kailh.com/en/Products/Ks/KHS
