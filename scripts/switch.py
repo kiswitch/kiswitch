@@ -7,7 +7,7 @@ from KicadModTree.nodes.specialized import RectLine, PolygoneLine
 from KicadModTree.Vector import Vector2D as vector
 
 from keycap import Keycap
-from util import offset_polyline, SwitchPad, SwitchMountHole
+from util import offset_poly, SwitchPad, SwitchMountHole
 
 
 class Switch(Footprint):
@@ -377,12 +377,10 @@ class SwitchHybridCherryMxAlps(Switch, CherryMXBase):
         self.append(PolygoneLine(polygone=self.base_polyline, layer='F.Fab'))
 
     def _init_silkscreen(self):
-        polyline = offset_polyline(self.base_polyline, offset=0.1)
-        self.append(PolygoneLine(polygone=polyline, layer='F.SilkS'))
+        self.append(PolygoneLine(polygone=offset_poly(self.base_polyline, offset=0.1), layer='F.SilkS'))
 
     def _init_courtyard(self):
-        polyline = offset_polyline(self.base_polyline, offset=0.25)
-        self.append(PolygoneLine(polygone=polyline, layer='F.CrtYd'))
+        self.append(PolygoneLine(polygone=offset_poly(self.base_polyline, offset=0.25), layer='F.CrtYd'))
 
     def _init_pads(self):
         self.append(SwitchPad(number=1, shape=Pad.SHAPE_CIRCLE,
@@ -608,20 +606,16 @@ class SwitchKailhChoc(Switch, HotswapBase):
         super()._init_silkscreen()
         if self.hotswap:
             # create silkscreen (socket)
-            # TODO: offset 0.1
-            self.append(PolygoneLine(
-                polygone=self.polyline_base, layer='B.SilkS'))
-            self.append(PolygoneLine(
-                polygone=self.polyline_base2, layer='B.SilkS'))
+            self.append(PolygoneLine(polygone=offset_poly(self.polyline_base, offset=0.1), layer='B.SilkS'))
+            self.append(PolygoneLine(polygone=offset_poly(self.polyline_base2, offset=0.1), layer='B.SilkS'))
 
     def _init_courtyard(self):
         super()._init_courtyard()
         if self.hotswap:
             # create courtyard (socket)
-            # TODO: offset 0.25
             polyline = self.polyline_base + self.polyline_base2
             polyline.append(polyline[0])
-            self.append(PolygoneLine(polygone=polyline, layer='B.CrtYd'))
+            self.append(PolygoneLine(polygone=offset_poly(polyline, offset=0.25), layer='B.CrtYd'))
 
     def _init_pads(self):
         if self.hotswap:
