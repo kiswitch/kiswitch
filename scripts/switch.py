@@ -331,6 +331,94 @@ class SwitchCherryMX(CherryMXBase, Switch):
         if self.switch_type == 'PCB':
             super()._init_pcb_mount_holes()
 
+class LEDTHTCherryMX(Switch):
+
+    cherry_w = 14
+    cherry_h = 14
+
+    def __init__(self,
+                 name: str = 'LED_THT_Cherry_MX',
+                 description: str = 'THT LED for Cherry MX keyswitch',
+                 tags: str = 'Cherry MX Keyboard Keyswitch Switch LED',
+                 cutout: str = 'simple', keycap: Keycap = None,
+                 path3d: str = None, model3d: str = None):
+
+        if cutout not in ['simple', 'relief', None]:
+            raise ValueError(f'Cutout type {cutout} not supported.')
+
+        self.cutout = cutout
+
+        Switch.__init__(self,
+                        name=name,
+                        description=description,
+                        tags=tags,
+                        cutout=True if cutout is not None else False,
+                        keycap=keycap,
+                        path3d=path3d,
+                        model3d=model3d if model3d is not None
+                        else f'{name}.wrl')
+
+        self._init_switch()
+
+        if cutout is not None:
+            if cutout == 'simple':
+                self._init_cutout_simple()
+            elif cutout == 'relief':
+                self._init_cutout_relief()
+
+        if keycap is not None:
+            self.append(keycap)
+
+    def _init_switch(self):
+
+        # create fab outline
+        self.append(RectLine(start=[-self.cherry_w/2, -self.cherry_h/2],
+                             end=[self.cherry_w/2, self.cherry_h/2],
+                             layer='F.Fab', width=0.1))
+
+        # create pads
+        self.append(Pad(number=1, type=Pad.TYPE_THT, shape=Pad.SHAPE_CIRCLE,
+                        at=[-1.27, 5.08], size=[1.905, 1.905], drill=1.04,
+                        layers=['*.Cu', 'B.Mask']))
+        self.append(Pad(number=2, type=Pad.TYPE_THT, shape=Pad.SHAPE_CIRCLE,
+                        at=[1.27, 5.08], size=[1.905, 1.905], drill=1.04,
+                        layers=['*.Cu', 'B.Mask']))
+
+    def _init_cutout_simple(self):
+
+        # create cutout
+        self.append(RectLine(start=[-self.cherry_w/2, -self.cherry_h/2],
+                             end=[self.cherry_w/2, self.cherry_h/2],
+                             layer='Eco1.User', width=0.1))
+
+    def _init_cutout_relief(self):
+
+        # create cutout
+        polyline = [[7, -7],
+                    [7, -6],
+                    [7.8, -6],
+                    [7.8, -2.9],
+                    [7, -2.9],
+                    [7, 2.9],
+                    [7.8, 2.9],
+                    [7.8, 6],
+                    [7, 6],
+                    [7, 7],
+                    [-7, 7],
+                    [-7, 6],
+                    [-7.8, 6],
+                    [-7.8, 2.9],
+                    [-7, 2.9],
+                    [-7, -2.9],
+                    [-7.8, -2.9],
+                    [-7.8, -6],
+                    [-7, -6],
+                    [-7, -7],
+                    [7, -7]]
+
+        self.append(PolygoneLine(polygone=polyline,
+                                 layer='Eco1.User', width=0.1))
+
 
 # https://www.cherrymx.de/en/dev.html
 # https://github.com/keyboardio/keyswitch_documentation/blob/master/datasheets/ALPS/SKCL.pdf

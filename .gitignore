@@ -5,3 +5,4 @@ __pycache__/
 *-backups
 fp-info-cache
 *.kicad_prl
+scripts/output
