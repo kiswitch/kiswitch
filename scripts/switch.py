@@ -862,6 +862,7 @@ class SwitchHotswapHybrid(HotswapBase, CherryMXBase, Switch):
     pcb_mount_hole_spacing = vector(5.5, 0)
     # cherry spacing
     ch_pcb_mount_hole_spacing = vector(5.08, 0)
+    ch_pcb_mount_hole_dia = 1.75 # kalih diameter, not MX (since its larger)
 
 
     pin_1_pos = vector(0, -5.9)
@@ -878,7 +879,7 @@ class SwitchHotswapHybrid(HotswapBase, CherryMXBase, Switch):
     ch_pin_dia = 1.5
 
     # TODO: Choc Hotswap pad size and locations do not match datasheet
-    hotswap_pad_size = vector(2.9, 2.6)
+    hotswap_pad_size = vector(2.75, 2.6)
     hotswap_th_offset = vector(0, 0)
     hotswap_pad_offset_1 = vector(3.5, 0.1)
     hotswap_pad_offset_2 = vector(3.5, 0)
@@ -966,6 +967,7 @@ class SwitchHotswapHybrid(HotswapBase, CherryMXBase, Switch):
         self._init_switch()
         # edit class values for cherry and call _init_x again (skipping aready specialized ones)
         self.pcb_mount_hole_spacing = self.ch_pcb_mount_hole_spacing
+        self.pcb_mount_hole_dia = self.ch_pcb_mount_hole_dia
 
         self.pin_1_pos = self.ch_pin_1_pos 
         self.pin_2_pos = self.ch_pin_2_pos 
@@ -980,6 +982,12 @@ class SwitchHotswapHybrid(HotswapBase, CherryMXBase, Switch):
 
         self._init_pcb_mount_holes()
         self._init_pads()
+        # special pad bridging the 2 hotswap pads
+        self.append(Pad(number=2, type=Pad.TYPE_SMT, shape=Pad.SHAPE_ROUNDRECT,
+                            at=vector(7.755, -4.85), rotation=60, size=vector(2, 2.9),
+                            round_radius_exact=0.25, layers=['B.Cu', 'B.Mask', 'B.Paste']))
+
+        # TODO: V2 holes
 
     def _init_fab_outline(self):
         super()._init_fab_outline()
