@@ -320,15 +320,12 @@ def generate_switch_hybrid_hotswap_kailh(output_path):
 
     switches = []
 
-    for plated in [False, True]:
+    switches.append(SwitchHotswapHybrid(path3d=path3d))
 
-        switches.append(SwitchHotswapHybrid(path3d=path3d, hotswap_plated=plated))
-
-        for key in keys:
-            switches.append(SwitchHotswapHybrid(path3d=path3d,
-                                               hotswap_plated=plated,
-                                               keycap=Keycap(spacing=spacing,
-                                                             **keycaps[key])))
+    for key in keys:
+        switches.append(SwitchHotswapHybrid(path3d=path3d,
+                                            keycap=Keycap(spacing=spacing,
+                                                            **keycaps[key])))        
 
     for switch in switches:
         file_handler = KicadFileHandler(switch)

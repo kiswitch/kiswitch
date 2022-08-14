@@ -884,16 +884,9 @@ class SwitchHotswapHybrid(HotswapBase, CherryMXBase, Switch):
     hotswap_pad_offset_1 = vector(3.5, 0.1)
     hotswap_pad_offset_2 = vector(3.5, 0)
 
-    hotswap_bridge_pos_1 = vector(-2.85, -6)
-    hotswap_bridge_pos_2 = vector(7.85, -3.8)
-    hotswap_bridge_size = vector(3.85, 2.5)
     # cherry hotswap pads
     ch_hotswap_pad_offset_1 = vector(3.275, 0.0)
     ch_hotswap_pad_offset_2 = vector(3.302, 0.0)
-
-    ch_hotswap_bridge_pos_1 = vector(-6.585, -2.54)
-    ch_hotswap_bridge_pos_2 = vector(5.32, -5.08)
-    ch_hotswap_bridge_size = vector(3.55, 2.5)
 
     polyline_base = [
         [7.275, -2.225],
@@ -932,7 +925,6 @@ class SwitchHotswapHybrid(HotswapBase, CherryMXBase, Switch):
     ]
 
     def __init__(self,
-                 hotswap_plated: bool = False,
                  name: str = None,
                  description: str = None,
                  tags: str = None,
@@ -944,16 +936,12 @@ class SwitchHotswapHybrid(HotswapBase, CherryMXBase, Switch):
             raise ValueError(f'Cutout type {cutout} not supported.')
 
         self.mx_cutout = cutout
-        self.hotswap_plated = hotswap_plated
 
         _name = 'SW_Hotswap_Hybrid'
         _tags = 'Kailh Keyboard Keyswitch Switch Hybrid Hotswap Socket'
-        _description = 'Kailh keyswitch Hybrid Hotswap Socket'
+        _description = 'Kailh keyswitch Hybrid Hotswap Socket, keycap generation assumes cherry sizes'
 
-        if self.hotswap_plated is True:
-            _name += '_plated'
-            _tags += ' plated'
-            _description += ' plated holes'
+        self.hotswap_plated = False
 
         super().__init__(
             name=name if name else _name,
@@ -975,10 +963,6 @@ class SwitchHotswapHybrid(HotswapBase, CherryMXBase, Switch):
 
         self.hotswap_pad_offset_1 = self.ch_hotswap_pad_offset_1
         self.hotswap_pad_offset_2 = self.ch_hotswap_pad_offset_2
-
-        self.hotswap_bridge_pos_1 = self.ch_hotswap_bridge_pos_1
-        self.hotswap_bridge_pos_2 = self.ch_hotswap_bridge_pos_2
-        self.hotswap_bridge_size = self.ch_hotswap_bridge_size
 
         self._init_pcb_mount_holes()
         self._init_pads()
