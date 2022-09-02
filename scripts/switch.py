@@ -868,7 +868,7 @@ class SwitchHotswapHybrid(HotswapBase, CherryMXBase, Switch):
     ch_pin_dia = 1.5
 
     # TODO: Choc Hotswap pad size and locations do not match datasheet
-    hotswap_pad_size = vector(2.75, 2.6)
+    hotswap_pad_size = vector(2.55, 2.5)
     hotswap_th_offset = vector(0, 0)
     hotswap_pad_offset_1 = vector(3.5, 0.1)
     hotswap_pad_offset_2 = vector(3.5, 0)
@@ -920,7 +920,7 @@ class SwitchHotswapHybrid(HotswapBase, CherryMXBase, Switch):
 
         _name = 'SW_Hotswap_Hybrid'
         _tags = 'Kailh Keyboard Keyswitch Switch Hybrid Hotswap Socket'
-        _description = 'Kailh keyswitch Hybrid Hotswap Socket, keycap generation assumes cherry sizes'
+        _description = 'Kailh keyswitch Hybrid Hotswap Socket'
 
         self.hotswap_plated = False
 
@@ -950,12 +950,11 @@ class SwitchHotswapHybrid(HotswapBase, CherryMXBase, Switch):
 
 
         pad_1_pos = self.pin_1_pos - self.hotswap_pad_offset_1
-        pad_2_pos = self.pin_2_pos + self.hotswap_pad_offset_2
         self.append(Pad(number=1, type=Pad.TYPE_SMT, shape=Pad.SHAPE_ROUNDRECT,
                 at=pad_1_pos, size=self.hotswap_pad_size,
                 round_radius_exact=0.25, layers=['B.Cu', 'B.Mask', 'B.Paste']))
         self.append(Pad(number=2, type=Pad.TYPE_SMT, shape=Pad.SHAPE_ROUNDRECT,
-                        at=vector(6.2, -5.8), size=vector(2, 1.75),
+                        at=vector(5.8, -5.8), size=vector(2.5, 1.75),
                         round_radius_exact=0.25, layers=['B.Cu', 'B.Mask', 'B.Paste']))
         # special pad bridging the 2 hotswap pads
         self.append(Pad(number=2, type=Pad.TYPE_SMT, shape=Pad.SHAPE_ROUNDRECT,
@@ -1005,7 +1004,7 @@ class SwitchHotswapHybrid(HotswapBase, CherryMXBase, Switch):
         self.append(PolygoneLine(polygone=offset_poly(self.polyline_base, offset=0.1), layer='B.SilkS'))
         self.append(PolygoneLine(polygone=offset_poly(self.polyline_base2, offset=0.1), layer='B.SilkS'))
         # tiny little line 
-        self.append(Line(start=[3.8, -6.15], end=[5.1, -6.15],
+        self.append(Line(start=[3.8, -6.15], end=[4.4, -6.15],
                          layer='B.SilkS', width=0.12))
 
     def _init_courtyard(self):
