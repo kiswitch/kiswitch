@@ -506,15 +506,6 @@ class SwitchKailhChoc(Switch, HotswapBase):
         [1.968, -7.982],
         [2.475, -7.475],
         [2.475, -7.275],
-        [2.566, -6.816],
-        [2.826, -6.426],
-        [3.216, -6.166],
-        [3.675, -6.075],
-        [6.475, -6.075],
-        [6.781, -6.014],
-        [7.041, -5.841],
-        [7.214, -5.581],
-        [7.275, -5.275],
     ]
 
     def __init__(self,
@@ -820,12 +811,10 @@ class SwitchHotswapKailh(HotswapBase, CherryMXBase, Switch):
         super()._init_silkscreen()
 
         # create silkscreen (socket)
-        self.append(Line(start=[-4.1, -6.9], end=[1, -6.9],
+        self.append(Line(start=[-0.2, -2.7], end=[2.25, -2.7],
                          layer='B.SilkS', width=0.12))
-        self.append(Line(start=[-0.2, -2.7], end=[4.9, -2.7],
-                         layer='B.SilkS', width=0.12))
-        self.append(Arc(center=[-4.1, -4.9], start=[-4.1, -6.9],
-                        angle=-90, layer='B.SilkS', width=0.12))
+        self.append(Arc(center=[-4.1, -4.9], start=[-6.1, -4.9],
+                        angle=50, layer='B.SilkS', width=0.12))
         self.append(Arc(center=[-0.2, -0.7], start=[-0.2, -2.7],
                         angle=-90, layer='B.SilkS', width=0.12))
 
@@ -914,14 +903,6 @@ class SwitchHotswapHybrid(HotswapBase, CherryMXBase, Switch):
         [2.475, -7.475],
         [2.475, -7.275],
         [2.566, -6.816],
-        [2.826, -6.426],
-        [3.216, -6.166],
-        [3.675, -6.075],
-        [6.475, -6.075],
-        [6.781, -6.014],
-        [7.041, -5.841],
-        [7.214, -5.581],
-        [7.275, -5.275],
     ]
 
     def __init__(self,
@@ -965,10 +946,20 @@ class SwitchHotswapHybrid(HotswapBase, CherryMXBase, Switch):
         self.hotswap_pad_offset_2 = self.ch_hotswap_pad_offset_2
 
         self._init_pcb_mount_holes()
-        self._init_pads()
+        self._init_hotswap_th()
+
+
+        pad_1_pos = self.pin_1_pos - self.hotswap_pad_offset_1
+        pad_2_pos = self.pin_2_pos + self.hotswap_pad_offset_2
+        self.append(Pad(number=1, type=Pad.TYPE_SMT, shape=Pad.SHAPE_ROUNDRECT,
+                at=pad_1_pos, size=self.hotswap_pad_size,
+                round_radius_exact=0.25, layers=['B.Cu', 'B.Mask', 'B.Paste']))
+        self.append(Pad(number=2, type=Pad.TYPE_SMT, shape=Pad.SHAPE_ROUNDRECT,
+                        at=vector(6.2, -5.8), size=vector(2, 1.75),
+                        round_radius_exact=0.25, layers=['B.Cu', 'B.Mask', 'B.Paste']))
         # special pad bridging the 2 hotswap pads
         self.append(Pad(number=2, type=Pad.TYPE_SMT, shape=Pad.SHAPE_ROUNDRECT,
-                            at=vector(7.755, -4.85), rotation=60, size=vector(2, 2.9),
+                            at=vector(7.8, -5), rotation=60, size=vector(2, 3.5),
                             round_radius_exact=0.25, layers=['B.Cu', 'B.Mask', 'B.Paste']))
 
         # TODO: V2 holes
@@ -1004,17 +995,18 @@ class SwitchHotswapHybrid(HotswapBase, CherryMXBase, Switch):
 
         # create silkscreen (socket)
         # mx
-        self.append(Line(start=[-4.1, -6.9], end=[1, -6.9],
+        self.append(Line(start=[-0.2, -2.7], end=[2.25, -2.7],
                          layer='B.SilkS', width=0.12))
-        self.append(Line(start=[-0.2, -2.7], end=[4.9, -2.7],
-                         layer='B.SilkS', width=0.12))
-        self.append(Arc(center=[-4.1, -4.9], start=[-4.1, -6.9],
-                        angle=-90, layer='B.SilkS', width=0.12))
+        self.append(Arc(center=[-4.1, -4.9], start=[-6.1, -4.9],
+                        angle=60, layer='B.SilkS', width=0.12))
         self.append(Arc(center=[-0.2, -0.7], start=[-0.2, -2.7],
                         angle=-45, layer='B.SilkS', width=0.12)) # slightly shorter since choc hole is bigger
         # choc
         self.append(PolygoneLine(polygone=offset_poly(self.polyline_base, offset=0.1), layer='B.SilkS'))
         self.append(PolygoneLine(polygone=offset_poly(self.polyline_base2, offset=0.1), layer='B.SilkS'))
+        # tiny little line 
+        self.append(Line(start=[3.8, -6.15], end=[5.1, -6.15],
+                         layer='B.SilkS', width=0.12))
 
     def _init_courtyard(self):
         super()._init_courtyard()
