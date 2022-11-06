@@ -3,6 +3,9 @@ import os
 import wx
 
 from .dialog import GeneratorDialog, ImporterDialog
+from .util import get_project_path, create_library_dir
+from .fplibtable import open_fp_lib_table, FpLibTable
+
 
 class KswKiPGenerator(pcbnew.ActionPlugin):
     def defaults(self):
@@ -15,6 +18,14 @@ class KswKiPGenerator(pcbnew.ActionPlugin):
     def Run(self):
 
         try:
+            project_path=get_project_path()
+            lib_path = create_library_dir(project_path, 'ksw')
+
+            old_fp_lib_table_str = open_fp_lib_table(project_path)
+            fp_lib_table = FpLibTable.fromStr(old_fp_lib_table_str)
+
+            print(fp_lib_table)
+
             dialog = GeneratorDialog()
             dialog.ShowModal()
 
