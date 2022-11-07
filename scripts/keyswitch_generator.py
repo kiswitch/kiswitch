@@ -306,9 +306,9 @@ def generate_switch_hotswap_kailh_choc(output_path):
         file_handler.writeFile(os.path.join(out_path, f'{switch.name}.kicad_mod'), timestamp=0)
 
 
-def generate_switch_hybrid_hotswap_kailh(output_path):
+def generate_switch_hotswap_hybrid_kailh_choc_mx(output_path):
     spacing = 19.05
-    group = 'Switch_Keyboard_Hybrid_Hotswap_Kailh'
+    group = 'Switch_Hotswap_Hybrid_Kailh_Choc_MX'
     out_path = os.path.join(output_path, f'{group}.pretty')
     if not os.path.isdir(out_path):
         os.mkdir(out_path)
@@ -358,4 +358,4 @@ if __name__ == '__main__':
     generate_switch_kailh_kh(args.output)
     generate_switch_kailh_nb(args.output)
     generate_switch_hotswap_kailh(args.output)
-    generate_switch_hybrid_hotswap_kailh(args.output)
+    generate_switch_hotswap_hybrid_kailh_choc_mx(args.output)
