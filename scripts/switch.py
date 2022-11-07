@@ -506,6 +506,15 @@ class SwitchKailhChoc(Switch, HotswapBase):
         [1.968, -7.982],
         [2.475, -7.475],
         [2.475, -7.275],
+        [2.566, -6.816],
+        [2.826, -6.426],
+        [3.216, -6.166],
+        [3.675, -6.075],
+        [6.475, -6.075],
+        [6.781, -6.014],
+        [7.041, -5.841],
+        [7.214, -5.581],
+        [7.275, -5.275],
     ]
 
     def __init__(self,
@@ -911,6 +920,7 @@ class SwitchHotswapHybrid(HotswapBase, CherryMXBase, Switch):
                  tags: str = None,
                  cutout: str = 'relief',
                  model3d: Union[str, list[str]] = 'SW_Hotswap_Kailh_MX.wrl',
+                 text_offset: float = 9.5,
                  **kwargs):
 
         if cutout not in ['simple', 'relief', None]:
@@ -930,7 +940,8 @@ class SwitchHotswapHybrid(HotswapBase, CherryMXBase, Switch):
             tags=tags if tags else _tags,
             cutout=True if cutout is not None else False,
             model3d=model3d,
-            **kwargs)
+            text_offset=text_offset
+        )
 
         self.setAttribute('smd')
         self._init_switch()
@@ -959,7 +970,7 @@ class SwitchHotswapHybrid(HotswapBase, CherryMXBase, Switch):
         # special pad bridging the 2 hotswap pads
         self.append(Pad(number=2, type=Pad.TYPE_SMT, shape=Pad.SHAPE_ROUNDRECT,
                             at=vector(7.8, -5), rotation=60, size=vector(2, 3.5),
-                            round_radius_exact=0.25, layers=['B.Cu', 'B.Mask', 'B.Paste']))
+                            round_radius_exact=0.25, layers=['B.Cu', 'B.Paste']))
 
         # TODO: V2 holes
 
@@ -1029,7 +1040,6 @@ class SwitchHotswapHybrid(HotswapBase, CherryMXBase, Switch):
                     angle=-90, layer='B.CrtYd', width=0.05))
         # choc
         polyline = self.polyline_base + self.polyline_base2
-        polyline.append(polyline[0])
         self.append(PolygoneLine(polygone=offset_poly(polyline, offset=0.25), layer='B.CrtYd'))
 
     def _init_pads(self):
