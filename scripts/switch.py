@@ -820,12 +820,10 @@ class SwitchHotswapKailh(HotswapBase, CherryMXBase, Switch):
         super()._init_silkscreen()
 
         # create silkscreen (socket)
-        self.append(Line(start=[-4.1, -6.9], end=[1, -6.9],
+        self.append(Line(start=[-0.2, -2.7], end=[2.25, -2.7],
                          layer='B.SilkS', width=0.12))
-        self.append(Line(start=[-0.2, -2.7], end=[4.9, -2.7],
-                         layer='B.SilkS', width=0.12))
-        self.append(Arc(center=[-4.1, -4.9], start=[-4.1, -6.9],
-                        angle=-90, layer='B.SilkS', width=0.12))
+        self.append(Arc(center=[-4.1, -4.9], start=[-6.1, -4.9],
+                        angle=50, layer='B.SilkS', width=0.12))
         self.append(Arc(center=[-0.2, -0.7], start=[-0.2, -2.7],
                         angle=-90, layer='B.SilkS', width=0.12))
 
@@ -848,3 +846,204 @@ class SwitchHotswapKailh(HotswapBase, CherryMXBase, Switch):
                     angle=-90, layer='B.CrtYd', width=0.05))
         self.append(Arc(center=[-0.3, -0.8], start=[-0.3, -2.8],
                     angle=-90, layer='B.CrtYd', width=0.05))
+
+class SwitchHotswapHybrid(HotswapBase, CherryMXBase, Switch):
+
+    switch_w = 15
+    switch_h = 15
+
+    switch_cut_w = 14.5
+    switch_cut_h = 14.5
+
+    center_hole_dia = 5.05
+    pcb_mount_hole_dia = 1.9
+    pcb_mount_hole_spacing = vector(5.5, 0)
+    # cherry spacing
+    ch_pcb_mount_hole_spacing = vector(5.08, 0)
+    ch_pcb_mount_hole_dia = 1.75 # kalih diameter, not MX (since its larger)
+
+
+    pin_1_pos = vector(0, -5.9)
+    pin_2_pos = vector(5, -3.8)
+
+    pin_dia = 1.2
+
+    v2_mount_pos = vector(-5, 5.15)
+    v2_mount_dia = 1.6
+
+    # cherry
+    ch_pin_1_pos = vector(-3.81, -2.54)
+    ch_pin_2_pos = vector(2.54, -5.08)
+    ch_pin_dia = 1.5
+
+    # TODO: Choc Hotswap pad size and locations do not match datasheet
+    hotswap_pad_size = vector(2.55, 2.5)
+    hotswap_th_offset = vector(0, 0)
+    hotswap_pad_offset_1 = vector(3.5, 0.1)
+    hotswap_pad_offset_2 = vector(3.5, 0)
+
+    # cherry hotswap pads
+    ch_hotswap_pad_offset_1 = vector(3.275, 0.0)
+    ch_hotswap_pad_offset_2 = vector(3.302, 0.0)
+
+    polyline_base = [
+        [7.275, -2.225],
+        [7.575, -2.225],
+        [7.575, -1.425],
+        [3.567, -1.425],
+        [3.276,  -1.48],
+        [3.025, -1.636],
+        [2.848, -1.873],
+        [2.769, -2.158],
+        [2.612, -2.729],
+        [2.258, -3.203],
+        [1.756, -3.516],
+        [1.175, -3.625],
+        [-1.45, -3.625],
+        [-2.275, -4.45],
+    ]
+
+    polyline_base2 = [
+        [-2.275, -7.45],
+        [-1.45, -8.275],
+        [1.261, -8.275],
+        [1.643, -8.199],
+        [1.968, -7.982],
+        [2.475, -7.475],
+        [2.475, -7.275],
+        [2.566, -6.816],
+    ]
+
+    def __init__(self,
+                 name: str = None,
+                 description: str = None,
+                 tags: str = None,
+                 cutout: str = 'relief',
+                 model3d: Union[str, list[str]] = 'SW_Hotswap_Kailh_MX.wrl',
+                 text_offset: float = 9.5,
+                 **kwargs):
+
+        if cutout not in ['simple', 'relief', None]:
+            raise ValueError(f'Cutout type {cutout} not supported.')
+
+        self.mx_cutout = cutout
+
+        _name = 'SW_Hotswap_Hybrid'
+        _tags = 'Kailh Keyboard Keyswitch Switch Hybrid Hotswap Socket'
+        _description = 'Kailh keyswitch Hybrid Hotswap Socket'
+
+        self.hotswap_plated = False
+
+        super().__init__(
+            name=name if name else _name,
+            description=description if description else _description,
+            tags=tags if tags else _tags,
+            cutout=True if cutout is not None else False,
+            model3d=model3d,
+            text_offset=text_offset
+        )
+
+        self.setAttribute('smd')
+        self._init_switch()
+        # edit class values for cherry and call _init_x again (skipping aready specialized ones)
+        self.pcb_mount_hole_spacing = self.ch_pcb_mount_hole_spacing
+        self.pcb_mount_hole_dia = self.ch_pcb_mount_hole_dia
+
+        self.pin_1_pos = self.ch_pin_1_pos 
+        self.pin_2_pos = self.ch_pin_2_pos 
+        self.pin_dia = self.ch_pin_dia
+
+        self.hotswap_pad_offset_1 = self.ch_hotswap_pad_offset_1
+        self.hotswap_pad_offset_2 = self.ch_hotswap_pad_offset_2
+
+        self._init_pcb_mount_holes()
+        self._init_hotswap_th()
+
+
+        pad_1_pos = self.pin_1_pos - self.hotswap_pad_offset_1
+        self.append(Pad(number=1, type=Pad.TYPE_SMT, shape=Pad.SHAPE_ROUNDRECT,
+                at=pad_1_pos, size=self.hotswap_pad_size,
+                round_radius_exact=0.25, layers=['B.Cu', 'B.Mask', 'B.Paste']))
+        self.append(Pad(number=2, type=Pad.TYPE_SMT, shape=Pad.SHAPE_ROUNDRECT,
+                        at=vector(5.8, -5.8), size=vector(2.5, 1.75),
+                        round_radius_exact=0.25, layers=['B.Cu', 'B.Mask', 'B.Paste']))
+        # special pad bridging the 2 hotswap pads
+        self.append(Pad(number=2, type=Pad.TYPE_SMT, shape=Pad.SHAPE_ROUNDRECT,
+                            at=vector(7.8, -5), rotation=60, size=vector(2, 3.5),
+                            round_radius_exact=0.25, layers=['B.Cu', 'B.Paste']))
+
+        # TODO: V2 holes
+
+    def _init_fab_outline(self):
+        super()._init_fab_outline()
+
+        # create fab outline (socket)
+        # mx
+        self.append(Line(start=[-4, -6.8], end=[4.8, -6.8],
+                    layer='B.Fab', width=0.12))
+        self.append(Line(start=[4.8, -6.8], end=[4.8, -2.8],
+                    layer='B.Fab', width=0.12))
+        self.append(Line(start=[-0.3, -2.8], end=[4.8, -2.8],
+                    layer='B.Fab', width=0.12))
+        self.append(Line(start=[-6, -0.8], end=[-2.3, -0.8],
+                    layer='B.Fab', width=0.12))
+        self.append(Line(start=[-6, -0.8], end=[-6, -4.8],
+                    layer='B.Fab', width=0.12))
+        self.append(Arc(center=[-4, -4.8], start=[-4, -6.8],
+                    angle=-90, layer='B.Fab', width=0.12))
+        self.append(Arc(center=[-0.3, -0.8], start=[-0.3, -2.8],
+                    angle=-90, layer='B.Fab', width=0.12))
+        # choc
+        self.append(PolygoneLine(
+                polygone=self.polyline_base, layer='B.Fab'))
+        self.append(PolygoneLine(
+            polygone=self.polyline_base2, layer='B.Fab'))
+
+
+    def _init_silkscreen(self):
+        super()._init_silkscreen()
+
+        # create silkscreen (socket)
+        # mx
+        self.append(Line(start=[-0.2, -2.7], end=[2.25, -2.7],
+                         layer='B.SilkS', width=0.12))
+        self.append(Arc(center=[-4.1, -4.9], start=[-6.1, -4.9],
+                        angle=60, layer='B.SilkS', width=0.12))
+        self.append(Arc(center=[-0.2, -0.7], start=[-0.2, -2.7],
+                        angle=-45, layer='B.SilkS', width=0.12)) # slightly shorter since choc hole is bigger
+        # choc
+        self.append(PolygoneLine(polygone=offset_poly(self.polyline_base, offset=0.1), layer='B.SilkS'))
+        self.append(PolygoneLine(polygone=offset_poly(self.polyline_base2, offset=0.1), layer='B.SilkS'))
+        # tiny little line 
+        self.append(Line(start=[3.8, -6.15], end=[4.4, -6.15],
+                         layer='B.SilkS', width=0.12))
+
+    def _init_courtyard(self):
+        super()._init_courtyard()
+
+        # create courtyard (socket)
+        # !TODO: add KLC correct offset (0.25)
+        # mx
+        self.append(Line(start=[-4, -6.8], end=[4.8, -6.8],
+                    layer='B.CrtYd', width=0.05))
+        self.append(Line(start=[4.8, -6.8], end=[4.8, -2.8],
+                    layer='B.CrtYd', width=0.05))
+        self.append(Line(start=[-0.3, -2.8], end=[4.8, -2.8],
+                    layer='B.CrtYd', width=0.05))
+        self.append(Line(start=[-6, -0.8], end=[-2.3, -0.8],
+                    layer='B.CrtYd', width=0.05))
+        self.append(Line(start=[-6, -0.8], end=[-6, -4.8],
+                    layer='B.CrtYd', width=0.05))
+        self.append(Arc(center=[-4, -4.8], start=[-4, -6.8],
+                    angle=-90, layer='B.CrtYd', width=0.05))
+        self.append(Arc(center=[-0.3, -0.8], start=[-0.3, -2.8],
+                    angle=-90, layer='B.CrtYd', width=0.05))
+        # choc
+        polyline = self.polyline_base + self.polyline_base2
+        self.append(PolygoneLine(polygone=offset_poly(polyline, offset=0.25), layer='B.CrtYd'))
+
+    def _init_pads(self):
+        HotswapBase._init_pads(self)
+
+        
+# mount holes? (yes for v2 holes)
