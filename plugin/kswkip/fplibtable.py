@@ -87,13 +87,20 @@ class FpLibTableLib():
 
         return cls(name, uri, type, options, descr)
 
+    def __eq__(self, __o: object) -> bool:
+        if isinstance(__o, str):
+            return self.name == __o
+        elif isinstance(__o, FpLibTableLib):
+            return self.name == __o.name
+        return False
+
     def __str__(self) -> str:
         return f'(lib (name "{self.name}")(type "{self.type}")(uri "{self.uri}")(options "{self.options}")(descr "{self.descr}"))'
 
 
 class FpLibTable():
     def __init__(self, libs: list=[]) -> None:
-        self.libs = libs
+        self._libs = libs
 
     @classmethod
     def fromStr(cls, str: str) -> 'FpLibTable':
@@ -111,6 +118,24 @@ class FpLibTable():
                 libs.append(FpLibTableLib.fromLst(sub_parse[1]))
 
         return cls(libs)
+
+    @classmethod
+    def read(cls, path: str or os.path) -> 'FpLibTable':
+        return cls.fromStr(open_fp_lib_table(path))
+
+    def write(self, path: str or os.path) -> None:
+        with open(os.path.join(path, 'fp-lib-table'), 'w') as f:
+            f.write(str(self))
+
+    @property
+    def libs(self) -> list:
+        return self._libs
+
+    def addLib(self, lib: FpLibTableLib) -> None:
+        self._libs.append(lib)
+
+    def removeLib(self, lib: object) -> None:
+        self._libs.remove(lib)
 
     def __str__(self) -> str:
         string = '(fp_lib_table\n'
