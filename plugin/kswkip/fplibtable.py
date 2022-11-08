@@ -1,7 +1,7 @@
 import os
 
 
-def _parse_fp_lib_table(string: str) -> tuple(int, tuple(str, list)):
+def _parse_fp_lib_table(string: str) -> tuple():
     index = 0
     size = 0
     subs = None
@@ -40,7 +40,7 @@ def _parse_fp_lib_table(string: str) -> tuple(int, tuple(str, list)):
     return size, (this, subs)
 
 
-def parse_fp_lib_table_braces(string: str) -> tuple(str, list):
+def parse_fp_lib_table_braces(string: str) -> tuple():
     return _parse_fp_lib_table(string)[1]
 
 
@@ -55,7 +55,7 @@ def open_fp_lib_table(path: str or os.path) -> str:
 
 
 class FpLibTableLib():
-    def __init__(self, name: str, type: str, uri: str, options: str, descr: str) -> None:
+    def __init__(self, name: str, uri: str, type: str='KiCad', options: str='', descr: str='') -> None:
         self.name = name
         self.type = type
         self.uri = uri
@@ -63,10 +63,10 @@ class FpLibTableLib():
         self.descr = descr
 
     @classmethod
-    def fromLst(cls, value_list: list(tuple(str, list))) -> 'FpLibTableLib':
+    def fromLst(cls, value_list: list(tuple())) -> 'FpLibTableLib':
         name = ''
-        type = ''
         uri = ''
+        type = 'KiCad'
         options = ''
         descr = ''
 
@@ -85,7 +85,7 @@ class FpLibTableLib():
             elif keyword == 'descr':
                 descr = value
 
-        return cls(name, type, uri, options, descr)
+        return cls(name, uri, type, options, descr)
 
     def __str__(self) -> str:
         return f'(lib (name "{self.name}")(type "{self.type}")(uri "{self.uri}")(options "{self.options}")(descr "{self.descr}"))'
