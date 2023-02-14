@@ -290,13 +290,13 @@ def generate_switch_hotswap_kailh_choc(output_path):
     switches = []
 
     for plated in [False, True]:
-
-        switches.append(SwitchKailhChoc(path3d=path3d, hotswap=True,
-                                        hotswap_plated=plated))
-
-        for key in keys:
+        for switch_type in ['V1', 'V1V2']:
             switches.append(SwitchKailhChoc(path3d=path3d, hotswap=True,
-                                            hotswap_plated=plated,
+                                            hotswap_plated=plated, switch_type=switch_type))
+
+            for key in keys:
+                switches.append(SwitchKailhChoc(path3d=path3d, hotswap=True,
+                                            hotswap_plated=plated, switch_type=switch_type,
                                             keycap=Keycap(x_spacing=x_spacing,
                                                           y_spacing=y_spacing,
                                                           **keycaps[key])))
