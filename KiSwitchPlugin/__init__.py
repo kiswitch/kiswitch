@@ -1,5 +1,5 @@
 try:
-	from .kswkip.plugin import KswKiPGenerator, KswKiPImporter
+	from .plugin.plugin import KswKiPGenerator, KswKiPImporter
 
     KswKiPGenerator().register()
     # KswKiPImporter().register()
