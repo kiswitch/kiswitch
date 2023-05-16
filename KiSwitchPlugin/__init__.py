@@ -1,12 +1,15 @@
-try:
-	from .plugin.plugin import KswKiPGenerator, KswKiPImporter
+#!/usr/bin/env python
+# SPDX-License-Identifier: MIT
+# SPDX-FileCopyrightText: 2022 Rafael Silva <perigoso@riseup.net>
 
-    KswKiPGenerator().register()
-    # KswKiPImporter().register()
+try:
+    from KiSwitchPlugin.plugin.plugin import KiSwitchPluginGenerator, KiSwitchPluginImporter
+
+    print('Loading KiSwitch Plugins')
+
+    KiSwitchPluginGenerator().register()
+    # KiSwitchPluginImporter().register()
 
 except Exception as e:
-    import os
-    import traceback
-    log_file = os.path.join(os.path.dirname(__file__), 'KswKiP.log')
-    with open(log_file, 'w') as f:
-        f.write(traceback.format_exc())
+    from KiSwitchPlugin.util import logException
+    logException(e, 'KiSwitchPlugin')

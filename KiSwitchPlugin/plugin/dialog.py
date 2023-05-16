@@ -17,7 +17,7 @@ def get_confirmation_dialog(parent=None, message: str = '', title: str = 'Confir
 class GeneratorDialog(wx.Dialog):
     def __init__(self, parent=None, project_path=None):
         wx.Dialog.__init__(
-            self, parent, title=f'KswKiP Generator',
+            self, parent, title=f'KiSwitch Generator',
             style=wx.DEFAULT_DIALOG_STYLE)
 
     def OnResize(self):
@@ -31,7 +31,7 @@ class GeneratorDialog(wx.Dialog):
 class ImporterDialog(wx.Dialog):
     def __init__(self, parent=None, project_path=None):
         wx.Dialog.__init__(
-            self, parent, title=f'KswKiP Importer',
+            self, parent, title=f'KiSwitch Importer',
             style=wx.DEFAULT_DIALOG_STYLE)
 
     def OnResize(self):
