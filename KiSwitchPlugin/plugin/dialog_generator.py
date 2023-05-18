@@ -13,6 +13,7 @@ with deps_path():
     from KiSwitch.fplibtable import FpLib, FpLibTable
     from KiSwitch.switch import SwitchCherryMX
     from KiSwitch.renderer import GenericRenderer
+    from KiSwitch.generator import SWITCHES
 
 LIBNAME = 'KiSwitchLib'
 
@@ -123,6 +124,16 @@ class GeneratorDialog(wx.Dialog):
 
         self.setup_preview(middle_sizer)
 
+
+        sampleList = [sw.__name__ for sw in SWITCHES]
+
+        self.cb = wx.ComboBox(self,
+                              size=wx.DefaultSize,
+                              choices=sampleList)
+
+        top_sizer.Add(self.cb, 0, wx.ALL, 8 )
+
+
         top_sizer.Add(middle_sizer, 1, wx.EXPAND | wx.ALL, 5)
         self.setup_buttons(top_sizer)
 
@@ -146,7 +157,7 @@ class GeneratorDialog(wx.Dialog):
             library_dir = prepare_lib_dir(
                 self, self.project_path, LIBNAME)
             prepare_lib_table(self, self.project_path, LIBNAME)
-            generate_switch_cherry_mx(library_dir)
+            # generate_switch_cherry_mx(library_dir)
         except Exception as e:
             error_dialog(self, str(e))
 
