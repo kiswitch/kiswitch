@@ -42,7 +42,7 @@ class SwitchPad(Node):
 
         self.virtual_childs = []
 
-        self.type = kwargs.get("pad_type", SwitchPad.TYPE_MASKED)
+        self.type = kwargs.get("pad_type", SwitchPad.TYPE_REGULAR)
 
         if self.type not in SwitchPad._TYPES:
             raise ValueError(f"{self.type} is an invalid type for SwitchPad")
