@@ -45,6 +45,9 @@ class Switch(Footprint):
 
         self.name = self.name.replace(" ", "_")
 
+    def add_generic_nodes(self):
+        self._init_generic_nodes()
+
     def _init_generic_nodes(self):
         # add general values
         self.append(Text(type="reference", text="REF**", at=[0, -self.text_offset], layer="F.SilkS"))
@@ -249,8 +252,6 @@ class SwitchAlpsMatias(Switch):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        self._init_generic_nodes()
-
         self._init_switch()
 
     # disable default Switch features we don't use
@@ -377,7 +378,6 @@ class SwitchCherryMX(CherryMXBase, Switch):
         if self.model3d == None:
             self.model3d = [f"{self.name}.wrl"]
 
-        self._init_generic_nodes()
         self._init_switch()
 
     def _init_pcb_mount_holes(self):
@@ -424,7 +424,6 @@ class SwitchHybridCherryMxAlps(Switch, CherryMXBase):
             [-self.cherry_w / 2, -self.cherry_h / 2],
         ]
 
-        self._init_generic_nodes()
         self._init_switch()
 
     def _init_fab_outline(self):
@@ -735,7 +734,6 @@ class SwitchKailhChoc(HotswapBase, Switch):
         else:
             self.center_hole_dia = 3.45
 
-        self._init_generic_nodes()
         self._init_switch()
 
     def _init_fab_outline(self):
@@ -811,7 +809,6 @@ class SwitchKailhChocMini(Switch):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        self._init_generic_nodes()
         self._init_switch()
 
     def _init_center_hole(self):
@@ -860,7 +857,6 @@ class SwitchKailhKH(Switch):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        self._init_generic_nodes()
         self._init_switch()
 
 
@@ -910,7 +906,6 @@ class SwitchKailhNB(Switch):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        self._init_generic_nodes()
         self._init_switch()
 
     def _init_center_hole(self):
@@ -943,7 +938,6 @@ class SwitchHotswapKailh(HotswapBase, CherryMXBase, Switch):
 
         self.setAttribute("smd")
 
-        self._init_generic_nodes()
         self._init_switch()
 
     def _init_fab_outline(self):
