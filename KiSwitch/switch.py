@@ -174,7 +174,6 @@ class StabilizerCherryMX(Switch):
         if self.model3d == None:
             self.model3d = [f"{self.name}.wrl"]
 
-        self._init_generic_nodes()
         self._init_base()
 
         if self.cutout is True:
