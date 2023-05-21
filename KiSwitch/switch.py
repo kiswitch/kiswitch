@@ -23,7 +23,7 @@ class Switch(Footprint):
 
     name = kiswitch_property(base_type=str)
     description = kiswitch_property(base_type=str, default="")
-    tags = kiswitch_property(base_type=str, list_property=True)
+    tags = kiswitch_property(base_type=str)
     cutout = kiswitch_property(base_type=bool, default=False)
     annular_ring = kiswitch_property(base_type=float, default=1)
     path3d = kiswitch_property(
@@ -61,7 +61,7 @@ class Switch(Footprint):
                 self.append(Model(filename=model_path, at=[0, 0, 0], scale=[1, 1, 1], rotate=[0, 0, 0]))
 
     def _init_cutout(self):
-        self.append_tags(["Cutout"])
+        self.append_tags("Cutout")
         self.append_center_rect(x=self.switch_cut_w, y=self.switch_cut_h, layer="Eco1.User", width=0.1)
 
     def _init_fab_outline(self):
@@ -128,8 +128,8 @@ class Switch(Footprint):
             self.description += " "
         self.description += desc
 
-    def append_tags(self, tags: list[str]):
-        self.tags += tags
+    def append_tags(self, tags: str):
+        self.tags += " " + tags
 
     def append_center_rect(self, layer, x=None, y=None, width=None, offset=0):
         x = x or self.switch_w
@@ -159,7 +159,7 @@ class StabilizerCherryMX(Switch):
 
     name = kiswitch_property(base_type=str, default="Stabilizer_Cherry_MX")
     description = kiswitch_property(base_type=str, default="Cherry MX PCB Stabilizer")
-    tags = kiswitch_property(base_type=str, default=["Cherry", "MX", "Keyboard", "Stabilizer"], list_property=True)
+    tags = kiswitch_property(base_type=str, default="Cherry MX Keyboard Stabilizer")
     size = kiswitch_property(base_type=float, allowed_list=list(LU_TABLE.keys()))
     cutout = kiswitch_property(base_type=bool, default=True)
     text_offset = kiswitch_property(base_type=float, default=2)
@@ -169,7 +169,7 @@ class StabilizerCherryMX(Switch):
 
         self.append_name(f"{self.size:1.2f}u")
         self.append_description(" ".join(self.LU_TABLE[self.size]["tags"]))
-        self.append_tags(self.LU_TABLE[self.size]["tags"])
+        self.append_tags(" ".join(self.LU_TABLE[self.size]["tags"]))
 
         if self.model3d == None:
             self.model3d = [f"{self.name}.wrl"]
@@ -207,7 +207,7 @@ class StabilizerCherryMX(Switch):
         self.append(RectLine(start=[offset - 3.375, -5.53], end=[offset + 3.375, 6.77], layer="Eco1.User", width=0.1))
         self.append(RectLine(start=[-offset - 3.375, -5.53], end=[-offset + 3.375, 6.77], layer="Eco1.User", width=0.1))
 
-        self.append_tags(["Cutout"])
+        self.append_tags("Cutout")
 
 
 # https://github.com/keyboardio/keyswitch_documentation/blob/master/datasheets/ALPS/SKCL.pdf
@@ -234,9 +234,7 @@ class SwitchAlpsMatias(Switch):
 
     name = kiswitch_property(base_type=str, default="SW_Alps_Matias")
     description = kiswitch_property(base_type=str, default="Alps/Matias keyswitch")
-    tags = kiswitch_property(
-        base_type=str, default=["Alps", "Matias", "Keyboard", "Keyswitch", "Switch", "Plate"], list_property=True
-    )
+    tags = kiswitch_property(base_type=str, default="Alps Matias Keyboard Keyswitch Switch Plate")
     model3d = kiswitch_property(base_type=str, list_property=True, default=["SW_Alps_Matias.wrl"])
     cutout = kiswitch_property(base_type=bool, default=True)
     switch_w = kiswitch_property(base_type=float, default=15.5)
@@ -309,7 +307,7 @@ class CherryMXBase:
     ]
 
     def _init_relief_cutout(self):
-        self.append_tags(["Relief", "Cutout"])
+        self.append_tags("Relief Cutout")
         self.append(PolygoneLine(polygone=self.mx_relief_cutout_polyline, layer="Eco1.User", width=0.1))
 
     def _init_cutout(self):
@@ -357,9 +355,7 @@ class SwitchCherryMX(CherryMXBase, Switch):
 
     name = kiswitch_property(base_type=str, default="SW_Cherry_MX")
     description = kiswitch_property(base_type=str, default="Cherry MX keyswitch")
-    tags = kiswitch_property(
-        base_type=str, default=["Cherry", "MX", "Keyboard", "Keyswitch", "Switch"], list_property=True
-    )
+    tags = kiswitch_property(base_type=str, default="Cherry MX Keyboard Keyswitch Switch")
     cutout = kiswitch_property(base_type=str, default="simple", allowed_list=CherryMXBase.CUTOUTS)
     switch_type = kiswitch_property(base_type=str, default="PCB", allowed_list=SWITCH_TYPES)
     switch_w = kiswitch_property(base_type=float, default=CherryMXBase.SWITCH_W)
@@ -372,7 +368,7 @@ class SwitchCherryMX(CherryMXBase, Switch):
 
         self.append_name(self.switch_type)
         self.append_description(f"{self.switch_type} Mount")
-        self.append_tags([self.switch_type])
+        self.append_tags(self.switch_type)
 
         if self.model3d == None:
             self.model3d = [f"{self.name}.wrl"]
@@ -391,11 +387,7 @@ class SwitchHybridCherryMxAlps(Switch, CherryMXBase):
 
     name = kiswitch_property(base_type=str, default="SW_Hybrid_Cherry_MX_Alps")
     description = kiswitch_property(base_type=str, default="Cherry MX / Alps keyswitch hybrid")
-    tags = kiswitch_property(
-        base_type=str,
-        default=["Cherry", "MX", "Alps", "Matias", "Hybrid", "Keyboard", "Keyswitch", "Switch", "PCB"],
-        list_property=True,
-    )
+    tags = kiswitch_property(base_type=str, default="Cherry MX Alps Matias Hybrid Keyboard Keyswitch Switch PCB")
     model3d = kiswitch_property(
         base_type=str, list_property=True, default=["SW_Cherry_MX_PCB.wrl", "SW_Alps_Matias.wrl"]
     )
@@ -611,7 +603,7 @@ class SwitchKailhChoc(HotswapBase, Switch):
 
     name = kiswitch_property(base_type=str, default="SW_Kailh_Choc")
     description = kiswitch_property(base_type=str, default="Kailh Choc keyswitch")
-    tags = kiswitch_property(base_type=str, default=["Kailh", "Choc", "Keyswitch", "Switch"], list_property=True)
+    tags = kiswitch_property(base_type=str, default="Kailh Choc Keyswitch Switch")
     switch_type = kiswitch_property(base_type=str, default="V1V2", allowed_list=SWITCH_TYPES)
     hotswap = kiswitch_property(base_type=bool, default=False)
     hotswap_plated = kiswitch_property(base_type=bool, default=False)
@@ -709,19 +701,19 @@ class SwitchKailhChoc(HotswapBase, Switch):
 
         if self.support_v1:
             self.append_description("CPG1350 V1")
-            self.append_tags(["CPG1350", "V1"])
+            self.append_tags("CPG1350 V1")
 
         if self.support_v2:
             self.append_description("CPG1353 V2")
-            self.append_tags(["CPG1353", "V2"])
+            self.append_tags("CPG1353 V2")
 
         if self.hotswap is True:
             self.append_description("Hotswap")
-            self.append_tags(["Hotswap"])
+            self.append_tags("Hotswap")
 
         if self.hotswap_plated is True:
             self.append_description("Plated")
-            self.append_tags(["Plated"])
+            self.append_tags("Plated")
             self.append_name("Plated")
 
         if self.hotswap is True:
@@ -787,11 +779,7 @@ class SwitchKailhChocMini(Switch):
 
     name = kiswitch_property(base_type=str, default="SW_Kailh_Choc_Mini")
     description = kiswitch_property(base_type=str, default="Kailh Choc Mini CPG1232 low profile keyswitch")
-    tags = kiswitch_property(
-        base_type=str,
-        default=["Kailh", "Choc Mini", "CPG1232", "Keyboard", "Low Profile", "Keyswitch", "Switch"],
-        list_property=True,
-    )
+    tags = kiswitch_property(base_type=str, default="Kailh Choc Mini CPG1232 Keyboard Low Profile Keyswitch Switch")
     model3d = kiswitch_property(base_type=str, list_property=True, default=["SW_Kailh_Choc_Mini.wrl"])
     cutout = kiswitch_property(base_type=bool, default=True)
     switch_w = kiswitch_property(base_type=float, default=14.5)
@@ -835,9 +823,7 @@ class SwitchKailhKH(Switch):
 
     name = kiswitch_property(base_type=str, default="SW_Kailh_KH")
     description = kiswitch_property(base_type=str, default="Kailh KH CPG1280 keyswitch")
-    tags = kiswitch_property(
-        base_type=str, default=["Kailh", "KH", "CPG1280", "Keyboard", "Keyswitch", "Switch"], list_property=True
-    )
+    tags = kiswitch_property(base_type=str, default="Kailh KH CPG1280 Keyboard Keyswitch Switch")
     model3d = kiswitch_property(base_type=str, list_property=True, default=["SW_Kailh_KH.wrl"])
     cutout = kiswitch_property(base_type=bool, default=True)
     switch_w = kiswitch_property(base_type=float, default=13)
@@ -883,11 +869,7 @@ class SwitchKailhNB(Switch):
 
     name = kiswitch_property(base_type=str, default="SW_Kailh_NB")
     description = kiswitch_property(base_type=str, default="Kailh KH CPG1425 low profile notebook keyswitch")
-    tags = kiswitch_property(
-        base_type=str,
-        default=["Kailh", "KH", "CPG1425", "Keyboard", "Low Profile", "Notebook", "Keyswitch", "Switch"],
-        list_property=True,
-    )
+    tags = kiswitch_property(base_type=str, default="Kailh KH CPG1425 Keyboard Low Profile Notebook Keyswitch Switch")
     model3d = kiswitch_property(base_type=str, list_property=True, default=["SW_Kailh_NB.wrl"])
     cutout = kiswitch_property(base_type=bool, default=True)
     switch_w = kiswitch_property(base_type=float, default=14)
@@ -916,9 +898,7 @@ class SwitchHotswapKailh(HotswapBase, CherryMXBase, Switch):
 
     name = kiswitch_property(base_type=str, default="SW_Hotswap_Kailh_MX")
     description = kiswitch_property(base_type=str, default="Kailh keyswitch Hotswap Socket")
-    tags = kiswitch_property(
-        base_type=str, default=["Kailh", "Keyboard", "Keyswitch", "Switch", "Hotswap", "Socket"], list_property=True
-    )
+    tags = kiswitch_property(base_type=str, default="Kailh Keyboard Keyswitch Switch Hotswap Socket")
     model3d = kiswitch_property(base_type=str, list_property=True, default=["SW_Hotswap_Kailh_MX.wrl"])
     cutout = kiswitch_property(base_type=str, default="relief", allowed_list=CherryMXBase.CUTOUTS)
     hotswap_plated = kiswitch_property(base_type=bool, default=False)
@@ -932,7 +912,7 @@ class SwitchHotswapKailh(HotswapBase, CherryMXBase, Switch):
 
         if self.hotswap_plated is True:
             self.append_name("Plated")
-            self.append_tags(["Plated"])
+            self.append_tags("Plated")
             self.append_description("plated holes")
 
         self.setAttribute("smd")

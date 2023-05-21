@@ -80,7 +80,7 @@ class Keycap(Node):
     # keycap parameters
     name = kiswitch_property(base_type=str, default="")
     description = kiswitch_property(base_type=str, default="")
-    tags = kiswitch_property(base_type=str, default=["Keycap"], list_property=True)
+    tags = kiswitch_property(base_type=str, default="Keycap")
     type = kiswitch_property(base_type=str, allowed_list=[KEYCAP_TYPE_REGULAR, KEYCAP_TYPE_ISO_ENTER])
     spacing_x = kiswitch_property(base_type=float, default=19.05)
     spacing_y = kiswitch_property(base_type=float)
@@ -103,8 +103,7 @@ class Keycap(Node):
         elif self.type == self.KEYCAP_TYPE_ISO_ENTER:
             self.virtual_childs = self._init_ISOEnter_keycap()
 
-        self.name += "_".join(self.tags)
-        self.description += " ".join(self.tags + ["keycap"])
+        self.description += self.tags
 
     def _init_regular_keycap(self):
         nodes = []
@@ -112,11 +111,14 @@ class Keycap(Node):
         if self.width is None:
             raise Exception("Keycap width not specified")
 
-        self.tags = [f"{self.width:3.2f}u"]
+        self.tags += f" {self.width:3.2f}u"
+        self.name += f"{self.width:3.2f}u"
         if self.rotation != 0:
-            self.tags += [f"{int(self.rotation)}deg"]
+            self.tags += f" {int(self.rotation)}deg"
+            self.name += f"_{int(self.rotation)}deg"
         if self.offset_x != 0 or self.offset_y != 0:
-            self.tags += ["Offset"]
+            self.tags += " Offset"
+            self.name += "_Offset"
 
         start = Vector2D(-(self.spacing_x * self.width) / 2 + self.offset_x, -self.spacing_y / 2 + self.offset_y)
         end = Vector2D((self.spacing_x * self.width) / 2 + self.offset_x, self.spacing_y / 2 + self.offset_y)
@@ -132,9 +134,11 @@ class Keycap(Node):
     def _init_ISOEnter_keycap(self):
         nodes = []
 
-        self.tags = ["ISOEnter"]
+        self.tags += " ISOEnter"
+        self.name += f"ISOEnter"
         if self.rotation != 0:
-            self.tags += [f"{int(self.rotation)}deg"]
+            self.tags += f" {int(self.rotation)}deg"
+            self.name += f"_{int(self.rotation)}deg"
 
         polyline = [
             Vector2D((self.spacing_x * 1.25) / 2 + self.offset_x, self.spacing_y + self.offset_y),
