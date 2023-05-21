@@ -1,6 +1,6 @@
 (module SW_Hotswap_Kailh_MX_ISOEnter (layer F.Cu) (tedit 0)
-  (descr "Kailh keyswitch Hotswap Socket ISOEnter keycap")
-  (tags (Switch Keyswitch Keyboard Socket Kailh Hotswap Relief Cutout ISOEnter))
+  (descr "Kailh keyswitch Hotswap Socket Keycap ISOEnter")
+  (tags "Kailh Keyboard Keyswitch Switch Hotswap Socket Relief Cutout Keycap ISOEnter")
   (attr smd)
   (fp_text reference REF** (at 0 -8) (layer F.SilkS)
     (effects (font (size 1 1) (thickness 0.15)))

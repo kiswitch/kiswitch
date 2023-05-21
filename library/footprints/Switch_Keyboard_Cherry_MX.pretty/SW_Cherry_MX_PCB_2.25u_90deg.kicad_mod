@@ -1,6 +1,6 @@
 (module SW_Cherry_MX_PCB_2.25u_90deg (layer F.Cu) (tedit 0)
-  (descr "Cherry MX keyswitch PCB Mount 2.25u 90deg keycap")
-  (tags (MX Switch Keyswitch Keyboard Cherry PCB Cutout 2.25u 90deg))
+  (descr "Cherry MX keyswitch PCB Mount Keycap 2.25u 90deg")
+  (tags "Cherry MX Keyboard Keyswitch Switch PCB Cutout Keycap 2.25u 90deg")
   (fp_text reference REF** (at 0 -8) (layer F.SilkS)
     (effects (font (size 1 1) (thickness 0.15)))
   )

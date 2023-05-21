@@ -1,6 +1,6 @@
 (module SW_Kailh_Choc_Mini_6.50u (layer F.Cu) (tedit 0)
-  (descr "Kailh Choc Mini CPG1232 low profile keyswitch 6.50u keycap")
-  (tags ("Choc Mini" CPG1232 Switch Keyboard Keyswitch "Low Profile" Kailh Cutout 6.50u))
+  (descr "Kailh Choc Mini CPG1232 low profile keyswitch Keycap 6.50u")
+  (tags "Kailh Choc Mini CPG1232 Keyboard Low Profile Keyswitch Switch Cutout Keycap 6.50u")
   (fp_text reference REF** (at 0 -8.5) (layer F.SilkS)
     (effects (font (size 1 1) (thickness 0.15)))
   )

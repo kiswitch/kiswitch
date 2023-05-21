@@ -1,6 +1,6 @@
 (module SW_Alps_Matias_6.50u (layer F.Cu) (tedit 0)
-  (descr "Alps/Matias keyswitch 6.50u keycap")
-  (tags (Matias Switch Keyboard Keyswitch Plate Alps Cutout 6.50u))
+  (descr "Alps/Matias keyswitch Keycap 6.50u")
+  (tags "Alps Matias Keyboard Keyswitch Switch Plate Cutout Keycap 6.50u")
   (fp_text reference REF** (at 0 -8) (layer F.SilkS)
     (effects (font (size 1 1) (thickness 0.15)))
   )

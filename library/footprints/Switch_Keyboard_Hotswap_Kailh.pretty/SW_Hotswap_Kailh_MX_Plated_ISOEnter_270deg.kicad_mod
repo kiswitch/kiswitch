@@ -1,6 +1,6 @@
 (module SW_Hotswap_Kailh_MX_Plated_ISOEnter_270deg (layer F.Cu) (tedit 0)
-  (descr "Kailh keyswitch Hotswap Socket plated holes ISOEnter 270deg keycap")
-  (tags (Switch Keyswitch Keyboard Socket Kailh Hotswap Relief Cutout Plated Relief Cutout ISOEnter 270deg))
+  (descr "Kailh keyswitch Hotswap Socket plated holes Keycap ISOEnter 270deg")
+  (tags "Kailh Keyboard Keyswitch Switch Hotswap Socket Plated Relief Cutout Keycap ISOEnter 270deg")
   (attr smd)
   (fp_text reference REF** (at 0 -8) (layer F.SilkS)
     (effects (font (size 1 1) (thickness 0.15)))

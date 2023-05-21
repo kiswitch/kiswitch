@@ -1,6 +1,6 @@
 (module SW_Hotswap_Kailh_Choc_V1V2_ISOEnter_180deg (layer F.Cu) (tedit 0)
-  (descr "Kailh Choc keyswitch V1V2 CPG1350 V1 CPG1353 V2 Hotswap ISOEnter 180deg keycap")
-  (tags (Kailh Keyswitch Choc Switch CPG1350 V1 CPG1353 V2 CPG1350 V1 CPG1350 V1 CPG1353 V2 Hotswap Cutout ISOEnter 180deg))
+  (descr "Kailh Choc keyswitch V1V2 CPG1350 V1 CPG1353 V2 Hotswap Keycap ISOEnter 180deg")
+  (tags "Kailh Choc Keyswitch Switch CPG1350 V1 CPG1353 V2 Hotswap Cutout Keycap ISOEnter 180deg")
   (attr smd)
   (fp_text reference REF** (at 0 -9) (layer F.SilkS)
     (effects (font (size 1 1) (thickness 0.15)))

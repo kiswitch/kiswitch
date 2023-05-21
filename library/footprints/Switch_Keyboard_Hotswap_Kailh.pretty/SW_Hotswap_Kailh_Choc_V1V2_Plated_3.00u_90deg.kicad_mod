@@ -1,6 +1,6 @@
 (module SW_Hotswap_Kailh_Choc_V1V2_Plated_3.00u_90deg (layer F.Cu) (tedit 0)
-  (descr "Kailh Choc keyswitch V1V2 CPG1350 V1 CPG1353 V2 Hotswap Plated 3.00u 90deg keycap")
-  (tags (Kailh Keyswitch Choc Switch CPG1350 V1 CPG1353 V2 CPG1350 V1 CPG1350 V1 CPG1350 V1 CPG1353 V2 Hotswap Plated Cutout 3.00u 90deg))
+  (descr "Kailh Choc keyswitch V1V2 CPG1350 V1 CPG1353 V2 Hotswap Plated Keycap 3.00u 90deg")
+  (tags "Kailh Choc Keyswitch Switch CPG1350 V1 CPG1353 V2 Hotswap Plated Cutout Keycap 3.00u 90deg")
   (attr smd)
   (fp_text reference REF** (at 0 -9) (layer F.SilkS)
     (effects (font (size 1 1) (thickness 0.15)))

@@ -1,6 +1,6 @@
 (module SW_Hotswap_Kailh_MX_6.00u_Offset (layer F.Cu) (tedit 0)
-  (descr "Kailh keyswitch Hotswap Socket 6.00u Offset keycap")
-  (tags (Switch Keyswitch Keyboard Socket Kailh Hotswap Relief Cutout 6.00u Offset))
+  (descr "Kailh keyswitch Hotswap Socket Keycap 6.00u Offset")
+  (tags "Kailh Keyboard Keyswitch Switch Hotswap Socket Relief Cutout Keycap 6.00u Offset")
   (attr smd)
   (fp_text reference REF** (at 0 -8) (layer F.SilkS)
     (effects (font (size 1 1) (thickness 0.15)))

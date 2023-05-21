@@ -1,6 +1,6 @@
 (module SW_Kailh_Choc_V2_7.00u (layer F.Cu) (tedit 0)
-  (descr "Kailh Choc keyswitch V2 CPG1353 V2 7.00u keycap")
-  (tags (Kailh Keyswitch Choc Switch CPG1350 V1 CPG1353 V2 Cutout 7.00u))
+  (descr "Kailh Choc keyswitch V2 CPG1353 V2 Keycap 7.00u")
+  (tags "Kailh Choc Keyswitch Switch CPG1353 V2 Cutout Keycap 7.00u")
   (fp_text reference REF** (at 0 -9) (layer F.SilkS)
     (effects (font (size 1 1) (thickness 0.15)))
   )

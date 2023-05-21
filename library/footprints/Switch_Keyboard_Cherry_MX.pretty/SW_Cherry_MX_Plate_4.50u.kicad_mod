@@ -1,6 +1,6 @@
 (module SW_Cherry_MX_Plate_4.50u (layer F.Cu) (tedit 0)
-  (descr "Cherry MX keyswitch Plate Mount 4.50u keycap")
-  (tags (MX Switch Keyswitch Keyboard Cherry PCB Plate Cutout 4.50u))
+  (descr "Cherry MX keyswitch Plate Mount Keycap 4.50u")
+  (tags "Cherry MX Keyboard Keyswitch Switch Plate Cutout Keycap 4.50u")
   (fp_text reference REF** (at 0 -8) (layer F.SilkS)
     (effects (font (size 1 1) (thickness 0.15)))
   )
