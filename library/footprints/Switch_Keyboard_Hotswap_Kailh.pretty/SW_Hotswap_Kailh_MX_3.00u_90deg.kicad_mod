@@ -1,6 +1,6 @@
 (module SW_Hotswap_Kailh_MX_3.00u_90deg (layer F.Cu) (tedit 0)
   (descr "Kailh keyswitch Hotswap Socket 3.00u 90deg keycap")
-  (tags (Keyboard Keyswitch Hotswap Socket Kailh Switch Relief Cutout 3.00u 90deg))
+  (tags (Switch Keyswitch Keyboard Socket Kailh Hotswap Relief Cutout 3.00u 90deg))
   (attr smd)
   (fp_text reference REF** (at 0 -8) (layer F.SilkS)
     (effects (font (size 1 1) (thickness 0.15)))
