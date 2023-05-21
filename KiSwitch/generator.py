@@ -27,31 +27,80 @@ from KiSwitch.switch import (
 )
 
 with deps_path():
+    from KicadModTree.nodes.Node import Node
     from KicadModTree.KicadFileHandler import KicadFileHandler
 
-KEYCAPS = [Keycap, KeycapChoc]
-
-SWITCHES = [
-    StabilizerCherryMX,
-    SwitchAlpsMatias,
-    SwitchCherryMX,
-    SwitchHybridCherryMxAlps,
-    SwitchKailhChoc,
-    SwitchHotswapKailh,
-    SwitchKailhKH,
-    SwitchKailhNB,
-    SwitchKailhChocMini,
-]
+KEYCAPS = {
+    "Keycap": Keycap,
+    "KeycapChoc": KeycapChoc,
+}
 
 
-def render_switches(output_path, switches):
+SWITCHES = {
+    "StabilizerCherryMX": StabilizerCherryMX,
+    "SwitchAlpsMatias": SwitchAlpsMatias,
+    "SwitchCherryMX": SwitchCherryMX,
+    "SwitchHybridCherryMxAlps": SwitchHybridCherryMxAlps,
+    "SwitchKailhChoc": SwitchKailhChoc,
+    "SwitchHotswapKailh": SwitchHotswapKailh,
+    "SwitchKailhKH": SwitchKailhKH,
+    "SwitchKailhNB": SwitchKailhNB,
+    "SwitchKailhChocMini": SwitchKailhChocMini,
+}
+
+
+def render_switches(
+    output_path: str,
+    switch: str,
+    args: dict = {},
+    keycap: str = None,
+    keycap_sizes: list[str] = None,
+    keycap_args: dict = {},
+) -> None:
+    if switch not in SWITCHES:
+        raise ValueError(f"{switch} is an invalid switch, valid switches are {SWITCHES.keys()}")
+
     if not os.path.isdir(output_path):
         os.mkdir(output_path)
 
-    for switch in switches:
-        file_path = os.path.join(output_path, f"{switch.name}.kicad_mod")
-        file_handler = KicadFileHandler(switch)
+    switch_class = SWITCHES.get(switch)
+
+    base_switch = switch_class(**args)
+
+    switches = list()
+    switches.append(base_switch)
+
+    if keycap is not None:
+        if keycap_sizes is None or len(keycap_sizes) == 0:
+            keycap_sizes = switch_class.DEFAULT_KEYS
+
+        for keycap_node in render_keycaps(keycap, keycap_sizes, keycap_args):
+            keycap_switch = copy.deepcopy(base_switch)
+            keycap_switch.append_component(keycap_node)
+
+            switches.append(keycap_switch)
+
+    for switch_footprint in switches:
+        switch_footprint.add_generic_nodes()
+        file_path = os.path.join(output_path, f"{switch_footprint.name}.kicad_mod")
+        file_handler = KicadFileHandler(switch_footprint)
         file_handler.writeFile(file_path, timestamp=0)
+
+
+def render_keycaps(keycap: str, sizes: list[str], args: dict = {}) -> list[Node]:
+    if keycap not in KEYCAPS:
+        raise ValueError(f"{keycap} is an invalid keycap, valid keycaps are {KEYCAPS.keys()}")
+
+    if sizes is None or len(sizes) == 0:
+        raise ValueError(f"sizes cannot be empty")
+
+    keycap_class = KEYCAPS.get(keycap)
+
+    for size in sizes:
+        keycap_args = copy.deepcopy(args)
+        keycap_args.update(Keycap.KEYCAP_DEFAULT_SHAPES[size])
+
+        yield keycap_class(**keycap_args)
 
 
 class ParseKwargs(argparse.Action):
@@ -72,14 +121,6 @@ def tui():
     parser.add_argument("-o", "--output", type=str, default="./output", help="output path (default: %(default)s)")
 
     parser.add_argument(
-        "-s",
-        "--switch",
-        type=str,
-        choices=[switch.__name__ for switch in SWITCHES],
-        required=True,
-        help="switch to generate",
-    )
-    parser.add_argument(
         "-a",
         "--switch-arg",
         type=str,
@@ -89,9 +130,7 @@ def tui():
         help="switch arguments (default: %(default)s)",
     )
 
-    parser.add_argument(
-        "-k", "--keycap", type=str, choices=[keycap.__name__ for keycap in KEYCAPS], help="keycap to generate"
-    )
+    parser.add_argument("-k", "--keycap", type=str, choices=KEYCAPS.keys(), help="keycap to generate")
     parser.add_argument(
         "-z",
         "--keycap-sizes",
@@ -110,36 +149,17 @@ def tui():
         help="keycap arguments (default: %(default)s)",
     )
 
+    parser.add_argument(
+        "switch",
+        type=str,
+        choices=SWITCHES.keys(),
+        help="switch to generate",
+    )
+
     args = parser.parse_args()
 
-    switch_class = eval(args.switch)
-
-    switch_queue = []
-
-    switch = switch_class(**args.switch_arg)
-    switch_queue.append(switch)
-
-    if args.keycap is not None:
-        if args.keycap_sizes is None:
-            keycap_sizes = switch_class.DEFAULT_KEYS
-        else:
-            keycap_sizes = args.keycap_sizes
-
-        keycap_class = eval(args.keycap)
-
-        for keycap_size in keycap_sizes:
-            keycap_args = args.keycap_arg
-            keycap_args.update(keycap_class.KEYCAP_DEFAULT_SHAPES[keycap_size])
-
-            keycap_switch = copy.deepcopy(switch)
-
-            keycap = keycap_class(**keycap_args)
-
-            keycap_switch.append_component(keycap)
-
-            switch_queue.append(keycap_switch)
-
-    render_switches(args.output, switch_queue)
+    # --------------------- Generate ---------------------
+    render_switches(args.output, args.switch, args.switch_arg, args.keycap, args.keycap_sizes, args.keycap_arg)
 
 
 if __name__ == "__main__":
