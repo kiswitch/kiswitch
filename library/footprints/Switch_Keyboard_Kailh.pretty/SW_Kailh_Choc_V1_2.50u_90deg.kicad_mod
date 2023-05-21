@@ -1,6 +1,6 @@
 (module SW_Kailh_Choc_V1_2.50u_90deg (layer F.Cu) (tedit 0)
-  (descr "Kailh Choc keyswitch CPG1350 V1 with 2.50u 90deg keycap")
-  (tags "Kailh Choc Keyswitch Switch CPG1350 V1 Cutout 2.50u 90deg")
+  (descr "Kailh Choc keyswitch V1 CPG1350 V1 2.50u 90deg keycap")
+  (tags (Keyswitch Choc Kailh Switch CPG1350 V1 Cutout 2.50u 90deg))
   (fp_text reference REF** (at 0 -9) (layer F.SilkS)
     (effects (font (size 1 1) (thickness 0.15)))
   )

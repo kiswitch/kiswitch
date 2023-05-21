@@ -1,6 +1,6 @@
 (module SW_Kailh_KH_1.50u (layer F.Cu) (tedit 0)
-  (descr "Kailh KH CPG1280 keyswitch with 1.50u keycap")
-  (tags "Kailh KH CPG1280 Keyboard Keyswitch Switch Cutout 1.50u")
+  (descr "Kailh KH CPG1280 keyswitch 1.50u keycap")
+  (tags (CPG1280 Keyboard Keyswitch Kailh Switch KH Cutout 1.50u))
   (fp_text reference REF** (at 0 -8) (layer F.SilkS)
     (effects (font (size 1 1) (thickness 0.15)))
   )

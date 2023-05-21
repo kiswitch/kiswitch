@@ -1,6 +1,6 @@
 (module SW_Kailh_KH_ISOEnter_90deg (layer F.Cu) (tedit 0)
-  (descr "Kailh KH CPG1280 keyswitch with ISOEnter 90deg keycap")
-  (tags "Kailh KH CPG1280 Keyboard Keyswitch Switch Cutout ISOEnter 90deg")
+  (descr "Kailh KH CPG1280 keyswitch ISOEnter 90deg keycap")
+  (tags (CPG1280 Keyboard Keyswitch Kailh Switch KH Cutout ISOEnter 90deg))
   (fp_text reference REF** (at 0 -8) (layer F.SilkS)
     (effects (font (size 1 1) (thickness 0.15)))
   )

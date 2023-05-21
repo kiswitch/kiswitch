@@ -1,6 +1,6 @@
 (module SW_Kailh_Choc_Mini_ISOEnter_90deg (layer F.Cu) (tedit 0)
-  (descr "Kailh Choc Mini CPG1232 low profile keyswitch with ISOEnter 90deg keycap")
-  (tags "Kailh Choc Mini CPG1232 Keyboard Low Profile Keyswitch Switch Cutout ISOEnter 90deg")
+  (descr "Kailh Choc Mini CPG1232 low profile keyswitch ISOEnter 90deg keycap")
+  (tags ("Choc Mini" Keyboard Keyswitch "Low Profile" Kailh Switch CPG1232 Cutout ISOEnter 90deg))
   (fp_text reference REF** (at 0 -8.5) (layer F.SilkS)
     (effects (font (size 1 1) (thickness 0.15)))
   )
