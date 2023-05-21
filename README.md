@@ -1,3 +1,9 @@
+# This project is being refactored from scratch
+
+This repo remains for archival and compatibility
+
+It's new home is [kiswitch/keyswitch-kicad-library](https://github.com/kiswitch/kiswitch)
+
 # Keyswitch Kicad Library
 
 ![views](https://views.whatilearened.today/views/github/perigoso/Switch_Keyboard.svg)
