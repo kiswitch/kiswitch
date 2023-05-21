@@ -69,9 +69,13 @@ def generate_switch_hotswap_kailh(output_path):
 
     for plated in [False, True]:
         render_switches(out_path, "SwitchHotswapKailh", args={"hotswap_plated": plated}, keycap="Keycap")
-        render_switches(
-            out_path, "SwitchKailhChoc", args={"hotswap": True, "hotswap_plated": plated}, keycap="KeycapChoc"
-        )
+        for switch_type in ["V1", "V2", "V1V2"]:
+            render_switches(
+                out_path,
+                "SwitchKailhChoc",
+                args={"switch_type": switch_type, "hotswap": True, "hotswap_plated": plated},
+                keycap="KeycapChoc",
+            )
 
 
 if __name__ == "__main__":
