@@ -28,7 +28,7 @@ class Switch(Footprint):
     annular_ring = kiswitch_property(base_type=float, default=1)
     path3d = kiswitch_property(
         base_type=str,
-        default="${KICAD6_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/",
+        default="${KICAD7_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/",
     )
     model3d = kiswitch_property(base_type=str, list_property=True)
     text_offset = kiswitch_property(base_type=float, default=8)
