@@ -58,7 +58,7 @@ These footprints are generated with [kicad-footprint-generator](https://gitlab.c
 
 ## Using the library
 
-As of v2.0  the library is meant to be installed via kicads `Plugin and Content Manager`, this is only available in the nightly builds of kicad (aka Kicad v6), if you are using kicad v5, please head to the [old version of this library (v1.0.0)](https://github.com/perigoso/keyswitch-kicad-library/tree/e56f74e93c850e60e04023563835b5fe031fd638)
+As of v2.0  the library is meant to be installed via kicads `Plugin and Content Manager`, this is available in KiCad v6/v7/v8, as part of the KiCad official repository. It can be found under the "Libraries" tab (under the name "Keyswitch Kicas Library"). If you are using kicad v5, please head to the [old version of this library (v1.0.0)](https://github.com/perigoso/keyswitch-kicad-library/tree/e56f74e93c850e60e04023563835b5fe031fd638)
 
 If you want to use git simply clone this repo to the directory where you want your library stored and include them manually on your footprints table `Preferences -> Manage Footprint Libraries...` (Note: with this method the 3d models will not be linked automatically/correctly)
 
