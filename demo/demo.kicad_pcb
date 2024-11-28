@@ -164,7 +164,7 @@
     (pad "1" smd roundrect locked (at -6.585 -2.54) (size 3.55 2.5) (layers "B.Cu") (roundrect_rratio 0.1) (tstamp c2ed9731-05da-4ab3-a3ec-cac2e384d27a))
     (pad "2" smd roundrect locked (at 5.32 -5.08) (size 3.55 2.5) (layers "B.Cu") (roundrect_rratio 0.1) (tstamp 2e46009c-46ee-4a31-9c53-707cf58d3ed6))
     (pad "2" thru_hole circle locked (at 2.54 -5.08) (size 3.6 3.6) (drill 3.05) (layers *.Cu "B.Mask") (tstamp acbc1d4f-4abb-46c6-9db2-9d5e24aee7a4))
-    (model "${KICAD6_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Hotswap_Kailh_MX.wrl"
+    (model "${KICAD7_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Hotswap_Kailh_MX.wrl"
       (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -879,7 +879,7 @@
     (pad "" smd circle locked (at -2.5 -4) (size 1.55 1.55) (layers "F.Mask") (tstamp b0c3922d-c6f4-46cc-9667-71809d8849c4))
     (pad "1" thru_hole circle locked (at -2.5 -4) (size 2.5 2.5) (drill 1.5) (layers *.Cu "B.Mask") (tstamp c2a0bc3c-7a6d-4af9-b1e2-f7bed6d0a230))
     (pad "2" thru_hole circle locked (at 2.5 -4.5) (size 2.5 2.5) (drill 1.5) (layers *.Cu "B.Mask") (tstamp 9ed7c254-af6d-4baf-8ec1-c7e823c1acf5))
-    (model "${KICAD6_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Alps_Matias.wrl"
+    (model "${KICAD7_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Alps_Matias.wrl"
       (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -925,7 +925,7 @@
     (pad "" np_thru_hole circle locked (at 0 0) (size 4 4) (drill 4) (layers *.Cu *.Mask) (tstamp f59e0c37-17cf-41f9-bfa5-019f58a9c063))
     (pad "1" thru_hole circle locked (at -3.81 -2.54) (size 2.5 2.5) (drill 1.5) (layers *.Cu "B.Mask") (tstamp 765fc2ad-3b39-4918-8d3f-de7829fec822))
     (pad "2" thru_hole circle locked (at 2.54 -5.08) (size 2.5 2.5) (drill 1.5) (layers *.Cu "B.Mask") (tstamp 253d1124-422d-4dd8-a798-5b842e3558c7))
-    (model "${KICAD6_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_Plate.wrl"
+    (model "${KICAD7_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_Plate.wrl"
       (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1007,7 +1007,7 @@
     (pad "" np_thru_hole circle locked (at 2.54 -5.08) (size 3.05 3.05) (drill 3.05) (layers *.Cu *.Mask) (tstamp c54eb400-719e-46aa-b957-c83f125c953d))
     (pad "1" smd roundrect locked (at -7.085 -2.54) (size 2.55 2.5) (layers "B.Cu" "B.Paste" "B.Mask") (roundrect_rratio 0.1) (tstamp 9e8b9265-a210-44df-8709-1c6b3cc328dc))
     (pad "2" smd roundrect locked (at 5.842 -5.08) (size 2.55 2.5) (layers "B.Cu" "B.Paste" "B.Mask") (roundrect_rratio 0.1) (tstamp 1ff18837-154a-4746-95e6-01a10e3fe5a2))
-    (model "${KICAD6_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Hotswap_Kailh_MX.wrl"
+    (model "${KICAD7_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Hotswap_Kailh_MX.wrl"
       (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1055,7 +1055,7 @@
     (pad "" smd circle locked (at 0 -5.9) (size 1.25 1.25) (layers "F.Mask") (tstamp f1676267-9b80-4646-acd8-5397c0a22350))
     (pad "1" thru_hole circle locked (at 0 -5.9) (size 2.2 2.2) (drill 1.2) (layers *.Cu "B.Mask") (tstamp 0bd94d3c-7c36-49fd-a2a2-0ccc1dbf4958))
     (pad "2" thru_hole circle locked (at 5 -3.8) (size 2.2 2.2) (drill 1.2) (layers *.Cu "B.Mask") (tstamp c5a4ffba-8114-4150-a5a4-f993141d9657))
-    (model "${KICAD6_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Kailh_Choc_V1.wrl"
+    (model "${KICAD7_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Kailh_Choc_V1.wrl"
       (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1105,7 +1105,7 @@
     (pad "" smd circle locked (at 0 -5.9) (size 1.25 1.25) (layers "F.Mask") (tstamp fe0a55a4-0a5a-4735-af77-fd2484f795b1))
     (pad "1" thru_hole circle locked (at 0 -5.9) (size 2.2 2.2) (drill 1.2) (layers *.Cu "B.Mask") (tstamp 9cbe4453-4023-4d90-8685-c1038d946f76))
     (pad "2" thru_hole circle locked (at 5 -3.8) (size 2.2 2.2) (drill 1.2) (layers *.Cu "B.Mask") (tstamp ee759795-d398-4ab2-83b0-e870c8968915))
-    (model "${KICAD6_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Kailh_Choc_V1.wrl"
+    (model "${KICAD7_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Kailh_Choc_V1.wrl"
       (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -2725,7 +2725,7 @@
     (pad "" smd circle locked (at -2 -3.4) (size 1.15 1.15) (layers "F.Mask") (tstamp f562aa0d-b5de-4655-92f3-e4d6a1cfe4a3))
     (pad "1" thru_hole circle locked (at -2 -3.4) (size 1.4 1.4) (drill 1.1) (layers *.Cu "B.Mask") (tstamp 71f1a62d-018e-4526-a138-3134b6205aef))
     (pad "2" thru_hole circle locked (at 2.9 -3.4) (size 1.4 1.4) (drill 1.1) (layers *.Cu "B.Mask") (tstamp 7fb2c9ca-ed3f-48a1-8e1a-534b13f85e8f))
-    (model "${KICAD6_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Kailh_NB.wrl"
+    (model "${KICAD7_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Kailh_NB.wrl"
       (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -4150,12 +4150,12 @@
     (pad "1" thru_hole circle locked (at -2.5 -4) (size 2.5 2.5) (drill 1.5) (layers *.Cu "B.Mask") (tstamp 425d44c8-f473-4cc8-9b96-f2bef4da0b7a))
     (pad "1" thru_hole oval locked (at -3.81 -2.54 48) (size 4.46156 2.5) (drill 1.5 (offset 0.980778 0)) (layers *.Cu "B.Mask") (tstamp 56f87908-25f3-4185-8af9-aa50461a5743))
     (pad "2" thru_hole oval locked (at 2.52 -4.79 86) (size 3.081378 2.5) (drill oval 2.08137 1.5) (layers *.Cu "B.Mask") (tstamp e683c3e5-838f-4cac-8b44-5ef05ee76507))
-    (model "${KICAD6_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.wrl"
+    (model "${KICAD7_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.wrl"
       (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model "${KICAD6_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Alps_Matias.wrl"
+    (model "${KICAD7_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Alps_Matias.wrl"
       (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -5401,7 +5401,7 @@
     (pad "" smd circle locked (at 5 -3.8) (size 1.25 1.25) (layers "F.Mask") (tstamp d663ca92-9b77-4ff7-b230-2be5f75acde7))
     (pad "1" thru_hole circle locked (at 0 -5.9) (size 2.2 2.2) (drill 1.2) (layers *.Cu "B.Mask") (tstamp c54bc43b-c70b-4913-93de-432f848c9867))
     (pad "2" thru_hole circle locked (at 5 -3.8) (size 2.2 2.2) (drill 1.2) (layers *.Cu "B.Mask") (tstamp 777ac227-a5b4-4b51-8251-717f289ed8b4))
-    (model "${KICAD6_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Kailh_Choc_V1.wrl"
+    (model "${KICAD7_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Kailh_Choc_V1.wrl"
       (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -5449,7 +5449,7 @@
     (pad "" np_thru_hole circle locked (at 0 0) (size 4 4) (drill 4) (layers *.Cu *.Mask) (tstamp e53f9536-c173-4792-9417-ff320cb5b097))
     (pad "1" thru_hole circle locked (at -3.8 -2.55) (size 2.5 2.5) (drill 1.5) (layers *.Cu "B.Mask") (tstamp 679c1ac4-5af8-4de8-8870-9cce3d5c0e9a))
     (pad "2" thru_hole circle locked (at 3 -5.12) (size 2.5 2.5) (drill 1.5) (layers *.Cu "B.Mask") (tstamp f939dede-ccbe-4e08-8d4a-a0e2c37c95eb))
-    (model "${KICAD6_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Kailh_KH.wrl"
+    (model "${KICAD7_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Kailh_KH.wrl"
       (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -5504,7 +5504,7 @@
     (pad "" smd circle locked (at 2 5.4) (size 1.25 1.25) (layers "F.Mask") (tstamp cf1d61f8-0764-45cb-a40e-9aefbe9de126))
     (pad "1" thru_hole circle locked (at 2 5.4) (size 1.5 1.5) (drill 1.2) (layers *.Cu "B.Mask") (tstamp f5b38644-478e-4988-bd89-28803e3972c7))
     (pad "2" thru_hole circle locked (at -4.58 5.1) (size 1.5 1.5) (drill 1.2) (layers *.Cu "B.Mask") (tstamp 0a136a3d-3398-44ef-92ec-5eddab777944))
-    (model "${KICAD6_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Kailh_Choc_Mini.wrl"
+    (model "${KICAD7_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Kailh_Choc_Mini.wrl"
       (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -6055,7 +6055,7 @@
     (pad "" np_thru_hole circle locked (at -11.938 8.225) (size 3.9878 3.9878) (drill 3.9878) (layers *.Cu *.Mask) (tstamp 4d43d625-3674-48bb-91d2-2fb742a4f9bf))
     (pad "" np_thru_hole circle locked (at 11.938 8.225) (size 3.9878 3.9878) (drill 3.9878) (layers *.Cu *.Mask) (tstamp 84c6efc3-e0db-4bc8-b147-f88ed3f5fcc0))
     (pad "" np_thru_hole circle locked (at -11.938 -6.985) (size 3.048 3.048) (drill 3.048) (layers *.Cu *.Mask) (tstamp af5cbda1-0333-47b4-afda-5868a5184c37))
-    (model "${KICAD6_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/Stabilizer_Cherry_MX_2.00u.wrl"
+    (model "${KICAD7_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/Stabilizer_Cherry_MX_2.00u.wrl"
       (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -8150,7 +8150,7 @@
     (pad "" np_thru_hole circle locked (at -5.5 0) (size 1.9 1.9) (drill 1.9) (layers *.Cu *.Mask) (tstamp c21cca52-9b5c-4c91-8368-ddc0d31270df))
     (pad "1" smd roundrect locked (at -3.5 -6) (size 2.55 2.5) (layers "B.Cu" "B.Paste" "B.Mask") (roundrect_rratio 0.1) (tstamp 24d3a135-54ed-4a07-a1a2-003a9d889825))
     (pad "2" smd roundrect locked (at 8.5 -3.8) (size 2.55 2.5) (layers "B.Cu" "B.Paste" "B.Mask") (roundrect_rratio 0.1) (tstamp 252b23b0-becb-4ef6-9a18-0f9958dfd800))
-    (model "${KICAD6_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Hotswap_Kailh_Choc_V1.wrl"
+    (model "${KICAD7_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Hotswap_Kailh_Choc_V1.wrl"
       (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -9255,7 +9255,7 @@
     (pad "" np_thru_hole circle locked (at 5.08 0) (size 1.75 1.75) (drill 1.75) (layers *.Cu *.Mask) (tstamp de19a765-d6df-42d2-bb7f-c42764874c3f))
     (pad "1" thru_hole circle locked (at -3.81 -2.54) (size 2.5 2.5) (drill 1.5) (layers *.Cu "B.Mask") (tstamp 00bcbc84-e991-4f9b-ae01-7ed4d202fa3a))
     (pad "2" thru_hole circle locked (at 2.54 -5.08) (size 2.5 2.5) (drill 1.5) (layers *.Cu "B.Mask") (tstamp 027b5744-d89d-4a5c-bf01-054bfa3faca6))
-    (model "${KICAD6_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.wrl"
+    (model "${KICAD7_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Cherry_MX_PCB.wrl"
       (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -9395,7 +9395,7 @@
     (pad "1" smd roundrect locked (at -2.85 -6) (size 3.85 2.5) (layers "B.Cu") (roundrect_rratio 0.1) (tstamp fb813a39-d3e6-490d-8d80-f5e945b58411))
     (pad "2" thru_hole circle locked (at 5 -3.8) (size 3.6 3.6) (drill 3.05) (layers *.Cu "B.Mask") (tstamp 4a5c0a9b-ac0b-4a56-bf72-d9357bba522b))
     (pad "2" smd roundrect locked (at 7.85 -3.8) (size 3.85 2.5) (layers "B.Cu") (roundrect_rratio 0.1) (tstamp ea926b05-c50e-40e6-af0d-da83687c2301))
-    (model "${KICAD6_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Hotswap_Kailh_Choc_V1.wrl"
+    (model "${KICAD7_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Hotswap_Kailh_Choc_V1.wrl"
       (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))

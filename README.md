@@ -68,12 +68,12 @@ The following entries needs to be added:
 
 Name | Location
 ---|---
-Mounting_Keyboard_Stabilizer | ${KICAD6_3RD_PARTY}/footprints/com_github_perigoso_keyswitch-kicad-library/Mounting_Keyboard_Stabilizer.pretty
-Switch_Keyboard_Alps_Matias | ${KICAD6_3RD_PARTY}/footprints/com_github_perigoso_keyswitch-kicad-library/Switch_Keyboard_Alps_Matias.pretty
-Switch_Keyboard_Cherry_MX | ${KICAD6_3RD_PARTY}/footprints/com_github_perigoso_keyswitch-kicad-library/Switch_Keyboard_Cherry_MX.pretty
-Switch_Keyboard_Hotswap_Kailh | ${KICAD6_3RD_PARTY}/footprints/com_github_perigoso_keyswitch-kicad-library/Switch_Keyboard_Hotswap_Kailh.pretty
-Switch_Keyboard_Hybrid | ${KICAD6_3RD_PARTY}/footprints/com_github_perigoso_keyswitch-kicad-library/Switch_Keyboard_Hybrid.pretty
-Switch_Keyboard_Kailh | ${KICAD6_3RD_PARTY}/footprints/com_github_perigoso_keyswitch-kicad-library/Switch_Keyboard_Kailh.pretty
+Mounting_Keyboard_Stabilizer | ${KICAD7_3RD_PARTY}/footprints/com_github_perigoso_keyswitch-kicad-library/Mounting_Keyboard_Stabilizer.pretty
+Switch_Keyboard_Alps_Matias | ${KICAD7_3RD_PARTY}/footprints/com_github_perigoso_keyswitch-kicad-library/Switch_Keyboard_Alps_Matias.pretty
+Switch_Keyboard_Cherry_MX | ${KICAD7_3RD_PARTY}/footprints/com_github_perigoso_keyswitch-kicad-library/Switch_Keyboard_Cherry_MX.pretty
+Switch_Keyboard_Hotswap_Kailh | ${KICAD7_3RD_PARTY}/footprints/com_github_perigoso_keyswitch-kicad-library/Switch_Keyboard_Hotswap_Kailh.pretty
+Switch_Keyboard_Hybrid | ${KICAD7_3RD_PARTY}/footprints/com_github_perigoso_keyswitch-kicad-library/Switch_Keyboard_Hybrid.pretty
+Switch_Keyboard_Kailh | ${KICAD7_3RD_PARTY}/footprints/com_github_perigoso_keyswitch-kicad-library/Switch_Keyboard_Kailh.pretty
 
 ## Screenshots
 
